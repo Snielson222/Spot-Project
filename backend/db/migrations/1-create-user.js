@@ -49,10 +49,10 @@ module.exports = {
       }
     }, options);
     options.tableName = "Users"
-    await queryInterface.addIndex(options,
+    // await queryInterface.addIndex(options,
     
-      ['username', 'email'],
-    );
+    //   ['username', 'email'],
+    // );
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "Users"
