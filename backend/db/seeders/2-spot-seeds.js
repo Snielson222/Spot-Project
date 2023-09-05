@@ -40,7 +40,7 @@ module.exports = {
         address: '123 Fake st.',
         city: 'Pueblo',
         state: 'CO',
-        country: 'Bear@user.io',
+        country: 'USA',
         lat: 38.3104,
         lng: 104.6338,
         name: 'Trailer Park Charm',
