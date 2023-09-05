@@ -1,5 +1,5 @@
 'use strict';
-
+const { Spot } = require('../models');
 const bcrypt = require("bcryptjs");
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   async up (queryInterface, Sequelize) {
     options.tableName = 'Spots';
-    await User.bulkCreate(options, [
+    await Spot.bulkCreate(options, [
       {
         ownerId: 1,
         address: '816 Quarry st.',

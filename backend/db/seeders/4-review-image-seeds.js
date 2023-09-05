@@ -1,5 +1,5 @@
 'use strict';
-
+const { ReviewImage } = require('../models');
 const bcrypt = require("bcryptjs");
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   async up (queryInterface, Sequelize) {
     options.tableName = 'ReviewImages';
-    await User.bulkCreate(options, [
+    await ReviewImage.bulkCreate(options, [
       {
         reviewId: 1,
         url: 'https://www.trulia.com/pictures/thumbs_5/zillowstatic/fp/540af61bf602a09306c8b6f4306c2deb-full.webp'

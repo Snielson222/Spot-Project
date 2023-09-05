@@ -1,5 +1,5 @@
 'use strict';
-
+const { Review } = require('../models');
 const bcrypt = require("bcryptjs");
 let options = {};
 if (process.env.NODE_ENV === 'production') {
@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   async up (queryInterface, Sequelize) {
     options.tableName = 'Reviews';
-    await User.bulkCreate(options, [
+    await Review.bulkCreate(options, [
       {
         spotId: 1,
         userId: 1,

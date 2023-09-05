@@ -2,6 +2,7 @@
 const {
   Model, Validator
 } = require('sequelize');
+const {Booking, Review, Spot} = require('../models')
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
