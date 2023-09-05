@@ -11,7 +11,8 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await User.bulkCreate([
+    options.tableName = 'Users';
+    await User.bulkCreate(options, [
       {
         firstName: 'Steve',
         lastName: 'Nielson',
@@ -40,7 +41,7 @@ module.exports = {
     options.tableName = 'Users';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      username: { [Op.in]: ['Steve', 'Chelsea', 'Bear'] }
+      state: { [Op.in]: ['Steve', 'Chelsea', 'Bear'] }
     }, {});
   }
 };
