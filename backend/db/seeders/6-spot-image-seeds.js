@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   async up (queryInterface, Sequelize) {
     options.tableName = 'SpotImages';
-    await SpotImage.bulkCreate(options, [
+    await SpotImage.bulkCreate([
       {
         spotId: 1,
         url: 'https://www.trulia.com/pictures/thumbs_5/zillowstatic/fp/540af61bf602a09306c8b6f4306c2deb-full.webp',

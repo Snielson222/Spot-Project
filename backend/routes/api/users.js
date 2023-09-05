@@ -54,4 +54,19 @@ router.post(
     }
 );
 
+router.get ('/:userId', async (req, res, next) => {
+  const user = await User.findByPk(req.params.userId, {
+    attributes: ['id', 'firstName', 'lastName', 'email', 'username']
+  });
+
+  if (!user) {
+    res.status(200)
+    return res.json({
+      "user": null
+    })
+  };
+
+  return res.json(user)
+})
+
 module.exports = router
