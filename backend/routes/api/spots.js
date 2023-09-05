@@ -15,15 +15,17 @@ if (!spots) {
         "message": "Spot couldn't be found"
     })
 }
-const stars = await Review.findAll({
-    attributes: ['stars']
-})
-console.log(spots)
-console.log(stars)
-spots.forEach(async element => {
-//    element.dataValues.avgRating = avgRating.stars;
-   element.dataValues.previewImg = 'previewImg';
-});
+
+// for (let i = 0; i < spots.length; i++) {
+// const avgRating = await Review.findAll({
+//     attributes: ['stars']
+// })
+// const previewImg = await SpotImage.findAll({
+//     attributes: ['url']
+// })
+// spots.dataValues.avgRating = avgRating;
+// spots.dataValues.previewImg = previewImg;
+// }
 
 return res.json(spots)
 
