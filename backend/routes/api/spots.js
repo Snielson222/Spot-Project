@@ -43,27 +43,74 @@ router.get("/:spotId(\\d+)", async (req, res, next) => {
 
   return res.json(spots);
 });
-router.post('/', requireAuth, async (req, res, next) => {
+const validateLogin = [
+    check('address')
+      .exists({ checkFalsy: true })
+      .notEmpty()
+      .withMessage("Street address is required"),
+    check('city')
+      .exists({ checkFalsy: true })
+      .withMessage("City is required"),
+    check('state')
+    .exists({checkFalsy: true})
+    .withMessage("State is required"),
+    check('country')
+    .exists({checkFalsy: true})
+    .withMessage("Country is required"),
+    check('lat')
+    .exists({checkFalsy: true})
+    .withMessage("Latitude is not valid"),
+    check('lng')
+    .exists({checkFalsy: true})
+    .withMessage("Longitude is not valid"),
+    check('name')
+    .isLength({max: 50})
+    .withMessage("Name must be less than 50 characters"),
+    check('description')
+    .exists({checkFalsy: true})
+    .withMessage("Description is required"),
+    check('price')
+    .exists({checkFalsy: true})
+    .withMessage("Price per day is required"),
+    handleValidationErrors
+];
+
+router.post('/', requireAuth, validateLogin, async (req, res, next) => {
     const {address, city, state, country, lat, lng, name, description, price} = req.body;
     
-    if (!req.body) {
-        res.status(400)
-        return res.json({
-            "message": "Bad Request",
-  "errors": {
-    "address": "Street address is required",
-    "city": "City is required",
-    "state": "State is required",
-    "country": "Country is required",
-    "lat": "Latitude is not valid",
-    "lng": "Longitude is not valid",
-    "name": "Name must be less than 50 characters",
-    "description": "Description is required",
-    "price": "Price per day is required"
-  }
-        })
-    };
-    const newSpot = Spot.build
+//     if (!req.body) {
+//         res.status(400)
+//         return res.json({
+//             "message": "Bad Request",
+//   "errors": {
+//     "address": "Street address is required",
+//     "city": "City is required",
+//     "state": "State is required",
+//     "country": "Country is required",
+//     "lat": "Latitude is not valid",
+//     "lng": "Longitude is not valid",
+//     "name": "Name must be less than 50 characters",
+//     "description": "Description is required",
+//     "price": "Price per day is required"
+//   }
+//         })
+//     };
+    const newSpot = await Spot.build({
+        ownerId : req.user.dataValues.id,
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price
+    });
+
+    await newSpot.save()
+    res.status(201)
+    return res.json(newSpot)
 
 });
 //GET ALL SPOTS !!!WORKING!!!
