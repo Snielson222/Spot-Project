@@ -25,6 +25,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
       { model: ReviewImage },
     ],
   });
+  console.log(reviews)
 
   if (!reviews) {
     res.status(404);
@@ -32,10 +33,9 @@ router.get("/current", requireAuth, async (req, res, next) => {
       message: "No reviews found for the current user",
     });
   }
-
   const reviewArray = [];
 
-  reviews.forEach((review) => {
+  reviews.forEach(review => {
     reviewArray.push(review.toJSON());
   });
 
@@ -43,7 +43,9 @@ router.get("/current", requireAuth, async (req, res, next) => {
     delete review.User.username;
     delete review.Spot.createdAt;
     delete review.Spot.updatedAt;
-    review.Spot.previewImage = review.Spot.SpotImages[0].url;
+    review.Spot.SpotImages.forEach(image => {
+    review.Spot.previewImage = image.url;
+})
     delete review.Spot.SpotImages;
     review.ReviewImages.forEach((image) => {
       delete image.reviewId;
@@ -51,8 +53,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
       delete image.updatedAt;
     });
   });
-
-  return res.json({ Reviews: reviewArray });
+  return res.json({ "Reviews": reviewArray });
 });
 
 //ADD AN IMAGE TO A REVIEW BASED ON REVIEWID
