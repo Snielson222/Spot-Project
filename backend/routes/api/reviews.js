@@ -13,7 +13,7 @@ const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const router = express.Router();
 const { requireAuth } = require("../../utils/auth");
-const reviewimage = require("../../db/models/reviewimage");
+
 
 //GET REVIEWS FOR CURRENT USER !!!WORKING!!!
 router.get("/current", requireAuth, async (req, res, next) => {

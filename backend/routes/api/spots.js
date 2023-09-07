@@ -1,7 +1,7 @@
 const express = require("express");
 const { Op } = require("sequelize");
 const bcrypt = require("bcryptjs");
-const { Spot, Review, SpotImage, User, ReviewImage } = require("../../db/models");
+const { Spot, Review, SpotImage, User, ReviewImage, Booking } = require("../../db/models");
 const { ResultWithContextImpl } = require("express-validator/src/chain");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
@@ -334,6 +334,40 @@ router.post("/:spotId(\\d+)/reviews", requireAuth, validateReview, async (req, r
   await newReview.save()
   res.status(201)
   return res.json(newReview);
+});
+
+//GET ALL BOOKINGS FOR A SPOT BY ID
+router.get("/:spotId(\\d+)/bookings", requireAuth, async (req, res, next) => {
+
+  const bookings = await Spot.findByPk(req.params.spotId, {
+      include: [{model: Booking,
+      include: {model: User,
+      attributes: ['id', 'firstName', "lastName"]}}]
+  })
+
+  if (!bookings) {
+      res.status(404)
+      return res.json({
+          "message": "Spot couldn't be found"
+        })
+  }
+
+  jsonBooking = bookings.toJSON()
+
+  if (req.user.dataValues.id != bookings.ownerId) {
+    jsonBooking.Bookings.forEach(booking => {
+      delete booking.User
+      delete booking.id
+      delete booking.userId
+      delete booking.createdAt
+      delete booking.updatedAt
+    })
+    return res.json({"Bookings": jsonBooking.Bookings})
+  }
+  if (req.user.dataValues.id == bookings.ownerId) {
+    return res.json({"Bookings":jsonBooking.Bookings})
+  }
+
 });
 
 module.exports = router;
