@@ -256,9 +256,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
 //ADD AN IMAGE !!!WORKING!!!
 router.post("/:imageId/images", requireAuth, async (req, res, next) => {
   const { url, preview } = req.body;
-  const editSpot = await SpotImage.findOne({
-    where: { spotId: req.params.imageId },
-  });
+  const editSpot = await Spot.findByPk(req.params.imageId)
 
   if (!editSpot) {
     res.status(404);
