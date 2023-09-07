@@ -71,7 +71,7 @@ const validateLogin = [
   handleValidationErrors,
 ];
 
-//DELETE A SPOT IN PROGRESS
+//DELETE A SPOT !!!WORKING!!!
 router.delete("/:spotId", requireAuth, async (req, res, next) => {
   const editSpot = await Spot.findByPk(req.params.spotId);
 
@@ -154,8 +154,26 @@ router.post("/", requireAuth, validateLogin, async (req, res, next) => {
   return res.json(newSpot);
 });
 
-//GET ALL SPOTS !!!WORKING!!!
+// const validateSpot = [
+//   check("page")
+//     .isInt({min:1})
+//     .withMessage("Page must be greater than or equal to 1"),
+//     check("size")
+//     .isInt({min:1})
+//     .withMessage("Size must be greater than or equal to 1"),
+//     check(maxLat)
+//     .notEmpty()
+//     .withMessage("Maximum latitude is invalid"),
+//     check(minLat)
+//     .notEmpty()
+//     .withMessage("Minimum latitude is invalid"),
+//     handleValidationErrors,
+// ];
+
+//GET ALL SPOTS 
+//*************** NEED QUERY WORK STILL ***************/
 router.get("/", async (req, res, next) => {
+  const {page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice} = req.query;
   const spots = await Spot.findAll({
     include: [{ model: Review }, { model: SpotImage }],
   });
@@ -189,7 +207,9 @@ router.get("/", async (req, res, next) => {
     delete spot.SpotImages;
   });
 
-  return res.json({ Spots: spotsList });
+  return res.json({ Spots: spotsList,
+  "page": page,
+  "size": size });
 });
 
 //GET ALL SPOTS OWNED BY CURRENT USER !!!WORKING!!!
@@ -336,7 +356,7 @@ router.post("/:spotId(\\d+)/reviews", requireAuth, validateReview, async (req, r
   return res.json(newReview);
 });
 
-//GET ALL BOOKINGS FOR A SPOT BY ID
+//GET ALL BOOKINGS FOR A SPOT BY ID !!!WORKING!!!
 router.get("/:spotId(\\d+)/bookings", requireAuth, async (req, res, next) => {
 
   const bookings = await Spot.findByPk(req.params.spotId, {
@@ -369,5 +389,45 @@ router.get("/:spotId(\\d+)/bookings", requireAuth, async (req, res, next) => {
   }
 
 });
+
+const validateBooking = [
+    check("endDate")
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage("endDate cannot be on or before startDate"),
+    handleValidationErrors,
+];
+//********************* */
+//CREATE BOOKING BASED ON SPOTID JUST NEED TO VALIDATE - in validator and in route
+//********************* */
+router.post("/:spotId(\\d+)/bookings", requireAuth, validateBooking, async (req, res, next) => {
+const {startDate, endDate} = req.body;
+
+const testSpot = await Spot.findByPk(req.params.spotId)
+
+if (!testSpot) {
+  res.status(404)
+  return res.json({
+    "message": "Spot couldn't be found"
+  })
+}
+
+if (testSpot.ownerId == req.user.dataValues.id) {
+  res.status(403)
+  return res.json("Spot must NOT belong to the current user")
+}
+
+const newBooking = await Booking.build({
+  spotId: req.params.spotId,
+  userId: req.user.dataValues.id,
+  startDate,
+  endDate
+});
+await newBooking.save()
+
+return res.json(newBooking)
+
+});
+
 
 module.exports = router;

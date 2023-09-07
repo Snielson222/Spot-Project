@@ -45,5 +45,55 @@ router.get("/current", requireAuth, async (req, res, next) => {
     return res.json({"Bookings" : bookingArray})
 });
 
+//EDIT A BOOKING NEED BOOKINGS THAT HAVE BEEN STARTED CANT BE DELEATED
+router.delete('/:id', requireAuth, async (req, res, next) => {
+const booking = await Booking.findByPk(req.params.id)
+
+if (!booking) {
+    res.status(404)
+    return res.json({
+        "message": "Booking couldn't be found"
+      })
+}
+if (booking.userId != req.user.dataValues.id) {
+    res.status(403)
+    return res.json("Booking must belong to the current user")
+};
+
+
+await booking.destroy()
+
+return res.json({
+    "message": "Successfully deleted"
+  })
+});
+
+//EDIT A BOOKING NEED VALIDATIONS and BOOKING CONFLICT and BOOKING PAST END DATE
+router.put('/:id', requireAuth, async (req, res, next) => {
+    const {startDate, endDate} = req.body;
+    const booking = await Booking.findByPk(req.params.id)
+
+if (!booking) {
+    res.status(404)
+    return res.json({
+        "message": "Booking couldn't be found"
+      })
+}
+if (booking.userId != req.user.dataValues.id) {
+    res.status(403)
+    return res.json("Booking must belong to the current user")
+};
+
+if (startDate){
+    booking.startDate = startDate
+};
+if (endDate) {
+    booking.endDate = endDate
+}
+await booking.save()
+
+return res.json(booking)
+
+});
 
 module.exports = router;
