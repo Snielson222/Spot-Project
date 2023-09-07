@@ -1,4 +1,4 @@
-# `Spot-Project`
+# `Yay-cation`
 
 ## Database Schema Design
 
@@ -636,7 +636,7 @@ Returns all the reviews written by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: '/api/users/:userId/reviews'
+  * URL: '/api/reviews/current'
   * Body: none
 
 * Successful Response
@@ -692,7 +692,7 @@ Returns all the reviews that belong to a spot specified by id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: '/api/spots/:spotId/reviews'
+  * URL: '/api/reviews/:spotId'
   * Body: none
 
 * Successful Response

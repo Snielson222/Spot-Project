@@ -153,6 +153,7 @@ router.post("/", requireAuth, validateLogin, async (req, res, next) => {
   res.status(201);
   return res.json(newSpot);
 });
+
 //GET ALL SPOTS !!!WORKING!!!
 router.get("/", async (req, res, next) => {
   const spots = await Spot.findAll({
@@ -232,6 +233,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
   return res.json({ Spots: spotsList });
 });
 
+//ADD AN IMAGE !!!WORKING!!!
 router.post("/:imageId/images", requireAuth, async (req, res, next) => {
   const { url, preview } = req.body;
   const editSpot = await SpotImage.findOne({
@@ -265,27 +267,5 @@ router.post("/:imageId/images", requireAuth, async (req, res, next) => {
   res.json(newnewImg);
 });
 
-router.delete("/:imageId/images", requireAuth, async (req, res, next) => {
 
-  const image = await SpotImage.findByPk(req.params.imageId)
-
-  if (!image) {
-    res.status(404);
-    return res.json({
-      message: "Spot Image couldn't be found",
-    });
-  };
-  if (req.user.dataValues.id != image.spotId) {
-    res.status(404);
-    return res.json({
-      message: "Spot must belong to the current user",
-    });
-  };
-
-  await image.destroy();
-
-  return res.json({
-    "message": "Successfully deleted"
-  })
-});
 module.exports = router;
