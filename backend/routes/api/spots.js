@@ -457,17 +457,13 @@ router.get("/:spotId(\\d+)/bookings", requireAuth, async (req, res, next) => {
 
 const validateBooking = [
   check('endDate')
-  .custom(async(endDate, {req}) => {
-    if (new Date(endDate).getTime() < new Date(req.body.startDate).getTime()) {
-      console.log(req.body.startDate)
-    }
-  })
-  .message("endDate cannot be on or before startDate"),
+  .custom(async (endDate, {req}) => {
+  if (new Date(endDate).getTime() < new Date(req.body.startDate).getTime())
+throw new Error("endDate cannot be on or before startDate")}),
   handleValidationErrors,
 ];
-//********************* */
-//CREATE BOOKING BASED ON SPOTID JUST NEED TO VALIDATE - in validator and in route
-//********************* */
+
+//CREATE A SPOT !!!WORKING!!!
 router.post(
   "/:spotId(\\d+)/bookings",
   requireAuth,

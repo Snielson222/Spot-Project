@@ -45,7 +45,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
     return res.json({"Bookings" : bookingArray})
 });
 
-//DELETE A BOOKING NEED BOOKINGS THAT HAVE BEEN STARTED CANT BE DELEATED
+//DELETE A BOOKING !!!WORKING!!!
 router.delete('/:id', requireAuth, async (req, res, next) => {
 const booking = await Booking.findByPk(req.params.id)
 
@@ -73,9 +73,16 @@ return res.json({
     "message": "Successfully deleted"
   })
 });
+const validateBooking = [
+    check('endDate')
+    .custom(async (endDate, {req}) => {
+    if (new Date(endDate).getTime() < new Date(req.body.startDate).getTime())
+  throw new Error("endDate cannot be on or before startDate")}),
+    handleValidationErrors,
+  ];
 
-//EDIT A BOOKING NEED VALIDATIONS and BOOKING CONFLICT and BOOKING PAST END DATE
-router.put('/:id', requireAuth, async (req, res, next) => {
+//EDIT A BOOKING NEED VALIDATIONS********************************
+router.put('/:id', requireAuth, validateBooking, async (req, res, next) => {
     const {startDate, endDate} = req.body;
 
     const booking = await Booking.findByPk(req.params.id)
@@ -110,8 +117,6 @@ const bookingArray = [];
     allBookings.forEach((booking) => {
       bookingArray.push(booking.toJSON());
     });
-    
-  console.log(bookingArray, "*******************")
       bookingArray.forEach((booking) => {
         if (
           start.getTime() >= booking.startDate.getTime() &&
