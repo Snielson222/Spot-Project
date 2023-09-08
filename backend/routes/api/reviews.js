@@ -76,7 +76,7 @@ router.post("/:reviewId/images", requireAuth, async (req, res, next) => {
     });
   }
   if (testReview.userId != req.user.dataValues.id) {
-    res.status(404);
+    res.status(401);
     return res.json({ message: "Review must belong to the current user" });
   }
   console.log(testReview);
@@ -121,7 +121,7 @@ router.put("/:spotId(\\d+)", requireAuth, validateReview, async (req, res, next)
           })
     }
     if (editReview.userId != req.user.dataValues.id){
-        res.status(404);
+        res.status(401);
         return res.json({ message: "Review must belong to the current user" });
     }
 
@@ -149,7 +149,7 @@ router.delete("/:spotId(\\d+)", requireAuth, async (req, res, next) => {
           })
     }
     if (editReview.userId != req.user.dataValues.id){
-        res.status(404);
+        res.status(401);
         return res.json({ message: "Review must belong to the current user" });
     }
 

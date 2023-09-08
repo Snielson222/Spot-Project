@@ -80,7 +80,7 @@ if (!booking) {
       })
 }
 if (booking.userId != req.user.dataValues.id) {
-    res.status(403)
+    res.status(401)
     return res.json("Booking must belong to the current user")
 };
 

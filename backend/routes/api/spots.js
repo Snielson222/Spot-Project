@@ -83,7 +83,7 @@ router.delete("/:spotId", requireAuth, async (req, res, next) => {
   }
 
   if (req.user.dataValues.id != editSpot.ownerId) {
-    res.status(404);
+    res.status(401);
     return res.json({
       message: "Spot must belong to the current user",
     });
@@ -109,7 +109,7 @@ router.put("/:spotId", requireAuth, validateLogin, async (req, res, next) => {
     });
   }
   if (req.user.dataValues.id != editSpot.ownerId) {
-    res.status(404);
+    res.status(401);
     return res.json({
       message: "Spot must belong to the current user",
     });
@@ -265,7 +265,7 @@ router.post("/:imageId/images", requireAuth, async (req, res, next) => {
     });
   }
   if (req.user.dataValues.id != editSpot.ownerId) {
-    res.status(404);
+    res.status(401);
     return res.json({
       message: "Spot must belong to the current user",
     });
