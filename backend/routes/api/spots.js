@@ -21,7 +21,7 @@ router.get("/:spotId(\\d+)", async (req, res, next) => {
   if (!spots) {
     res.status(404);
     return res.json({
-      message: "Couldn't find a Spot with the specified id",
+      "message": "Spot couldn't be found"
     });
   }
 
