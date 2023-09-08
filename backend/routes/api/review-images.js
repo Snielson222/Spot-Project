@@ -22,7 +22,7 @@ router.delete("/:imageId", requireAuth, async (req, res, next) => {
     });
   }
   if (req.user.dataValues.id != image.Review.userId) {
-    res.status(404);
+    res.status(401);
     return res.json({
       message: "Review must belong to the current user",
     });
