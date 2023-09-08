@@ -41,11 +41,11 @@ router.get("/:spotId(\\d+)", async (req, res, next) => {
     let avg = sum / spots.Reviews.length;
     spots.numReviews = spots.Reviews.length;
     spots.avgStarRating = avg;
-    if (!spots.Reviews) {
-      spots.avgStarRating = 0
-      spots.numReviews = 0
-    }
   });
+  if (!spots.Reviews.length) {
+    spots.avgStarRating = 0
+    spots.numReviews = 0
+  }
   delete spots.Reviews;
 
   spots.Owner = spots.User;
@@ -302,10 +302,10 @@ router.get("/current", requireAuth, async (req, res, next) => {
       sum += review.stars;
       let avg = sum / spot.Reviews.length;
       spot.avgRating = avg;
-      if (!spot.Reviews) {
-        spot.avgRating = 0
-      }
     });
+    if (!spot.Reviews.length) {
+      spot.avgRating = 0
+    }
     delete spot.Reviews;
   });
 
@@ -451,7 +451,7 @@ router.get("/:spotId(\\d+)/bookings", requireAuth, async (req, res, next) => {
 
 
 //**********************************************************DATES!!!!!!!!! */
-  if (req.user.dataValues.id != bookings.ownerId) {
+  if (req.user.dataValues.id === bookings.ownerId) {
     jsonBooking.Bookings.forEach((booking) => {
       delete booking.User;
       delete booking.id;
@@ -465,7 +465,7 @@ router.get("/:spotId(\\d+)/bookings", requireAuth, async (req, res, next) => {
     });
     return res.json({ Bookings: jsonBooking.Bookings });
   }
-  if (req.user.dataValues.id == bookings.ownerId) {
+  if (req.user.dataValues.id !== bookings.ownerId) {
     return res.json({ Bookings: jsonBooking.Bookings });
   }
 });

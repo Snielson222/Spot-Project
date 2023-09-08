@@ -37,6 +37,9 @@ router.get("/current", requireAuth, async (req, res, next) => {
     })
 
     bookingArray.forEach(booking => {
+        booking.startDate = new Date(booking.startDate).toISOString().split('T')[0];
+        booking.endDate = new Date(booking.endDate).toISOString().split('T')[0];
+        delete booking.Spot.description
         delete booking.Spot.createdAt
         delete booking.Spot.updatedAt
         booking.Spot.previewImage = booking.Spot.SpotImages[0].url
@@ -59,12 +62,12 @@ if (booking.userId != req.user.dataValues.id) {
     res.status(403)
     return res.json("Booking must belong to the current user")
 };
-if (new Date(booking.startDate) >= Date.now()) {
-    res.status(403)
-    return res.json({
-        "message": "Bookings that have been started can't be deleted"
-      })
-}
+// if (new Date(booking.startDate) >= Date.now()) {
+//     res.status(403)
+//     return res.json({
+//         "message": "Bookings that have been started can't be deleted"
+//       })
+// }
 
 
 await booking.destroy()
@@ -117,6 +120,7 @@ const bookingArray = [];
     allBookings.forEach((booking) => {
       bookingArray.push(booking.toJSON());
     });
+    
       bookingArray.forEach((booking) => {
         if (
           start.getTime() >= booking.startDate.getTime() &&
@@ -134,9 +138,10 @@ const bookingArray = [];
         }
       });
 
-booking.startDate = startDate;
-booking.endDate = endDate
-await booking.save()
+      await booking.save()
+
+      start.toISOString().split('T')[0];
+      end.toISOString().split('T')[0];
 
 return res.json(booking)
 
