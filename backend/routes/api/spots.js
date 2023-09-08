@@ -41,6 +41,10 @@ router.get("/:spotId(\\d+)", async (req, res, next) => {
     let avg = sum / spots.Reviews.length;
     spots.numReviews = spots.Reviews.length;
     spots.avgStarRating = avg;
+    if (!spots.Reviews) {
+      spots.avgStarRating = 0
+      spots.numReviews = 0
+    }
   });
   delete spots.Reviews;
 
@@ -162,9 +166,11 @@ router.post("/", requireAuth, validateLogin, async (req, res, next) => {
 
 const validateQuery = [
   check("page")
+  .optional()
     .isInt({ min: 1 })
     .withMessage("Page must be greater than or equal to 1"),
   check("size")
+  .optional()
     .isInt({ min: 1 })
     .withMessage("Size must be greater than or equal to 1"),
   check("maxLat")
@@ -290,12 +296,15 @@ router.get("/current", requireAuth, async (req, res, next) => {
     spotsList.push(element.toJSON());
   });
 
+  let sum = 0;
   spotsList.forEach((spot) => {
     spot.Reviews.forEach((review) => {
-      let sum = 0;
       sum += review.stars;
       let avg = sum / spot.Reviews.length;
       spot.avgRating = avg;
+      if (!spot.Reviews) {
+        spot.avgRating = 0
+      }
     });
     delete spot.Reviews;
   });
@@ -440,6 +449,8 @@ router.get("/:spotId(\\d+)/bookings", requireAuth, async (req, res, next) => {
 
   jsonBooking = bookings.toJSON();
 
+
+//**********************************************************DATES!!!!!!!!! */
   if (req.user.dataValues.id != bookings.ownerId) {
     jsonBooking.Bookings.forEach((booking) => {
       delete booking.User;
@@ -447,6 +458,10 @@ router.get("/:spotId(\\d+)/bookings", requireAuth, async (req, res, next) => {
       delete booking.userId;
       delete booking.createdAt;
       delete booking.updatedAt;
+      const start = new Date(booking.startDate)
+      booking.startDate = start.toISOString().split('T')[0];
+      const end = new Date(booking.endDate)
+      booking.endDate = end.toISOString().split('T')[0];
     });
     return res.json({ Bookings: jsonBooking.Bookings });
   }
