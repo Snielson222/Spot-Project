@@ -46,6 +46,30 @@ module.exports = {
         name: 'Trailer Park Charm',
         description: 'Quaint 3 bedroom double-wide in a nice park close to lake Pueblo',
         price: 200
+      },
+      {
+        ownerId: 4,
+        address: '123 Fakest st.',
+        city: 'Boulder',
+        state: 'CO',
+        country: 'USA',
+        lat: 45.3104,
+        lng: 100.6338,
+        name: 'Ski Condo',
+        description: 'Beautiful ski on ski off property',
+        price: 456
+      },
+      {
+        ownerId: 5,
+        address: '938 Codfish Hill rd.',
+        city: 'Bethel',
+        state: 'CT',
+        country: 'USA',
+        lat: 38.3104,
+        lng: 73.6338,
+        name: 'Split Level in a Nice Neighborhood',
+        description: 'Updated single family home in a nice safe neighborhood',
+        price: 275
       }
     ], { validate: true });
   },

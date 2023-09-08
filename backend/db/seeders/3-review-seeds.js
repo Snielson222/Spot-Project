@@ -28,6 +28,18 @@ module.exports = {
         userId: 3,
         review: 'Gets the job done, could have found a nicer place for the money',
         stars: 2
+      },
+      {
+        spotId: 4,
+        userId: 4,
+        review: 'GOT HURT SKIING',
+        stars: 1
+      },
+      {
+        spotId: 5,
+        userId: 5,
+        review: 'Nice house, not a ton nearby',
+        stars: 4
       }
     ], { validate: true });
   },

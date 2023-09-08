@@ -22,6 +22,14 @@ module.exports = {
       {
         reviewId: 3,
         url: 'https://www.suncommunities.com/wp-content/uploads/2016/07/north-point-estates-co-homes-big-porch.jpg'
+      },
+      {
+        reviewId: 4,
+        url: 'https://images.huffingtonpost.com/2016-01-11-1452471777-7790803-SkiCondoHuffPo-thumb.jpg'
+      },
+      {
+        reviewId: 5,
+        url: 'https://ssl.cdn-redfin.com/photo/234/mbphoto/839/genMid.170151839_4.jpg'
       }
     ], { validate: true });
   },
