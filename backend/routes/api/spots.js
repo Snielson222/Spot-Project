@@ -160,22 +160,28 @@ const validateQuery = [
   .isInt({min:1})
   .withMessage("Size must be greater than or equal to 1"),
   check("maxLat")
-  .exists({ checkFalsy: true })
+  .optional()
+  .isDecimal()
   .withMessage("Maximum latitude is invalid"),
   check("minLat")
-    .exists({ checkFalsy: true })
+  .optional()
+  .isDecimal()
     .withMessage("Minimum latitude is invalid"),
   check("minLng")
-    .exists({ checkFalsy: true })
+  .optional()
+  .isDecimal()
     .withMessage("Minimum longitude is invalid"),
   check("maxLng")
-    .exists({ checkFalsy: true })
+  .optional()
+  .isDecimal()
     .withMessage("Maximum longitude is invalid"),
   check("minPrice")
-  .isInt({min:1})
+  .optional()
+  .isDecimal({min:1})
     .withMessage("Minimum price must be greater than or equal to 0"),
   check("maxPrice")
-  .isInt({min:1})
+  .optional()
+  .isDecimal({min:1})
     .withMessage("Maximum price must be greater than or equal to 0"),
   handleValidationErrors,
 ];
