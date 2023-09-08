@@ -45,7 +45,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
     return res.json({"Bookings" : bookingArray})
 });
 
-//EDIT A BOOKING NEED BOOKINGS THAT HAVE BEEN STARTED CANT BE DELEATED
+//DELETE A BOOKING NEED BOOKINGS THAT HAVE BEEN STARTED CANT BE DELEATED
 router.delete('/:id', requireAuth, async (req, res, next) => {
 const booking = await Booking.findByPk(req.params.id)
 
@@ -59,6 +59,12 @@ if (booking.userId != req.user.dataValues.id) {
     res.status(403)
     return res.json("Booking must belong to the current user")
 };
+if (new Date(booking.startDate) >= Date.now()) {
+    res.status(403)
+    return res.json({
+        "message": "Bookings that have been started can't be deleted"
+      })
+}
 
 
 await booking.destroy()
@@ -71,7 +77,13 @@ return res.json({
 //EDIT A BOOKING NEED VALIDATIONS and BOOKING CONFLICT and BOOKING PAST END DATE
 router.put('/:id', requireAuth, async (req, res, next) => {
     const {startDate, endDate} = req.body;
+
     const booking = await Booking.findByPk(req.params.id)
+
+    const allBookings = await Booking.findAll({
+        where: { 'id': req.params.id },
+        include: { model: Spot },
+      });
 
 if (!booking) {
     res.status(404)
@@ -84,12 +96,41 @@ if (booking.userId != req.user.dataValues.id) {
     return res.json("Booking must belong to the current user")
 };
 
-if (startDate){
-    booking.startDate = startDate
-};
-if (endDate) {
-    booking.endDate = endDate
+const start = new Date(startDate);
+const end = new Date(endDate);
+
+if (Date.now() > end) {
+    res.status(403)
+    return res.json({
+        "message": "Past bookings can't be modified"
+      })
 }
+
+const bookingArray = [];
+    allBookings.forEach((booking) => {
+      bookingArray.push(booking.toJSON());
+    });
+    
+  console.log(bookingArray, "*******************")
+      bookingArray.forEach((booking) => {
+        if (
+          start.getTime() >= booking.startDate.getTime() &&
+          end.getTime() <= booking.endDate.getTime()
+        ) {
+          res.status(403);
+          return res.json({
+            message:
+              "Sorry, this spot is already booked for the specified dates",
+            errors: {
+              startDate: "Start date conflicts with an existing booking",
+              endDate: "End date conflicts with an existing booking",
+            },
+          });
+        }
+      });
+
+booking.startDate = startDate;
+booking.endDate = endDate
 await booking.save()
 
 return res.json(booking)
