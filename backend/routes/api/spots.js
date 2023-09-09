@@ -450,8 +450,8 @@ router.get("/:spotId(\\d+)/bookings", requireAuth, async (req, res, next) => {
   jsonBooking = bookings.toJSON();
 
 
-//**********************************************************DATES!!!!!!!!! */
-  if (req.user.dataValues.id === bookings.ownerId) {
+
+  if (req.user.dataValues.id != bookings.ownerId) {
     jsonBooking.Bookings.forEach((booking) => {
       delete booking.User;
       delete booking.id;
@@ -465,7 +465,13 @@ router.get("/:spotId(\\d+)/bookings", requireAuth, async (req, res, next) => {
     });
     return res.json({ Bookings: jsonBooking.Bookings });
   }
-  if (req.user.dataValues.id !== bookings.ownerId) {
+  if (req.user.dataValues.id == bookings.ownerId) {
+    jsonBooking.Bookings.forEach((booking) => {
+      const start = new Date(booking.startDate)
+      booking.startDate = start.toISOString().split('T')[0];
+      const end = new Date(booking.endDate)
+      booking.endDate = end.toISOString().split('T')[0];
+    })
     return res.json({ Bookings: jsonBooking.Bookings });
   }
 });
