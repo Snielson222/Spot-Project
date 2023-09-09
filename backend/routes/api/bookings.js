@@ -62,12 +62,12 @@ if (booking.userId != req.user.dataValues.id) {
     res.status(403)
     return res.json("Booking must belong to the current user")
 };
-// if (new Date(booking.startDate) >= Date.now()) {
-//     res.status(403)
-//     return res.json({
-//         "message": "Bookings that have been started can't be deleted"
-//       })
-// }
+if (new Date(booking.startDate) <= Date.now()) {
+    res.status(403)
+    return res.json({
+        "message": "Bookings that have been started can't be deleted"
+      })
+}
 
 
 await booking.destroy()
@@ -88,40 +88,41 @@ const validateBooking = [
 router.put('/:id', requireAuth, validateBooking, async (req, res, next) => {
     const {startDate, endDate} = req.body;
 
-    const booking = await Booking.findByPk(req.params.id)
+    let booking = await Booking.findByPk(req.params.id)
 
     const allBookings = await Booking.findAll({
         where: { 'id': req.params.id },
         include: { model: Spot },
       });
-
-if (!booking) {
-    res.status(404)
-    return res.json({
-        "message": "Booking couldn't be found"
-      })
-}
-if (booking.userId != req.user.dataValues.id) {
-    res.status(401)
-    return res.json("Booking must belong to the current user")
-};
-
-const start = new Date(startDate);
-const end = new Date(endDate);
-
-if (Date.now() > end) {
-    res.status(403)
-    return res.json({
-        "message": "Past bookings can't be modified"
-      })
-}
-
-const bookingArray = [];
-    allBookings.forEach((booking) => {
-      bookingArray.push(booking.toJSON());
-    });
-    
+      if (!booking) {
+        res.status(404)
+        return res.json({
+          "message": "Booking couldn't be found"
+        })
+      }
+      if (booking.userId != req.user.dataValues.id) {
+        res.status(401)
+        return res.json("Booking must belong to the current user")
+      };
+      
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      
+      if (Date.now() > end) {
+        res.status(403)
+        return res.json({
+          "message": "Past bookings can't be modified"
+        })
+      }
+      
+      const bookingArray = [];
+      allBookings.forEach((booking) => {
+        bookingArray.push(booking.toJSON());
+      });
+      
       bookingArray.forEach((booking) => {
+        console.log(booking.startDate, "STARTDATE")
+        console.log(start, "START")
         if (
           start.getTime() >= booking.startDate.getTime() &&
           end.getTime() <= booking.endDate.getTime()
@@ -139,9 +140,9 @@ const bookingArray = [];
       });
 
       await booking.save()
-
-      start.toISOString().split('T')[0];
-      end.toISOString().split('T')[0];
+      booking = booking.toJSON()
+     booking.startDate = start.toISOString().split('T')[0];
+      booking.endDate = end.toISOString().split('T')[0];
 
 return res.json(booking)
 
