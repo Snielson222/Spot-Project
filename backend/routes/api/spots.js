@@ -484,7 +484,7 @@ throw new Error("endDate cannot be on or before startDate")}),
   handleValidationErrors,
 ];
 
-//CREATE A SPOT !!!WORKING!!!
+//CREATE A Booking !!!WORKING!!!
 router.post(
   "/:spotId(\\d+)/bookings",
   requireAuth,
@@ -545,7 +545,11 @@ router.post(
     });
     await newBooking.save();
 
-    return res.json(newBooking);
+    const jsonBooking = newBooking.toJSON()
+    jsonBooking.startDate = jsonBooking.startDate.toISOString().split('T')[0];
+    jsonBooking.endDate = jsonBooking.endDate.toISOString().split('T')[0];
+
+    return res.json(jsonBooking)
   }
 );
 
