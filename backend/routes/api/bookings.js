@@ -108,40 +108,41 @@ router.put('/:id', requireAuth, validateBooking, async (req, res, next) => {
       const start = new Date(startDate);
       const end = new Date(endDate);
       
-      if (Date.now() > end) {
-        res.status(403)
-        return res.json({
-          "message": "Past bookings can't be modified"
-        })
-      }
-      
       const bookingArray = [];
       allBookings.forEach((booking) => {
         bookingArray.push(booking.toJSON());
       });
       
       bookingArray.forEach((booking) => {
-        console.log(booking.startDate, "STARTDATE")
-        console.log(start, "START")
+        
+        
         if (
           start.getTime() >= booking.startDate.getTime() &&
           end.getTime() <= booking.endDate.getTime()
-        ) {
-          res.status(403);
-          return res.json({
-            message:
+          ) {
+            res.status(403);
+            return res.json({
+              message:
               "Sorry, this spot is already booked for the specified dates",
-            errors: {
-              startDate: "Start date conflicts with an existing booking",
-              endDate: "End date conflicts with an existing booking",
-            },
-          });
-        }
-      });
-
-      await booking.save()
-      booking = booking.toJSON()
-     booking.startDate = start.toISOString().split('T')[0];
+              errors: {
+                startDate: "Start date conflicts with an existing booking",
+                endDate: "End date conflicts with an existing booking",
+              },
+            });
+          }
+          console.log(new Date(), "NOW")
+          console.log(new Date(booking.endDate), "END")
+          if (new Date() > new Date(booking.endDate)) {
+            res.status(403)
+            return res.json({
+              "message": "Past bookings can't be modified"
+            })
+          }
+        });
+        
+        await booking.save()
+        booking = booking.toJSON()
+        booking.startDate = start.toISOString().split('T')[0];
       booking.endDate = end.toISOString().split('T')[0];
 
 return res.json(booking)
