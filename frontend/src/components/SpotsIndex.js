@@ -7,15 +7,13 @@ import "./SpotsIndex.css"
 const SpotsIndex = () => {
   const dispatch = useDispatch()
   const spots = []; // populate from Redux store
-  console.log("🚀 ~ file: SpotsIndex.js:9 ~ SpotsIndex ~ spots:", spots)
   const data = useSelector((state) => {
-      return state.spotsReducer
+      return state.spots
   })
  
   
 
   Object.values(data).forEach((spot) => {
-      console.log("🚀 ~ file: SpotsIndex.js:17 ~ SpotsIndex ~ data:", data)
       return spots.push(spot)
   })
   
