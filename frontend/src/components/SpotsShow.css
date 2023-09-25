@@ -1,0 +1,29 @@
+.img {
+    height: 300px;
+}
+
+.reviewAndButtonContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.nameDescriptionContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.textContainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+.priceReviewContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reserveButton {
+    background-color: #FF5A5F;
+    color: white;
+    border: 2px black solid;
+    box-shadow: 2px 2px black;
+}
