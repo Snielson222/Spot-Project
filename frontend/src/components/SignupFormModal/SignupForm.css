@@ -1,0 +1,48 @@
+#modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 400px;
+}
+
+.signupFormContainer {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 5px;
+    
+}
+.email {
+    border: 2px black solid;
+    margin: 5px;
+}
+.username {
+    border: 2px black solid;
+    margin: 5px;
+}
+.first {
+    border: 2px black solid;
+    margin: 5px;
+}
+.last {
+    border: 2px black solid;
+    margin: 5px;
+}
+.pass {
+    border: 2px black solid;
+    margin: 5px;
+}
+.passConfirm {
+    border: 2px black solid;
+    margin: 5px;
+}
+
+.signUpButton {
+background-color: lightgrey;
+color: grey;
+border: 2px grey solid;
+box-shadow: 3px 3px grey;
+padding-top: 10px;
+padding-bottom: 10px;
+margin-top: 10px;
+}
