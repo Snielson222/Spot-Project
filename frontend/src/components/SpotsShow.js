@@ -20,6 +20,8 @@ const SpotsShow = () => {
 
 
     return(<div>
+        <h1>{data.name}</h1>
+        <h3>{data.city}, {data.state}, {data.country}</h3>
         <div className='imgContainer'>
             {data?.SpotImages?.map((img) => (
                <span key={img?.id}><img alt="spotImg" className="img" src={img?.url}></img></span>

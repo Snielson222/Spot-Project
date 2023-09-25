@@ -13,11 +13,17 @@ function Navigation({ isLoaded }){
       <li>
         <NavLink className="home" exact to="/"><img className="logo" alt="logo" src={imgSrc}></img></NavLink>
       </li>
+      <ul className='createAndProfileContainer'>
+
+      <li>
+        <NavLink className="create" exact to='/spots/new'>Create a New Spot</NavLink>
+      </li>
       {isLoaded && (
         <li>
           <ProfileButton user={sessionUser} />
         </li>
       )}
+      </ul>
     </ul>
   );
 }

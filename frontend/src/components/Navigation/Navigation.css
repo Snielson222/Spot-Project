@@ -49,3 +49,15 @@
 p {
     color: red;
 }
+
+.createAndProfileContainer {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+}
+
+.create {
+    padding-right: 25px;
+    text-decoration: none;
+    color: black;
+}
