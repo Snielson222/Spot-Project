@@ -1,0 +1,24 @@
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    border-bottom: 1px solid lightgray;
+    align-items: center;
+}
+
+.home {
+
+}
+
+.modalContainer {
+    list-style-type: none;
+    
+}
+
+.modalMenu {
+    
+}
+
+.logo {
+    height: 120px;
+}
