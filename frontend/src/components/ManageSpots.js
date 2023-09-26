@@ -2,12 +2,15 @@ import './ManageSpots.css';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
-import { thunkGetCurrentSpots } from '../store/Spots.js';
+import { thunkGetCurrentSpots, thunkDeleteSpot } from '../store/Spots.js';
+import OpenModalButton from './OpenModalButton/index'
+import { useModal } from '../context/Modal';
 
 
 export const ManageSpots = () => {
-    const dispatch = useDispatch()
-    const spots = []; // populate from Redux store
+    const {closeModal} = useModal();
+    const dispatch = useDispatch();
+    const spots = [];
     console.log("🚀 ~ file: ManageSpots.js:11 ~ ManageSpots ~ spots:", spots)
   const data = useSelector((state) => {
       return state.spots
@@ -43,7 +46,21 @@ return (
             </div>
             <div className='updateDeleteLinks'>
             <Link exact to={`/spots/${spot.id}/edit`}><button className='updateLink'>Update</button></Link>
-            <button className='deleteButton' onClick={""}>Delete</button>
+             <div className="modalDelete">
+             <OpenModalButton
+             
+      buttonText="Delete"
+      modalComponent={
+        <div className='modalComponent'>
+        <h1>Confirm Delete</h1>
+        <h3>Are you sure you want to remove this spot
+from the listings?</h3>
+      <button className='deleteInModal' onClick={() => dispatch(thunkDeleteSpot(spot.id))}>Yes (Delete Spot)</button>
+    <button className='closeInModal' onClick={() => closeModal()}>No (keep spot)</button>
+    </div>
+    }
+    />
+             </div>
             </div>
           </div>
         ))}
