@@ -7,6 +7,7 @@ import SpotsIndex from "./components/SpotsIndex";
 import SpotsShow from './components/SpotsShow'
 import CreateSpot from "./components/CreateSpot";
 import ManageSpots from "./components/ManageSpots";
+import UpdateSpot from "./components/UpdateSpot";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,9 +29,13 @@ function App() {
         <Route exact path='/spots/current'>
           <ManageSpots />
         </Route>
+        <Route exact path='/spots/:id/edit'>
+          <UpdateSpot />
+        </Route>
         <Route exact path='/spots/:spotId'>
           <SpotsShow />
         </Route>
+        <Route>404 Page Not Found</Route>
         </Switch>}
     </>
   );

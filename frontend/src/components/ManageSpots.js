@@ -26,6 +26,8 @@ useEffect(() => {
 
 return (
     <section>
+        <h1>Manage Your Spots</h1>
+        <button className='createSpotButtonOut'><Link className='createSpotButton' exact to="/spots/new">Create a New Spot</Link></button>
       <ul className='ulSpotsContainer'>
         {spots.map((spot) => (
           <div
