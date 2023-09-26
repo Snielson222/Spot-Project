@@ -4,7 +4,7 @@
 
 .spotImg {
    width: 100%;
-   height: 150px
+   height: 150px;
 }
 
 @media (min-width: 500px) {
@@ -17,4 +17,9 @@
 .cityStateRatingContainer {
     display: flex;
     justify-content: space-between;
+}
+
+.notLink {
+    text-decoration: none;
+    color: black;
 }

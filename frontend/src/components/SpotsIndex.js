@@ -31,17 +31,17 @@ const SpotsIndex = () => {
             key={spot.spotId}
             className='spotsContainer'
           >
-            <Link exact to={`/spots/${spot.id}`}>
+            <Link className='notLink' exact to={`/spots/${spot.id}`}>
 
             <img className="spotImg" src={spot.previewImage}></img>
-            </Link>
             <div className='spotDataContainer'>
                 <div className='cityStateRatingContainer'>
-            <div>{spot.city}, {spot.state}</div>
-            <div>★{spot.avgRating}</div>
+            <div className='notLink'>{spot.city}, {spot.state}</div>
+            <div className='notLink'>★{spot.avgRating}</div>
                 </div>
-            <div>${spot.price} night</div>
+            <div className='notLink'>${spot.price} night</div>
             </div>
+            </Link>
           </div>
         ))}
       </ul>

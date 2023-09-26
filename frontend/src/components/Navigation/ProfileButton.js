@@ -48,7 +48,6 @@ function ProfileButton({ user }) {
         <img className="profileButton" alt="profile button" src={imgSrc}></img>
       </button>
       <ul className={ulClassName} 
-      hidden={showMenu ? true : false}
       ref={ulRef}>
         {user ? (
           
