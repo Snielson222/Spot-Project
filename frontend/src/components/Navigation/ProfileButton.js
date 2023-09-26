@@ -5,6 +5,7 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import imgSrc from '../../images/FullLogo_Transparent_NoBuffer.png'
+import { Link } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -50,14 +51,17 @@ function ProfileButton({ user }) {
       hidden={showMenu ? true : false}
       ref={ulRef}>
         {user ? (
+          
           <>
             <li>{user.username}</li>
             <li>{user.firstName} {user.lastName}</li>
             <li>{user.email}</li>
             <li>
+              <li className="manageSpots"><Link className='manageLink' exact to='/spots/current'>Manage Spots</Link></li>
               <button onClick={logout}>Log Out</button>
             </li>
           </>
+          
         ) : (
           <div className="menuOpen">
             <OpenModalMenuItem

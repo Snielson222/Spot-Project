@@ -1,3 +1,4 @@
+import {csrfFetch} from './csrf'
 
 export const LOAD_SPOTS= 'spots/LOAD_SPOTS';
 
@@ -61,6 +62,13 @@ export const thunkDisplaySpotDetails = (spotId) => async (dispatch) => {
   const res = await fetch(`/api/spots/${spotId}`)
   const data = await res.json()
   dispatch(loadSpot(data))
+  return data
+}
+
+export const thunkGetCurrentSpots = () => async (dispatch) => {
+  const res = await csrfFetch(`/api/spots/current`)
+  const data = await res.json()
+  dispatch(loadSpots(data))
   return data
 }
 
