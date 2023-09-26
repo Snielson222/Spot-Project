@@ -73,7 +73,24 @@ export const thunkGetCurrentSpots = (spotId) => async (dispatch) => {
 }
 
 export const thunkCreateSpot = (spot) => async (dispatch) => {
-  const res = await fetch("/api/spots", {
+  const res = await csrfFetch("/api/spots", {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(spot)
+  })
+  
+  if (!res.ok) {
+    const error = await res.json()
+    return error
+  } else {
+    const data = await res.json()
+    dispatch(loadSpot(data))
+    return data
+  }
+}
+
+export const thunkCreateSpotImage = (spot, spotId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/spots/${spotId}/images`, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(spot)
