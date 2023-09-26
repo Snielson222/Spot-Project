@@ -107,7 +107,7 @@ export const thunkCreateSpotImage = (spot, spotId) => async (dispatch) => {
 }
 
 export const thunkEditSpot = (spot) => async (dispatch) => {
-  const res = await fetch(`/api/spots/${spot.spotId}`, {
+  const res = await csrfFetch(`/api/spots/${spot.id}`, {
     method: "PUT",
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(spot)
@@ -132,12 +132,12 @@ const spotsReducer = (state = {}, action) => {
       return spotsState;
     case LOAD_SPOT:
       return { ...state, [action.spot.id]: action.spot };
-    case UPDATE_SPOT:
-      return { ...state, [action.spots.spotId]: action.spot };
-    case REMOVE_SPOT:
-      const newState = { ...state };
-      delete newState[action.spotId];
-      return newState;
+      case REMOVE_SPOT:
+        const newState = { ...state };
+        delete newState[action.spotId];
+        return newState;
+      case UPDATE_SPOT:
+        return { ...state, [action.spot]: action.spot };
     default:
       return state;
   }

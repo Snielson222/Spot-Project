@@ -72,8 +72,7 @@ export const CreateSpot = () => {
             lng
         }
         
-        console.log("🚀 ~ file: CreateSpot.js:29 ~ useEffect ~ submitted:", submitted)
-        console.log("🚀 ~ file: CreateSpot.js:40 ~ onSubmit ~ spot:", spot)
+        
         
         const res = await dispatch(thunkCreateSpot(spot))
         if (previewImg.length) {
