@@ -19,8 +19,61 @@ export const CreateSpot = () => {
     const [img1, setImg1] = useState("")
     const [img2, setImg2] = useState("")
     const [img3, setImg3] = useState("")
+    const [errors, setErrors] = useState({})
+
+    useEffect(() => {
+        const errorsObj = {}
+        if (!state.length) errorsObj.state = "State is required"
+        if (!country.length) errorsObj.country = "Country is required"
+        if (!address.length) errorsObj.address = "Address is required"
+        if (!city.length) errorsObj.city = "City is required"
+        if (description.length < 30) errorsObj.description = "Description needs a minimum of 30 characters"
+        if (!title.length) errorsObj.title = "name is required"
+        if (!price) errorsObj.price = "Price is required"
+        if (!previewImg.includes(".png")) errorsObj.setPreviewImg = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!previewImg.includes(".jpg")) errorsObj.setPreviewImg = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!previewImg.includes(".jpeg")) errorsObj.setPreviewImg = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!img.includes(".png")) errorsObj.img = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!img.includes(".jpg")) errorsObj.img = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!img.includes(".jpeg")) errorsObj.img = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!img1.includes(".png")) errorsObj.img1 = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!img1.includes(".jpg")) errorsObj.img1 = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!img1.includes(".jpeg")) errorsObj.img1 = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!img2.includes(".png")) errorsObj.img2 = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!img2.includes(".jpg")) errorsObj.img2 = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!img2.includes(".jpeg")) errorsObj.img2 = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!img3.includes(".png")) errorsObj.img3 = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!img3.includes(".jpg")) errorsObj.img3 = "Image URL must end in .png, .jpg, or .jpeg"
+        if (!img3.includes(".jpeg")) errorsObj.img3 = "Image URL must end in .png, .jpg, or .jpeg"
+
+        setErrors(errorsObj)
+
+    }, [state, country, address, city, description, title, price, previewImg, img, img1, img2, img3])
     
-    function onSubmit() {
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        const spot = {
+            country,
+            address,
+            city,
+            state,
+            description,
+            title,
+            price,
+            previewImg,
+            img,
+            img1,
+            img2,
+            img3,
+        }
+        console.log("🚀 ~ file: CreateSpot.js:40 ~ onSubmit ~ spot:", spot)
+        
+        // const res = await dispatch(thunkCreateSpot(spot))
+        // if (!res.errors) {
+        //     history.push(`/spots/${res.id}`)
+        // } else {
+        //     setErrors(res.errors)
+        // }
 
     }
 
@@ -41,6 +94,7 @@ return (<div className='formContainer'>
             placeholder='Country'>
             </input>
         </label>
+        <p>{errors.country}</p>
         </div>
         <div className='addressContainer'>
         <label>
@@ -52,6 +106,7 @@ return (<div className='formContainer'>
             placeholder='Address'>
             </input>
         </label>
+        <p>{errors.address}</p>
         </div>
     <span className='cityStateContainer'>
         <div className='cityContainer'>
@@ -64,6 +119,7 @@ return (<div className='formContainer'>
             placeholder='City'>
             </input>
         </label>
+        <p>{errors.city}</p>
         </div>
         <div className='stateContainer'>
         <label>
@@ -75,6 +131,7 @@ return (<div className='formContainer'>
             placeholder='STATE'>
             </input>
         </label>
+        <p>{errors.state}</p>
         </div>
     </span>
     <div className='descriptionContainer'>
@@ -89,6 +146,7 @@ fast wif or parking, and what you love about the neighborhood.
             placeholder='Please write at least 30 characters'>
             </input>
         </label>
+        <p>{errors.description}</p>
         </div>
         <div className='titleContainer'>
             <h2>Create a title for your spot</h2>
@@ -101,6 +159,7 @@ fast wif or parking, and what you love about the neighborhood.
             placeholder='Name of your spot'>
             </input>
         </label>
+        <p>{errors.title}</p>
         </div>
         <div className='priceContainer'>
             <h2>Set a base price for your spot</h2>
@@ -114,6 +173,7 @@ fast wif or parking, and what you love about the neighborhood.
             placeholder='Price per night (USD)'>
             </input>
         </label>
+        <p>{errors.price}</p>
         </div>
         <div className='imageContainer'>
             <h2>Liven up your spot with photos</h2>
@@ -125,30 +185,35 @@ fast wif or parking, and what you love about the neighborhood.
             onChange={e => setPreviewImg(e.target.value)}
             placeholder='Preview Image URL'>
             </input>
+            <p>{errors.previewImg}</p>
             <input
             type='url'
             value={img}
             onChange={e => setImg(e.target.value)}
             placeholder='Image URL'>
             </input>
+            <p>{errors.img}</p>
             <input
             type='url'
             value={img1}
             onChange={e => setImg1(e.target.value)}
             placeholder='Image URL'>
             </input>
+            <p>{errors.img1}</p>
             <input
             type='url'
             value={img2}
             onChange={e => setImg2(e.target.value)}
             placeholder='Image URL'>
             </input>
+            <p>{errors.img2}</p>
             <input
             type='url'
             value={img3}
             onChange={e => setImg3(e.target.value)}
             placeholder='Image URL'>
             </input>
+            <p>{errors.img3}</p>
         </label>
         </div>
             <button className='submitButton' type='submit'>Create Spot</button>
