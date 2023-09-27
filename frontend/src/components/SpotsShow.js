@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { thunkDisplaySpotDetails } from '../store/Spots';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { thunkLoadReviews, thunkCreateReview } from '../store/Reviews';
+import { thunkLoadReviews, thunkCreateReview, thunkDeleteReview } from '../store/Reviews';
 import OpenModalButton from './OpenModalButton';
 import { useModal } from '../context/Modal';
 
@@ -35,7 +35,8 @@ const SpotsShow = () => {
     console.log("🚀 ~ file: SpotsShow.js:32 ~ SpotsShow ~ reviewArray:", reviewArray)
     console.log("🚀 ~ file: SpotsShow.js:30 ~ SpotsShow ~ review1 :", review1 )
     
-    
+    const session = useSelector((state) => state.session.user)
+    console.log("🚀 ~ file: SpotsShow.js:39 ~ SpotsShow ~ session:", session)
    
     console.log("🚀 ~ file: SpotsShow.js:26 ~ SpotsShow ~ data.SpotImages:", data.SpotImages)
 
@@ -148,6 +149,17 @@ const SpotsShow = () => {
                 <br></br>
                 <div>{review?.review}</div>
                 <br></br>
+                <button hidden={review?.userId !== session.id}><OpenModalButton hidden={review?.userId !== session.id}
+      buttonText="Delete Review"
+      modalComponent={
+        <div className='modalComponent'>
+        <h1>Confirm Delete</h1>
+        <h3>Are you sure you want to delete this review?</h3>
+      <button className='deleteInModal' onClick={() => dispatch(thunkDeleteReview(review.id))}>Yes (Delete Review)</button>
+    <button className='closeInModal' onClick={() => closeModal()}>No (Keep Review)</button>
+    </div>
+    }
+    /></button>
             </div>
         ))}
     </div>
