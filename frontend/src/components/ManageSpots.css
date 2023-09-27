@@ -23,8 +23,10 @@
     text-decoration: none;
     border: black 2px solid;
     box-shadow: 2px 2px black;
-    background-color: #999999;
-    color: white;
+    background-color: rgb(240, 240, 240);
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: black;
 }
 
 .modalDelete {
@@ -59,8 +61,10 @@ li {
 
 .createSpotButton {
  text-decoration: none;
- color: white;
- background-color: #999999;
+ color: black;
+ background-color: #dbdbdb;
+ border: 2px black solid;
+ box-shadow: 2px 2px black;
  
 }
 
@@ -68,4 +72,43 @@ li {
     border: 2px black solid;
     background-color: #999999;
     box-shadow: 2px 2px black;
+}
+
+.deleteInModal {
+color: white;
+background-color: #FF5A5F;
+margin: 15px;
+padding: 15px;
+box-shadow: 4px 4px black;
+}
+
+.closeInModal {
+color: white;
+background-color: #999999;
+margin: 15px;
+padding: 15px;
+box-shadow: 4px 4px black;
+}
+
+.modalComponent {
+display: flex;
+flex-direction: column;
+margin: 15px;
+
+}
+
+#modal-content {
+    border: 5px black solid;
+}
+
+.updateDeleteLinks {
+    margin-top: 5px;
+    display: flex;
+}
+
+.modalDelete {
+    margin-left: 15px;
+    border: 2px black solid;
+    background-color: #999999;
+    
 }

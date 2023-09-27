@@ -26,13 +26,13 @@ useEffect(() => {
 
 return (
     <section>
-        <h1>Manage Your Spots</h1>
-        <button className='createSpotButtonOut'><Link className='createSpotButton' exact to="/spots/new">Create a New Spot</Link></button>
+        <h1>Manage Spots</h1>
+        <Link className='createSpotButton' exact to="/spots/new"><button>Create a New Spot</button></Link>
       <ul className='ulSpotsContainer'>
         {spots.map((spot) => (
           <div
             spot={spot}
-            key={spot.spotId}
+            key={spot.id}
             className='spotsContainer'
           >
             <Link exact to={`/spots/${spot.id}`}>
@@ -48,7 +48,7 @@ return (
             </div>
             <div className='updateDeleteLinks'>
             <Link exact to={`/spots/${spot.id}/edit`}><button className='updateLink'>Update</button></Link>
-             <div className="modalDelete">
+            <div className="modalDelete" >
              <OpenModalButton
              
       buttonText="Delete"
@@ -62,7 +62,7 @@ from the listings?</h3>
     </div>
     }
     />
-             </div>
+    </div>
             </div>
           </div>
         ))}
