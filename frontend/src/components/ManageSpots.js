@@ -42,7 +42,7 @@ return (
             <div className='spotDataContainer'>
                 <div className='cityStateRatingContainer'>
             <div>{spot.city}, {spot.state}</div>
-            <div>★{spot.avgRating}</div>
+            <div>★{spot.avgRating == 0 ? "New" : spot.avgRating}</div>
                 </div>
             <div>${spot.price} night</div>
             </div>

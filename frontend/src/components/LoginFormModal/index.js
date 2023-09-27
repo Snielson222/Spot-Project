@@ -34,6 +34,7 @@ function LoginFormModal() {
   return (
     <div className="logInFormContainer">
       <h1>Log In</h1>
+      <p>{Object.values(errors)}</p>
       <form className="formLogIn" onSubmit={handleSubmit}>
         <label className="usernameContainer">
           <input
