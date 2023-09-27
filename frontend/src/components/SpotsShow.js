@@ -36,7 +36,7 @@ const SpotsShow = () => {
         <div className='reviewAndButtonContainer'>
             <div className='priceReviewContainer'>
                 <div>${data?.price} night</div>
-                <div>★{data?.numReviews <= 0 ? "New" : data?.avgStarRating} {data?.numReviews <= 0 ? "" : "#"}{data?.numReviews <= 0 ? "" : data?.numReviews}</div>
+                <div>★{data?.numReviews <= 0 ? "New" : data?.avgStarRating} · {data?.numReviews <= 0 ? "" : data?.numReviews} {data?.numReviews <= 0 ? "" : "review"}</div>
             </div>
             <button className='reserveButton' onClick={() => alert("Feature Coming Soon...")}>Reserve</button>
         </div>
