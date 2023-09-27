@@ -24,6 +24,7 @@ useEffect(() => {
   dispatch(thunkGetCurrentSpots())
 }, [dispatch])
 
+
 return (
     <section>
         <h1>Manage Spots</h1>

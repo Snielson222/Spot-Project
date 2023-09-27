@@ -59,6 +59,10 @@ const SpotsShow = () => {
     useEffect(() => {
         setHoverRating(rating)
       }, [hoverRating])
+
+      function deleteReview() {
+        
+      }
     
 
     return(<div>
