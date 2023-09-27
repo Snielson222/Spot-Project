@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { thunkDisplaySpotDetails } from '../store/Spots';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { thunkLoadReviews } from '../store/Reviews';
+import { thunkLoadReviews, thunkCreateReview } from '../store/Reviews';
 import OpenModalButton from './OpenModalButton';
 import { useModal } from '../context/Modal';
 
@@ -12,8 +12,9 @@ const SpotsShow = () => {
     const dispatch = useDispatch()
     const {closeModal} = useModal();
 
-    const [rating, setRating] = useState();
-    const [reviewText, setReviewText] = useState();
+    const [rating, setRating] = useState(0);
+    const [reviewText, setReviewText] = useState('');
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
        dispatch(thunkDisplaySpotDetails(spotId))
@@ -36,7 +37,7 @@ const SpotsShow = () => {
    
     console.log("🚀 ~ file: SpotsShow.js:26 ~ SpotsShow ~ data.SpotImages:", data.SpotImages)
 
-    function onSubmit(e) {
+    async function onSubmit(e) {
         e.preventDefault()
 
         const reviewForm = {
@@ -44,7 +45,12 @@ const SpotsShow = () => {
             stars: rating
         }
         console.log("🚀 ~ file: SpotsShow.js:38 ~ onSubmit ~ reviewForm :", reviewForm )
-        
+        const res = dispatch(thunkCreateReview(reviewForm))
+        if (!res.errors) {
+            closeModal()
+        } else {
+            setErrors(res.errors)
+        }
     }
 
     return(<div>
@@ -76,8 +82,17 @@ const SpotsShow = () => {
       modalComponent={
         <div className='postReviewModal'>
         <h1>How was your stay?</h1>
+        <p>{errors.message}</p>
         <form onSubmit={onSubmit}>
-        <input className="postReviewModalTextbox" type='text'></input>
+            <label>
+        <input 
+        className="postReviewModalTextbox" 
+        type='text' 
+        value={reviewText}
+        placeholder='Just a quick review.'
+        onChange={e => setReviewText(e.target.value)}>
+        </input>
+            </label>
         <div className='rating'>rating</div>
       <button className='postReviewModalSubmit' type='submit' >Submit Your Review</button>
       </form>
