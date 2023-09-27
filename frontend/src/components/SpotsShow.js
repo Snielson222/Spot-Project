@@ -14,6 +14,8 @@ const SpotsShow = () => {
 
     const [rating, setRating] = useState(0);
     const [reviewText, setReviewText] = useState('');
+    const [hoverRating, setHoverRating] = useState(0)
+    console.log("🚀 ~ file: SpotsShow.js:18 ~ SpotsShow ~ hoverRating:", hoverRating)
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
@@ -53,6 +55,11 @@ const SpotsShow = () => {
         }
     }
 
+    useEffect(() => {
+        setHoverRating(rating)
+      }, [hoverRating])
+    
+
     return(<div>
         <h1>{data.name}</h1>
         <h3>{data.city}, {data.state}, {data.country}</h3>
@@ -70,12 +77,14 @@ const SpotsShow = () => {
         <div className='reviewAndButtonContainer'>
             <div className='priceReviewContainer'>
                 <div>${data?.price} night</div>
-                <div>★{data?.numReviews <= 0 ? "New" : data?.avgStarRating} {data?.numReviews <= 0 ? "" : "·"} {data?.numReviews <= 0 ? "" : data?.numReviews} {data?.numReviews <= 0 ? "" : "review"}</div>
+                <div>★{data?.numReviews <= 0 ? "New" : data?.avgStarRating} {data?.numReviews <= 0 ? "" : "·"} {data?.numReviews <= 0 ? "" : data?.numReviews} 
+                {data?.numReviews === 0 ? "" : ""} {data?.numReviews === 1 ? "review" : ""} {data?.numReviews > 1 ? "reviews" : ""}</div>
             </div>
             <button className='reserveButton' onClick={() => alert("Feature Coming Soon...")}>Reserve</button>
         </div>
         </span>
-        <div>★{data?.numReviews <= 0 ? "New" : data?.avgStarRating} {data?.numReviews <= 0 ? "" : "·"} {data?.numReviews <= 0 ? "" : data?.numReviews} {data?.numReviews <= 0 ? "" : "review"}</div>
+        <div>★{data?.numReviews <= 0 ? "New" : data?.avgStarRating} {data?.numReviews <= 0 ? "" : "·"} {data?.numReviews <= 0 ? "" : data?.numReviews} 
+        {data?.numReviews === 0 ? "" : ""} {data?.numReviews === 1 ? "review" : ""} {data?.numReviews > 1 ? "reviews" : ""}</div>
         <OpenModalButton
              
       buttonText="Post Your Review"
@@ -93,8 +102,39 @@ const SpotsShow = () => {
         onChange={e => setReviewText(e.target.value)}>
         </input>
             </label>
-        <div className='rating'>rating</div>
-      <button className='postReviewModalSubmit' type='submit' >Submit Your Review</button>
+        <div className='rating'>
+            <div onMouseEnter={() => setHoverRating(1)}
+            onMouseLeave={() => setHoverRating(0)}
+            onClick={() => setRating(1)}
+            className={hoverRating >= 1 ? "full" : "empty"}>
+                <i className="fa fa-star"></i>
+            </div>
+            <div onMouseEnter={() => setHoverRating(2)}
+            onMouseLeave={() => setHoverRating(0)}
+            onClick={() => setRating(2)}
+            className={hoverRating >= 2 ? "full" : "empty"}>
+                <i className="fa fa-star"></i>
+            </div>
+            <div onMouseEnter={() => setHoverRating(3)}
+            onMouseLeave={() => setHoverRating(0)}
+            onClick={() => setRating(3)}
+            className={hoverRating >= 3 ? "full" : "empty"}>
+                <i className="fa fa-star"></i>
+            </div>
+            <div onMouseEnter={() => setHoverRating(4)}
+            onMouseLeave={() => setHoverRating(0)}
+            onClick={() => setRating(4)}
+            className={hoverRating >= 3 ? "full" : "empty"}>
+                <i className="fa fa-star"></i>
+            </div>
+            <div onMouseEnter={() => setHoverRating(5)}
+            onMouseLeave={() => setHoverRating(0)}
+            onClick={() => setRating(5)}
+            className={hoverRating >= 5 ? "full" : "empty"}>
+                <i className="fa fa-star"></i>
+            </div>
+        </div>
+      <button className='postReviewModalSubmit' type="submit" >Submit Your Review</button>
       </form>
     </div>
     }

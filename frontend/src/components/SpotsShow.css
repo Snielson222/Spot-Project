@@ -63,3 +63,11 @@
 .postReviewModalTextbox {
     margin-bottom: 15px;
 }
+
+.full {
+color:black;
+}
+
+.empty {
+color: antiquewhite;
+}
