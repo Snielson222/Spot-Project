@@ -6,7 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import imgSrc from '../../images/FullLogo_Transparent_NoBuffer.png'
 import { Link, useHistory } from "react-router-dom";
-
+import './Navigation.css'
 function ProfileButton({ user }) {
   const history = useHistory()
   const dispatch = useDispatch();
