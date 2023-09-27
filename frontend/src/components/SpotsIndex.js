@@ -37,7 +37,7 @@ const SpotsIndex = () => {
             <div className='spotDataContainer'>
                 <div className='cityStateRatingContainer'>
             <div className='notLink'>{spot.city}, {spot.state}</div>
-            <div className='notLink'>★{spot.avgRating}</div>
+            <div className='notLink'>★{spot.avgRating == null ? 'New' : spot.avgRating}</div>
                 </div>
             <div className='notLink'>${spot.price} night</div>
             </div>
