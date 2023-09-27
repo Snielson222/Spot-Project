@@ -11,7 +11,7 @@ export const ManageSpots = () => {
     const {closeModal} = useModal();
     const dispatch = useDispatch();
     const spots = [];
-    console.log("🚀 ~ file: ManageSpots.js:11 ~ ManageSpots ~ spots:", spots)
+    
   const data = useSelector((state) => {
       return state.spots
   })

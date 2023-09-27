@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 const SpotsShow = () => {
     const {spotId} = useParams()
     const dispatch = useDispatch()
-    console.log("🚀 ~ file: SpotsShow.js:8 ~ SpotsShow ~ spotId:", spotId)
+    
 
     useEffect(() => {
        dispatch(thunkDisplaySpotDetails(spotId))
@@ -15,8 +15,7 @@ const SpotsShow = () => {
 
     const spot = useSelector((state) => state.spots[spotId])
     const data = {...spot}
-    console.log("🚀 ~ file: SpotsShow.js:11 ~ SpotsShow ~ data:", data)
-    console.log("🚀 ~ file: SpotsShow.js:23 ~ SpotsShow ~ data.SpotImages:", data.SpotImages)
+    
 
 
     return(<div>

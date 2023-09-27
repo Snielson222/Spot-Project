@@ -6,7 +6,7 @@ import "./SpotsIndex.css"
 
 const SpotsIndex = () => {
   const dispatch = useDispatch()
-  const spots = []; // populate from Redux store
+  const spots = [];
   const data = useSelector((state) => {
       return state.spots
   })
