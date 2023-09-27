@@ -52,15 +52,15 @@ return (
              <OpenModalButton
              
       buttonText="Delete"
-      modalComponent={
-        <div className='modalComponent'>
-        <h1>Confirm Delete</h1>
-        <h3>Are you sure you want to remove this spot
-from the listings?</h3>
-      <button className='deleteInModal' onClick={() => dispatch(thunkDeleteSpot(spot.id))}>Yes (Delete Spot)</button>
-    <button className='closeInModal' onClick={() => closeModal()}>No (keep spot)</button>
-    </div>
-    }
+//       modalComponent={
+//         <div className='modalComponent'>
+//         <h1>Confirm Delete</h1>
+//         <h3>Are you sure you want to remove this spot
+// from the listings?</h3>
+//       <button className='deleteInModal' onClick={() => dispatch(thunkDeleteSpot(spot.id))}>Yes (Delete Spot)</button>
+//     <button className='closeInModal' onClick={() => closeModal()}>No (keep spot)</button>
+//     </div>
+//     }
     />
     </div>
             </div>

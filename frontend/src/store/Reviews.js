@@ -64,7 +64,7 @@ export const thunkCreateReview = (review) => async (dispatch) => {
     switch (action.type) {
       case LOAD_REVIEWS:
         const reviewState = {};
-        action.Reviews.forEach((review) => {
+        action.review.Reviews.forEach((review) => {
           reviewState[review.id] = review;
         });
         return reviewState;

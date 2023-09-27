@@ -2,23 +2,51 @@ import './SpotsShow.css'
 import { useParams } from 'react-router-dom';
 import { thunkDisplaySpotDetails } from '../store/Spots';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { thunkLoadReviews } from '../store/Reviews';
+import OpenModalButton from './OpenModalButton';
+import { useModal } from '../context/Modal';
 
 const SpotsShow = () => {
     const {spotId} = useParams()
     const dispatch = useDispatch()
-    
+    const {closeModal} = useModal();
+
+    const [rating, setRating] = useState();
+    const [reviewText, setReviewText] = useState();
 
     useEffect(() => {
        dispatch(thunkDisplaySpotDetails(spotId))
+       dispatch(thunkLoadReviews(spotId))
     }, [dispatch, spotId])
 
     const spot = useSelector((state) => state.spots[spotId])
     const data = {...spot}
+    console.log("🚀 ~ file: SpotsShow.js:18 ~ SpotsShow ~ data:", data)
     
+    // const review = useSelector((state) => state.reviews[spotId])
 
+    const review1 = useSelector((state) => state.reviews)
+    const reviewObj = {...review1}
+    const reviewArray = Object.values(review1)
+    console.log("🚀 ~ file: SpotsShow.js:32 ~ SpotsShow ~ reviewArray:", reviewArray)
+    console.log("🚀 ~ file: SpotsShow.js:30 ~ SpotsShow ~ review1 :", review1 )
+    
+    
+   
+    console.log("🚀 ~ file: SpotsShow.js:26 ~ SpotsShow ~ data.SpotImages:", data.SpotImages)
 
-            console.log("🚀 ~ file: SpotsShow.js:26 ~ SpotsShow ~ data.SpotImages:", data.SpotImages)
+    function onSubmit(e) {
+        e.preventDefault()
+
+        const reviewForm = {
+            review: reviewText,
+            stars: rating
+        }
+        console.log("🚀 ~ file: SpotsShow.js:38 ~ onSubmit ~ reviewForm :", reviewForm )
+        
+    }
+
     return(<div>
         <h1>{data.name}</h1>
         <h3>{data.city}, {data.state}, {data.country}</h3>
@@ -28,7 +56,6 @@ const SpotsShow = () => {
             ))}
         </div>
         <span className='textContainer'>
-
         <div className='nameDescriptionContainer'>
             <div>Hosted by {data.Owner?.firstName} {data?.Owner?.lastName}</div>
             <br></br>
@@ -42,6 +69,33 @@ const SpotsShow = () => {
             <button className='reserveButton' onClick={() => alert("Feature Coming Soon...")}>Reserve</button>
         </div>
         </span>
+        <div>★{data?.numReviews <= 0 ? "New" : data?.avgStarRating} {data?.numReviews <= 0 ? "" : "·"} {data?.numReviews <= 0 ? "" : data?.numReviews} {data?.numReviews <= 0 ? "" : "review"}</div>
+        <OpenModalButton
+             
+      buttonText="Post Your Review"
+      modalComponent={
+        <div className='postReviewModal'>
+        <h1>How was your stay?</h1>
+        <form onSubmit={onSubmit}>
+        <input className="postReviewModalTextbox" type='text'></input>
+        <div className='rating'>rating</div>
+      <button className='postReviewModalSubmit' type='submit' >Submit Your Review</button>
+      </form>
+    </div>
+    }
+    />
+
+    <div className='reviewContainer'>
+        {reviewArray.map((review) => (
+            <div key={review.id}>
+                <h4>{review?.User.firstName}</h4>
+                <div>{review?.createdAt.slice(0,7)}</div>
+                <br></br>
+                <div>{review?.review}</div>
+                <br></br>
+            </div>
+        ))}
+    </div>
     </div>)
 }
 

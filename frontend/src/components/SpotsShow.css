@@ -22,6 +22,8 @@
 .textContainer {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    border-bottom: 2px black solid;
+    padding-bottom: 10px;
 }
 .priceReviewContainer {
     display: flex;
@@ -47,4 +49,19 @@
 .imgtrue {
     height: 100%;
     grid-area: a;
+}
+
+.postReviewModal {
+    display: flex;
+    flex-direction: column;
+}
+
+.postReviewModalSubmit {
+
+}
+
+.postReviewModalTextbox {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 15px;
 }
