@@ -1,8 +1,7 @@
 .imgfalse {
-    height: 50%;
     display: flex;
-    flex-flow: row;
     flex-shrink: 1;
+    grid-area: b;
 }
 
 .reviewAndButtonContainer {
@@ -43,13 +42,18 @@
 
 .imgContainer {
     height: 500px;
-    display: flex;
-    grid-template-rows: auto;
+    display: grid;
+    grid-template-areas: 
+    "a a b b"
+    "a a b b"; 
+   
+    
 
 }
 
 .imgtrue {
    height: 100%;
+   grid-area: a;
 }
 
 .postReviewModal {

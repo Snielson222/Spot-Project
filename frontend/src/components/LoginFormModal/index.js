@@ -31,6 +31,11 @@ function LoginFormModal() {
     return false
   }
 
+  function demoUser() {
+    dispatch(sessionActions.login({ credential: "Bear", password: "violet"}))
+    closeModal()
+  }
+
   return (
     <div className="logInFormContainer">
       <h1>Log In</h1>
@@ -54,9 +59,7 @@ function LoginFormModal() {
             placeholder="Password"
           />
         </label>
-        {errors.credential && (
-          <p>{errors.credential}</p>
-        )}
+        <button onClick={demoUser}>Demo User</button>
         <button disabled={disableCheck()} className="logInButton" type="submit">Log In</button>
       </form>
     </div>

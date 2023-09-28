@@ -2,10 +2,9 @@ import "./SpotsShow.css";
 import { useParams } from "react-router-dom";
 import { thunkDisplaySpotDetails } from "../store/Spots";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import {
   thunkLoadReviews,
-  thunkCreateReview,
   thunkDeleteReview,
 } from "../store/Reviews";
 import OpenModalButton from "./OpenModalButton";
@@ -16,10 +15,10 @@ const SpotsShow = () => {
   const { spotId } = useParams();
   const dispatch = useDispatch();
   const { closeModal } = useModal();
+  
+
 
   
-  const [errors, setErrors] = useState({});
-
   useEffect(() => {
     dispatch(thunkDisplaySpotDetails(spotId));
     dispatch(thunkLoadReviews(spotId));
@@ -46,7 +45,7 @@ const SpotsShow = () => {
       </h3>
       <div className="imgContainer">
         {data.SpotImages?.map((img) => (
-          <span key={img.id}>
+          <span key={img.id} className={`img${img.preview}`}>
             <img
               alt="spotImg"
               className={`img${img.preview}`}
