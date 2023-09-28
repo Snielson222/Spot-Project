@@ -37,7 +37,7 @@ const SpotsShow = () => {
 
   const spot = useSelector((state) => state.spots[spotId]);
   const data = { ...spot };
-  // console.log("🚀 ~ file: SpotsShow.js:18 ~ SpotsShow ~ data:", data)
+  console.log("🚀 ~ file: SpotsShow.js:18 ~ SpotsShow ~ data:", data)
 
   const review1 = useSelector((state) => state.reviews);
   const reviewArray = Object.values(review1);
@@ -124,7 +124,9 @@ const SpotsShow = () => {
         {data?.numReviews === 1 ? "review" : ""}{" "}
         {data?.numReviews > 1 ? "reviews" : ""}
       </div>
-      <OpenModalButton
+     <button hidden={data.ownerId == session.id}>
+     <OpenModalButton
+        hidden={data.ownerId == session.id}
         buttonText="Post Your Review"
         modalComponent={
           <div className="postReviewModal">
@@ -190,7 +192,7 @@ const SpotsShow = () => {
           </div>
         }
       />
-
+    </button>
       <div className="reviewContainer">
         {reviewArray.map((review) => (
           <div key={review.id}>
