@@ -60,3 +60,7 @@ p {
 .profile-dropdownhidden {
     display: none;
 }
+
+.profileButtonButton:hover {
+cursor: pointer;
+}

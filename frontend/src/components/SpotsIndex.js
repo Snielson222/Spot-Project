@@ -32,14 +32,14 @@ const SpotsIndex = () => {
             className='spotsContainer'
           >
             <Link className='notLink' exact to={`/spots/${spot.id}`}>
-
             <img className="spotImg" src={spot.previewImage}></img>
+            <span className='toolTipText'>{spot.name}</span>
             <div className='spotDataContainer'>
                 <div className='cityStateRatingContainer'>
             <div className='notLink'>{spot.city}, {spot.state}</div>
             <div className='notLink'>★{spot.avgRating == null ? 'New' : spot.avgRating}</div>
                 </div>
-            <div className='notLink'>${spot.price} night</div>
+            <div className='notLinkPrice'>${spot.price} night</div>
             </div>
             </Link>
           </div>

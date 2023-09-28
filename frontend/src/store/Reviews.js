@@ -55,7 +55,8 @@ export const thunkCreateReview = (review, spotId) => async (dispatch) => {
       return error
     } else {
       const data = await res.json()
-      dispatch(loadReviews(data))
+      dispatch(thunkLoadReviews(spotId))
+      console.log("🚀 ~ file: Reviews.js:59 ~ thunkCreateReview ~ spotId:", spotId)
       return data
     }
   }
@@ -67,6 +68,7 @@ export const thunkCreateReview = (review, spotId) => async (dispatch) => {
         action.review.Reviews.forEach((review) => {
           reviewState[review.id] = review;
         });
+        console.log("🚀 ~ file: Reviews.js:70 ~ action.review.Reviews.forEach ~ action.review.Reviews:", action.review.Reviews)
         return reviewState;
         case DELETE_REVIEW:
           const newState = { ...state };
