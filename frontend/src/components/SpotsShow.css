@@ -59,14 +59,26 @@
 .postReviewModal {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .postReviewModalSubmit {
-
+background-color:#FF5A5F;
+border: black 2px solid;
+box-shadow: 2px 2px black;
+margin-top: 15px;
+padding-left: 110px;
+padding-right: 120px;
+padding-top: 10px;
+padding-bottom: 10px;
+color: white;
 }
 
 .postReviewModalTextbox {
     margin-bottom: 15px;
+    padding-bottom: 100px;
+    padding-right: 200px;
 }
 
 .full {
@@ -83,4 +95,5 @@ color: antiquewhite;
 
 .rating {
     display: flex;
+    padding-left: 110px;
 }

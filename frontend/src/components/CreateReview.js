@@ -107,6 +107,7 @@ return (<div className="postReviewModal">
     >
       <i className="fa fa-star"></i>
     </div>
+    <div> Stars</div>
   </div>
   <button className="postReviewModalSubmit" type="submit" disabled={disableFunc()}>
     Submit Your Review
