@@ -35,17 +35,24 @@ export const CreateReview = ({spotId}) => {
     // "🚀 ~ file: SpotsShow.js:38 ~ onSubmit ~ reviewForm :",
     // reviewForm
     // );
-    const res = await dispatch(thunkCreateReview(reviewForm, spotId))
-      console.log("🚀 ~ file: CreateReview.js:39 ~ onSubmit ~ res:", res)
-    if (!res.ok) {
-      closeModal();
-    } else {
-      setErrors(res.message);
-      console.log(
-      "🚀 ~ file: SpotsShow.js:56 ~ onSubmit ~ res.errors:",
-      res.errors
-      );
-    }
+    dispatch(thunkCreateReview(reviewForm, spotId))
+    .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          console.log("🚀 ~ file: CreateReview.js:42 ~ onSubmit ~ data:", data)
+          setErrors(data.message);
+        }
+      });
+    //   console.log("🚀 ~ file: CreateReview.js:39 ~ onSubmit ~ res:", res)
+    // if (!res.ok) {
+    //   closeModal();
+    // } else {
+    //   setErrors(res.message);
+    //   console.log(
+    //   "🚀 ~ file: SpotsShow.js:56 ~ onSubmit ~ res.errors:",
+    //   res.errors
+    //   );
+    // }
   }
 
   function disableFunc() {

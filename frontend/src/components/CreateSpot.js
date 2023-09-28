@@ -109,50 +109,53 @@ return (<div className='formContainer'>
         <div className='countryContainer'>
         <label>
             Country
+            </label>
             <input
             type='text'
             value={country}
             onChange={e => setCountry(e.target.value)}
             placeholder='Country'>
             </input>
-        </label>
         <p>{errors.country}</p>
         </div>
         <div className='addressContainer'>
         <label>
             Street Address
+            </label>
             <input
             type='text'
             value={address}
             onChange={e => setAddress(e.target.value)}
             placeholder='Address'>
             </input>
-        </label>
         <p>{errors.address}</p>
         </div>
     <span className='cityStateContainer'>
         <div className='cityContainer'>
         <label>
             City
+            </label>
             <input
+            className='cityInput'
             type='text'
             value={city}
             onChange={e => setCity(e.target.value)}
             placeholder='City'>
             </input>
-        </label>
         <p>{errors.city}</p>
         </div>
+        <div>,</div>
         <div className='stateContainer'>
         <label>
             State
+            </label>
             <input
+            className='stateInput'
             type='text'
             value={state}
             onChange={e => setState(e.target.value)}
             placeholder='STATE'>
             </input>
-        </label>
         <p>{errors.state}</p>
         </div>
     </span>
@@ -161,26 +164,28 @@ return (<div className='formContainer'>
         <label>
         Mention the best features of your space, any special amenities like
 fast wif or parking, and what you love about the neighborhood.
+</label>
             <input
             type='text'
             value={description}
             onChange={e => setDescription(e.target.value)}
-            placeholder='Please write at least 30 characters'>
+            placeholder='Description'
+            className="descriptionForm"
+            >
             </input>
-        </label>
         <p>{errors.description}</p>
         </div>
         <div className='nameContainer'>
             <h2>Create a title for your spot</h2>
         <label>
             Catch guests' attention with a spot title that highlights what makes your place special
+            </label>
             <input
             type='text'
             value={name}
             onChange={e => setName(e.target.value)}
             placeholder='Name of your spot'>
             </input>
-        </label>
         <p>{errors.name}</p>
         </div>
         <div className='priceContainer'>
@@ -192,15 +197,17 @@ fast wif or parking, and what you love about the neighborhood.
             type='number'
             value={price}
             onChange={e => setPrice(e.target.value)}
-            placeholder='Price per night (USD)'>
+            placeholder='Price per night (USD)'
+            className='priceInput'>
             </input>
-        </label>
+                </label>
         <p>{errors.price}</p>
         </div>
         <div className='imageContainer'>
             <h2>Liven up your spot with photos</h2>
         <label>
             Submit a link to at least one photo to publish your spot.
+            </label>
             <input
             type='url'
             value={previewImg}
@@ -236,7 +243,6 @@ fast wif or parking, and what you love about the neighborhood.
             placeholder='Image URL'>
             </input>
             <p>{errors.img3}</p>
-        </label>
         </div>
             <button className='submitButton' type='submit' onClick={() => setSubmitted(true)}>Create Spot</button>
     </form>
