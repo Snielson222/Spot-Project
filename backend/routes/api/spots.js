@@ -35,12 +35,12 @@ router.get("/:spotId(\\d+)", async (req, res, next) => {
 
   spots = spots.toJSON();
 
+  let sum = 0;
   spots.Reviews.forEach((review) => {
-    let sum = 0;
     sum += review.stars;
-    let avg = sum / spots.Reviews.length;
     spots.numReviews = spots.Reviews.length;
-    spots.avgStarRating = avg;
+    let avg = sum / spots.numReviews;
+    spots.avgStarRating = avg.toString().slice(0,3);
   });
   if (!spots.Reviews.length) {
     spots.avgStarRating = 0

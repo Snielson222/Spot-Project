@@ -75,3 +75,7 @@ color: antiquewhite;
 .spotsShowContainer {
     max-width: 1024px;
 }
+
+.rating {
+    display: flex;
+}

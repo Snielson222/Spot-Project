@@ -43,8 +43,8 @@ export const thunkDeleteReview = (reviewId) => async (dispatch) => {
     }
 }
 
-export const thunkCreateReview = (review) => async (dispatch) => {
-    const res = await csrfFetch(`/api/spots/${review.spotId}/reviews`, {
+export const thunkCreateReview = (review, spotId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(review)
