@@ -5,14 +5,16 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import imgSrc from '../../images/FullLogo_Transparent_NoBuffer.png'
-import { Link } from "react-router-dom";
-
+import { Link, useHistory } from "react-router-dom";
+import './Navigation.css'
 function ProfileButton({ user }) {
+  const history = useHistory()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
-  const openMenu = () => {
+  const openMenu = (e) => {
+   
     if (showMenu) return;
     setShowMenu(true);
   };
@@ -21,6 +23,7 @@ function ProfileButton({ user }) {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
+      
       if (!ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
@@ -37,15 +40,16 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
     closeMenu();
+    history.push("/");
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : "hidden");
-  console.log("🚀 ~ file: ProfileButton.js:42 ~ ProfileButton ~ showMenu:", showMenu)
+  
 
   return (
     <>
-      <button onClick={openMenu}>
-        <img className="profileButton" alt="profile button" src={imgSrc}></img>
+      <button className="profileButtonButton" onClick={openMenu}>
+      <i className="fas fa-user-circle" />
       </button>
       <ul className={ulClassName} 
       ref={ulRef}>

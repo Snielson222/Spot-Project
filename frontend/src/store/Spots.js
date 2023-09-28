@@ -1,10 +1,10 @@
 import {csrfFetch} from './csrf'
 
-export const LOAD_SPOTS= 'spots/LOAD_SPOTS';
+export const LOAD_SPOTS = 'spots/LOAD_SPOTS';
 
 export const CREATE_SPOT = 'spots/CREATE_SPOT';
 
-export const UPDATE_SPOT = 'spots/UPDATE_SPOT';
+export const UPDATE_SPOT = 'spots/UPDATE_SPOT'
 
 export const REMOVE_SPOT = 'spots/REMOVE_SPOT';
 
@@ -138,7 +138,7 @@ const spotsReducer = (state = {}, action) => {
         return newState;
       case UPDATE_SPOT:
         return { ...state, [action.spot]: action.spot };
-    default:
+      default:
       return state;
   }
 };

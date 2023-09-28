@@ -24,9 +24,17 @@ function LoginFormModal() {
       });
   };
 
+  function disableCheck() {
+    if (password.length < 6|| credential.length < 4) {
+      return true
+    }
+    return false
+  }
+
   return (
     <div className="logInFormContainer">
       <h1>Log In</h1>
+      <p>{Object.values(errors)}</p>
       <form className="formLogIn" onSubmit={handleSubmit}>
         <label className="usernameContainer">
           <input
@@ -49,7 +57,7 @@ function LoginFormModal() {
         {errors.credential && (
           <p>{errors.credential}</p>
         )}
-        <button className="logInButton" type="submit">Log In</button>
+        <button disabled={disableCheck()} className="logInButton" type="submit">Log In</button>
       </form>
     </div>
   );

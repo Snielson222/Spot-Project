@@ -16,7 +16,7 @@ function Navigation({ isLoaded }){
       <ul className='createAndProfileContainer'>
 
       <li>
-        <NavLink className="create" exact to='/spots/new'>Create a New Spot</NavLink>
+        <NavLink className="create" exact to='/spots/new'>{sessionUser ? "Create a New Spot" : ""}</NavLink>
       </li>
       {isLoaded && (
         <li>

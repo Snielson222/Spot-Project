@@ -1,20 +1,31 @@
-.img {
-    height: 300px;
+.imgfalse {
+    height: 50%;
+    display: flex;
+    flex-flow: row;
+    flex-shrink: 1;
 }
 
 .reviewAndButtonContainer {
     display: flex;
     flex-direction: column;
+    border: 2px black solid;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
 .nameDescriptionContainer {
+    margin-top: 10px;
     display: flex;
+    flex-flow: row;
     flex-direction: column;
 }
 
 .textContainer {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    border-bottom: 2px black solid;
+    padding-bottom: 10px;
 }
 .priceReviewContainer {
     display: flex;
@@ -26,4 +37,46 @@
     color: white;
     border: 2px black solid;
     box-shadow: 2px 2px black;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.imgContainer {
+    height: 500px;
+    display: flex;
+    grid-template-rows: auto;
+
+}
+
+.imgtrue {
+   height: 100%;
+}
+
+.postReviewModal {
+    display: flex;
+    flex-direction: column;
+}
+
+.postReviewModalSubmit {
+
+}
+
+.postReviewModalTextbox {
+    margin-bottom: 15px;
+}
+
+.full {
+color:black;
+}
+
+.empty {
+color: antiquewhite;
+}
+
+.spotsShowContainer {
+    max-width: 1024px;
+}
+
+.rating {
+    display: flex;
 }

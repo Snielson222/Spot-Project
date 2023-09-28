@@ -39,12 +39,7 @@
     list-style-type: none;
 }
 
-.profile-dropdown {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    border: 1px black ;
-}
+
 
 p {
     color: red;
@@ -60,4 +55,12 @@ p {
     padding-right: 25px;
     text-decoration: none;
     color: black;
+}
+
+.profile-dropdownhidden {
+    display: none;
+}
+
+.profileButtonButton:hover {
+cursor: pointer;
 }

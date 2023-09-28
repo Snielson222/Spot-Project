@@ -35,12 +35,12 @@ router.get("/:spotId(\\d+)", async (req, res, next) => {
 
   spots = spots.toJSON();
 
+  let sum = 0;
   spots.Reviews.forEach((review) => {
-    let sum = 0;
     sum += review.stars;
-    let avg = sum / spots.Reviews.length;
     spots.numReviews = spots.Reviews.length;
-    spots.avgStarRating = avg;
+    let avg = sum / spots.numReviews;
+    spots.avgStarRating = avg.toString().slice(0,3);
   });
   if (!spots.Reviews.length) {
     spots.avgStarRating = 0
@@ -257,8 +257,8 @@ router.get("/", validateQuery, async (req, res, next) => {
   });
 
   spotsList.forEach((spot) => {
+    let sum = 0;
     spot.Reviews.forEach((review) => {
-      let sum = 0;
       sum += review.stars;
       let avg = sum / spot.Reviews.length;
       spot.avgRating = avg;
@@ -296,18 +296,24 @@ router.get("/current", requireAuth, async (req, res, next) => {
     spotsList.push(element.toJSON());
   });
 
-  let sum = 0;
   spotsList.forEach((spot) => {
+    let sum = 0;
     spot.Reviews.forEach((review) => {
       sum += review.stars;
+      console.log("🚀 ~ file: spots.js:303 ~ spot.Reviews.forEach ~ review:", review)
+     
+      
       let avg = sum / spot.Reviews.length;
+
       spot.avgRating = avg;
+      
     });
     if (!spot.Reviews.length) {
       spot.avgRating = 0
     }
     delete spot.Reviews;
   });
+  console.log("🚀 ~ file: spots.js:316 ~ spotsList.forEach ~ spotsList:", spotsList)
 
   spotsList.forEach((spot) => {
     spot.SpotImages.forEach((image) => {

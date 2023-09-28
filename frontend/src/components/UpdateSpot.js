@@ -7,11 +7,11 @@ import { useHistory, useParams} from 'react-router-dom';
 export const UpdateSpot = () => {
     const params = useParams()
     const spotId = params.id
-    console.log("🚀 ~ file: UpdateSpot.js:9 ~ UpdateSpot ~ spotId:", spotId)
+    
 
     const spot = useSelector((state) => state.spots[spotId])
     const data = {...spot}
-    console.log("🚀 ~ file: UpdateSpot.js:31 ~ UpdateSpot ~ data:", data)
+   
 
     const history = useHistory()
     const dispatch = useDispatch()
@@ -69,7 +69,6 @@ export const UpdateSpot = () => {
             createdAt: Date.now(),
             updatedAt: Date.now()
         }
-        console.log("🚀 ~ file: UpdateSpot.js:57 ~ onSubmit ~ spot:", spot)
 
         const res = await dispatch(thunkEditSpot(spot))
         if (!res.errors) {
