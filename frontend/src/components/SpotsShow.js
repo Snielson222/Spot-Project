@@ -124,9 +124,9 @@ const SpotsShow = () => {
         {data?.numReviews === 1 ? "review" : ""}{" "}
         {data?.numReviews > 1 ? "reviews" : ""}
       </div>
-     <button hidden={data.ownerId == session.id}>
+     <button hidden={data.ownerId === session.id}>
      <OpenModalButton
-        hidden={data.ownerId == session.id}
+        hidden={data.ownerId === session.id}
         buttonText="Post Your Review"
         modalComponent={
           <div className="postReviewModal">
@@ -193,11 +193,12 @@ const SpotsShow = () => {
         }
       />
     </button>
+    <h4>{data?.numReviews <= 0 ? "Be the first to post a review!" : ""}</h4>
       <div className="reviewContainer">
         {reviewArray.map((review) => (
           <div key={review.id}>
             <h4>{review?.User.firstName}</h4>
-            <div>{review?.createdAt.slice(0, 7)}</div>
+            <div>{review?.createdAt.slice(0, 7).split("-")[1]} {review?.createdAt.slice(0, 7).split("-")[0]}</div>
             <br></br>
             <div>{review?.review}</div>
             <br></br>
