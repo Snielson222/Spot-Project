@@ -14,6 +14,7 @@ const SpotsShow = () => {
 
     const [rating, setRating] = useState(0);
     const [reviewText, setReviewText] = useState('');
+    console.log("🚀 ~ file: SpotsShow.js:17 ~ SpotsShow ~ reviewText:", reviewText)
     const [hoverRating, setHoverRating] = useState(0)
     console.log("🚀 ~ file: SpotsShow.js:18 ~ SpotsShow ~ hoverRating:", hoverRating)
     const [errors, setErrors] = useState({});
@@ -33,12 +34,12 @@ const SpotsShow = () => {
     const reviewObj = {...review1}
     const reviewArray = Object.values(review1)
     console.log("🚀 ~ file: SpotsShow.js:32 ~ SpotsShow ~ reviewArray:", reviewArray)
-    console.log("🚀 ~ file: SpotsShow.js:30 ~ SpotsShow ~ review1 :", review1 )
+   
     
     const session = useSelector((state) => state.session.user)
     console.log("🚀 ~ file: SpotsShow.js:39 ~ SpotsShow ~ session:", session)
    
-    console.log("🚀 ~ file: SpotsShow.js:26 ~ SpotsShow ~ data.SpotImages:", data.SpotImages)
+   
 
     async function onSubmit(e) {
         e.preventDefault()
@@ -65,7 +66,7 @@ const SpotsShow = () => {
       }
     
 
-    return(<div>
+    return(<div className='spotsShowContainer'>
         <h1>{data.name}</h1>
         <h3>{data.city}, {data.state}, {data.country}</h3>
         <div className='imgContainer'>
@@ -104,7 +105,8 @@ const SpotsShow = () => {
         type='text' 
         value={reviewText}
         placeholder='Just a quick review.'
-        onChange={e => setReviewText(e.target.value)}>
+        onChange={e => setReviewText(e.target.value)}
+        >
         </input>
             </label>
         <div className='rating'>

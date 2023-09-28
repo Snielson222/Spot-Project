@@ -70,7 +70,7 @@ export const thunkCreateReview = (review) => async (dispatch) => {
         return reviewState;
         case DELETE_REVIEW:
           const newState = { ...state };
-          delete newState[action.id];
+          delete newState[action.review];
           return newState;
         default:
         return state;
