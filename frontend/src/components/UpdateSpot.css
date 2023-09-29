@@ -143,3 +143,26 @@ input {
     width: 833px;
 }
 
+.postReviewModalSubmit:hover {
+    cursor: pointer;
+}
+
+.deleteInModal:hover {
+    cursor: pointer;
+}
+
+.closeInModal:hover {
+    cursor: pointer;
+}
+
+.createSpotBut:hover {
+cursor: pointer;
+}
+
+.updateLink:hover {
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    cursor: pointer;
+}

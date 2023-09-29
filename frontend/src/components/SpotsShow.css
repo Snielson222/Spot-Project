@@ -106,6 +106,7 @@ color: antiquewhite;
 
 .spotsShowContainer {
     max-width: 1024px;
+    margin-bottom: 10px;
 }
 
 .rating {

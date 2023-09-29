@@ -1,6 +1,7 @@
 import './CreateReview.css'
 import { useState } from 'react';
-import { thunkCreateReview } from '../store/Reviews';
+import { thunkCreateReview, thunkLoadReviews} from '../store/Reviews';
+import { thunkDisplaySpotDetails, thunkGetAllSpots } from '../store/Spots';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../context/Modal';
 
@@ -36,6 +37,7 @@ export const CreateReview = ({spotId}) => {
     // reviewForm
     // );
     dispatch(thunkCreateReview(reviewForm, spotId))
+    .then(() => dispatch(thunkDisplaySpotDetails(spotId)))
     .then(closeModal())
     .catch(async (res) => {
         const data = await res.json();
@@ -44,6 +46,7 @@ export const CreateReview = ({spotId}) => {
           setErrors(data.message);
         }
       });
+
     //   console.log("🚀 ~ file: CreateReview.js:39 ~ onSubmit ~ res:", res)
     // if (!res.ok) {
     //   closeModal();

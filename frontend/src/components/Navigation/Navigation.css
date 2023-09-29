@@ -26,8 +26,11 @@
     height: 60px;
 }
 
-.profileButton {
-    height: 60px;
+.profileButtonButton {
+    height: 40px;
+  position: fixed;
+  top: 30px;
+  right: 10px;
 }
 
 .menuOpen {
@@ -63,4 +66,8 @@ p {
 
 .profileButtonButton:hover {
 cursor: pointer;
+}
+
+.manageSpotsButton:hover {
+    cursor: pointer;
 }

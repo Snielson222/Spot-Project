@@ -60,7 +60,7 @@ function ProfileButton({ user }) {
             <li>{user.email}</li>
             
               <li className="manageSpots"><Link className='manageLink' exact to='/spots/current'>Manage Spots</Link></li>
-              <button onClick={logout}>Log Out</button>
+              <button className="manageSpotsButton" onClick={logout}>Log Out</button>
             
           </>
           
