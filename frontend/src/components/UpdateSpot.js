@@ -145,12 +145,12 @@ return(<div className='formContainer'>
     Mention the best features of your space, any special amenities like
 fast wif or parking, and what you love about the neighborhood.
 </label>
-        <input
-        type='text'
+        <textarea
+        className='descriptionForm'
         value={description}
         onChange={e => setDescription(e.target.value)}
         placeholder='Please write at least 30 characters'>
-        </input>
+        </textarea>
     <p>{errors.description}</p>
     </div>
     <div className='nameContainer'>

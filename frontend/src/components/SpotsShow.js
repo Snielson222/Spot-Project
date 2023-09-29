@@ -43,8 +43,9 @@ const SpotsShow = () => {
       <h3>
         {data.city}, {data.state}, {data.country}
       </h3>
+      <div className="bigImgContainer">
       <div className="imgContainer">
-        {data.SpotImages?.map((img) => (
+        {data.SpotImages?.filter((img) => img.preview === true).map((img) => (
           <span key={img.id} className={`img${img.preview}`}>
             <img
               alt="spotImg"
@@ -54,7 +55,19 @@ const SpotsShow = () => {
           </span>
         ))}
       </div>
-      <span className="textContainer">
+      <div className="imgContainer2">
+        {data.SpotImages?.filter((img) => img.preview === false).map((img) => (
+          <span key={img.id} className={`img${img.preview}`}>
+            <img
+              alt="spotImg"
+              className={`img${img.preview}`}
+              src={img.url}
+            ></img>
+          </span>
+        ))}
+      </div>
+      </div>
+      <span className="textShowContainer">
         <div className="nameDescriptionContainer">
           <div>
             Hosted by {data.Owner?.firstName} {data?.Owner?.lastName}

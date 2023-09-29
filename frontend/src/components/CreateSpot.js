@@ -111,7 +111,7 @@ return (<div className='formContainer'>
             Country
             </label>
             <input
-            type='text'
+            type='textarea'
             value={country}
             onChange={e => setCountry(e.target.value)}
             placeholder='Country'>
@@ -165,14 +165,14 @@ return (<div className='formContainer'>
         Mention the best features of your space, any special amenities like
 fast wif or parking, and what you love about the neighborhood.
 </label>
-            <input
-            type='text'
+            <textarea
+            
             value={description}
             onChange={e => setDescription(e.target.value)}
             placeholder='Description'
             className="descriptionForm"
             >
-            </input>
+            </textarea>
         <p>{errors.description}</p>
         </div>
         <div className='nameContainer'>

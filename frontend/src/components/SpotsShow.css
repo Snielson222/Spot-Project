@@ -1,7 +1,18 @@
+body {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.imgContainer2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .imgfalse {
-    display: flex;
-    flex-shrink: 1;
-    grid-area: b;
+    width: 256px;
+    height: 200px;
+    border:2px solid white;
+    
 }
 
 .reviewAndButtonContainer {
@@ -20,7 +31,7 @@
     flex-direction: column;
 }
 
-.textContainer {
+.textShowContainer {
     display: grid;
     grid-template-columns: 2fr 1fr;
     border-bottom: 2px black solid;
@@ -40,20 +51,21 @@
     padding-bottom: 8px;
 }
 
-.imgContainer {
-    height: 500px;
+.bigImgContainer {
+    height: 400px;
+    width: 100%;
     display: grid;
-    grid-template-areas: 
-    "a a b b"
-    "a a b b"; 
-   
-    
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 10px;
 
 }
 
 .imgtrue {
-   height: 100%;
-   grid-area: a;
+    margin-top: 2px;
+  width: 512px;
+  height: 404px;
+  border: 2px solid white;
+   
 }
 
 .postReviewModal {
