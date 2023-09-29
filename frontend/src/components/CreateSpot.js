@@ -170,7 +170,7 @@ fast wif or parking, and what you love about the neighborhood.
             
             value={description}
             onChange={e => setDescription(e.target.value)}
-            placeholder='Description'
+            placeholder="Please write at least 30 characters"
             className="descriptionForm"
             >
             </textarea>
