@@ -133,7 +133,7 @@ const SpotsShow = () => {
                     <h3>Are you sure you want to delete this review?</h3>
                     <button
                       className="deleteInModal"
-                      onClick={() => dispatch(thunkDeleteReview(review.id)).then(closeModal())}
+                      onClick={async () => dispatch(thunkDeleteReview(review.id)).then(() => dispatch(thunkDisplaySpotDetails(spotId))).then(closeModal())}
                     >
                       Yes (Delete Review)
                     </button>
