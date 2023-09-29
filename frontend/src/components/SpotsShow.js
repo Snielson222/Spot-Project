@@ -46,7 +46,7 @@ const SpotsShow = () => {
       <div className="bigImgContainer">
       <div className="imgContainer">
         {data.SpotImages?.filter((img) => img.preview === true).map((img) => (
-          <span key={img.id} className={`img${img.preview}`}>
+          <span key={img?.id} className={`img${img.preview}`}>
             <img
               alt="spotImg"
               className={`img${img.preview}`}
@@ -57,7 +57,7 @@ const SpotsShow = () => {
       </div>
       <div className="imgContainer2">
         {data.SpotImages?.filter((img) => img.preview === false).map((img) => (
-          <span key={img.id} className={`img${img.preview}`}>
+          <span key={img?.id} className={`img${img.preview}`}>
             <img
               alt="spotImg"
               className={`img${img.preview}`}
@@ -103,10 +103,10 @@ const SpotsShow = () => {
         {data?.numReviews === 1 ? "review" : ""}{" "}
         {data?.numReviews > 1 ? "reviews" : ""}
       </div>
-     <button className="modalButtonGrey" hidden={data.ownerId === session.id}>
+     <button className="modalButtonGrey" hidden={data.ownerId === session?.id}>
      <OpenModalButton
      className="noBorder"
-        hidden={data.ownerId === session.id}
+        hidden={data.ownerId === session?.id}
         buttonText="Post Your Review"
         modalComponent={
           <CreateReview spotId={spotId}/>
@@ -122,9 +122,9 @@ const SpotsShow = () => {
             <br></br>
             <div>{review?.review}</div>
             <br></br>
-            <button className="modalButtonGrey" hidden={review?.userId !== session.id}>
+            <button className="modalButtonGrey" hidden={review?.userId !== session?.id}>
               <OpenModalButton
-                hidden={review?.userId !== session.id}
+                hidden={review?.userId !== session?.id}
                 buttonText="Delete Review"
                 className="noBorder"
                 modalComponent={
@@ -133,7 +133,7 @@ const SpotsShow = () => {
                     <h3>Are you sure you want to delete this review?</h3>
                     <button
                       className="deleteInModal"
-                      onClick={async () => dispatch(thunkDeleteReview(review.id)).then(() => dispatch(thunkDisplaySpotDetails(spotId))).then(closeModal())}
+                      onClick={async () => dispatch(thunkDeleteReview(review?.id)).then(() => dispatch(thunkDisplaySpotDetails())).then(closeModal())}
                     >
                       Yes (Delete Review)
                     </button>

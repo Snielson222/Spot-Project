@@ -1,7 +1,7 @@
 import './CreateReview.css'
 import { useState } from 'react';
-import { thunkCreateReview, thunkLoadReviews} from '../store/Reviews';
-import { thunkDisplaySpotDetails, thunkGetAllSpots } from '../store/Spots';
+import { thunkCreateReview} from '../store/Reviews';
+import { thunkDisplaySpotDetails} from '../store/Spots';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../context/Modal';
 
