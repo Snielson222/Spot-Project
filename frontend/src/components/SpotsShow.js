@@ -2,10 +2,9 @@ import "./SpotsShow.css";
 import { useParams } from "react-router-dom";
 import { thunkDisplaySpotDetails } from "../store/Spots";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import {
   thunkLoadReviews,
-  thunkCreateReview,
   thunkDeleteReview,
 } from "../store/Reviews";
 import OpenModalButton from "./OpenModalButton";
@@ -16,10 +15,10 @@ const SpotsShow = () => {
   const { spotId } = useParams();
   const dispatch = useDispatch();
   const { closeModal } = useModal();
+  
+
 
   
-  const [errors, setErrors] = useState({});
-
   useEffect(() => {
     dispatch(thunkDisplaySpotDetails(spotId));
     dispatch(thunkLoadReviews(spotId));
@@ -44,9 +43,10 @@ const SpotsShow = () => {
       <h3>
         {data.city}, {data.state}, {data.country}
       </h3>
+      <div className="bigImgContainer">
       <div className="imgContainer">
-        {data.SpotImages?.map((img) => (
-          <span key={img.id}>
+        {data.SpotImages?.filter((img) => img.preview === true).map((img) => (
+          <span key={img.id} className={`img${img.preview}`}>
             <img
               alt="spotImg"
               className={`img${img.preview}`}
@@ -55,7 +55,19 @@ const SpotsShow = () => {
           </span>
         ))}
       </div>
-      <span className="textContainer">
+      <div className="imgContainer2">
+        {data.SpotImages?.filter((img) => img.preview === false).map((img) => (
+          <span key={img.id} className={`img${img.preview}`}>
+            <img
+              alt="spotImg"
+              className={`img${img.preview}`}
+              src={img.url}
+            ></img>
+          </span>
+        ))}
+      </div>
+      </div>
+      <span className="textShowContainer">
         <div className="nameDescriptionContainer">
           <div>
             Hosted by {data.Owner?.firstName} {data?.Owner?.lastName}

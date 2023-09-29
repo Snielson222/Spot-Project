@@ -5,22 +5,22 @@ import { useDispatch } from 'react-redux';
 import { useModal } from '../context/Modal';
 
 export const CreateReview = ({spotId}) => {
-    console.log("🚀 ~ file: CreateReview.js:8 ~ CreateReview ~ spotId:", spotId)
+    // console.log("🚀 ~ file: CreateReview.js:8 ~ CreateReview ~ spotId:", spotId)
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
     const [rating, setRating] = useState(0);
-  console.log("🚀 ~ file: SpotsShow.js:16 ~ SpotsShow ~ rating:", rating);
+  // console.log("🚀 ~ file: SpotsShow.js:16 ~ SpotsShow ~ rating:", rating);
   const [reviewText, setReviewText] = useState("");
-  console.log(
-    "🚀 ~ file: SpotsShow.js:17 ~ SpotsShow ~ reviewText:",
-    reviewText
-  );
+  // console.log(
+  // "🚀 ~ file: SpotsShow.js:17 ~ SpotsShow ~ reviewText:",
+  // reviewText
+  // );
   const [hoverRating, setHoverRating] = useState(0);
-  console.log(
-    "🚀 ~ file: SpotsShow.js:18 ~ SpotsShow ~ hoverRating:",
-    hoverRating
-  );
+  // console.log(
+  // "🚀 ~ file: SpotsShow.js:18 ~ SpotsShow ~ hoverRating:",
+  // hoverRating
+  // );
 
   const [errors, setErrors] = useState({});
 
@@ -31,28 +31,38 @@ export const CreateReview = ({spotId}) => {
       review: reviewText,
       stars: rating,
     };
-    console.log(
-      "🚀 ~ file: SpotsShow.js:38 ~ onSubmit ~ reviewForm :",
-      reviewForm
-    );
-    const res = dispatch(thunkCreateReview(reviewForm, spotId))
-      .then(closeModal())
-      .catch(errors);
-    if (!res.errors) {
-      closeModal();
-    } else {
-      setErrors(res.errors);
-      console.log(
-        "🚀 ~ file: SpotsShow.js:56 ~ onSubmit ~ res.errors:",
-        res.errors
-      );
-    }
+    // console.log(
+    // "🚀 ~ file: SpotsShow.js:38 ~ onSubmit ~ reviewForm :",
+    // reviewForm
+    // );
+    dispatch(thunkCreateReview(reviewForm, spotId))
+    .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          console.log("🚀 ~ file: CreateReview.js:42 ~ onSubmit ~ data:", data)
+          setErrors(data.message);
+        }
+      });
+    //   console.log("🚀 ~ file: CreateReview.js:39 ~ onSubmit ~ res:", res)
+    // if (!res.ok) {
+    //   closeModal();
+    // } else {
+    //   setErrors(res.message);
+    //   console.log(
+    //   "🚀 ~ file: SpotsShow.js:56 ~ onSubmit ~ res.errors:",
+    //   res.errors
+    //   );
+    // }
+  }
+
+  function disableFunc() {
+    if (reviewText.length < 10 || rating === 0) return true
+    return false
   }
 
 return (<div className="postReviewModal">
 <h1>How was your stay?</h1>
-<p>{errors.review}</p>
-<p>{errors.stars}</p>
+<p>{Object.values(errors)}</p>
 <form onSubmit={onSubmit}>
   <label>
     <input
@@ -68,7 +78,7 @@ return (<div className="postReviewModal">
       onMouseEnter={() => setHoverRating(1)}
       onMouseLeave={() => setHoverRating(0)}
       onClick={() => setRating(1)}
-      className={hoverRating >= 1 ? "full" : "empty"}
+      className={hoverRating >= 1 || rating >= 1? "full" : "empty"}
     >
       <i className="fa fa-star"></i>
     </div>
@@ -76,7 +86,7 @@ return (<div className="postReviewModal">
       onMouseEnter={() => setHoverRating(2)}
       onMouseLeave={() => setHoverRating(0)}
       onClick={() => setRating(2)}
-      className={hoverRating >= 2 ? "full" : "empty"}
+      className={hoverRating >= 2 || rating >= 2 ? "full" : "empty"}
     >
       <i className="fa fa-star"></i>
     </div>
@@ -84,7 +94,7 @@ return (<div className="postReviewModal">
       onMouseEnter={() => setHoverRating(3)}
       onMouseLeave={() => setHoverRating(0)}
       onClick={() => setRating(3)}
-      className={hoverRating >= 3 ? "full" : "empty"}
+      className={hoverRating >= 3 || rating >= 3? "full" : "empty"}
     >
       <i className="fa fa-star"></i>
     </div>
@@ -92,7 +102,7 @@ return (<div className="postReviewModal">
       onMouseEnter={() => setHoverRating(4)}
       onMouseLeave={() => setHoverRating(0)}
       onClick={() => setRating(4)}
-      className={hoverRating >= 4 ? "full" : "empty"}
+      className={hoverRating >= 4 || rating >= 4 ? "full" : "empty"}
     >
       <i className="fa fa-star"></i>
     </div>
@@ -100,12 +110,13 @@ return (<div className="postReviewModal">
       onMouseEnter={() => setHoverRating(5)}
       onMouseLeave={() => setHoverRating(0)}
       onClick={() => setRating(5)}
-      className={hoverRating >= 5 ? "full" : "empty"}
+      className={hoverRating >= 5 || rating >= 5 ? "full" : "empty"}
     >
       <i className="fa fa-star"></i>
     </div>
+    <div> Stars</div>
   </div>
-  <button className="postReviewModalSubmit" type="submit">
+  <button className="postReviewModalSubmit" type="submit" disabled={disableFunc()}>
     Submit Your Review
   </button>
 </form>

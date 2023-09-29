@@ -38,7 +38,7 @@ return (
           >
             <Link exact to={`/spots/${spot.id}`}>
 
-            <img className="spotImg" src={spot.previewImage}></img>
+            <img className="spotImg" alt="SpotImage" src={spot.previewImage}></img>
             </Link>
             <div className='spotDataContainer'>
                 <div className='cityStateRatingContainer'>

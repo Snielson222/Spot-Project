@@ -3,3 +3,84 @@
     flex-direction: column;
     align-items: center;
 }
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    width: 835px;
+}
+
+.countryContainer {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.addressContainer {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.cityStateContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.cityContainer {
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+.stateContainer {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.descriptionContainer {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px black solid;
+}
+
+.descriptionForm {
+    padding-right: 500px;
+    padding-bottom: 300px;
+    border: 2px black solid;
+}
+
+.nameContainer {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px black solid;
+}
+
+.cityInput {
+    padding-right: 370px;
+}
+
+.stateInput {
+    padding-right: 160px;
+}
+
+.priceContainer {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px black solid;
+}
+
+.imageContainer {
+    border-top: 2px black solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.priceInput {
+    padding-right: 700px;
+}

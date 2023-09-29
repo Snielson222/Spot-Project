@@ -1,8 +1,18 @@
+body {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.imgContainer2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .imgfalse {
-    height: 50%;
-    display: flex;
-    flex-flow: row;
-    flex-shrink: 1;
+    width: 256px;
+    height: 200px;
+    border:2px solid white;
+    
 }
 
 .reviewAndButtonContainer {
@@ -12,6 +22,7 @@
     padding: 10px;
     border-radius: 10px;
     margin-top: 10px;
+    margin-left: 15px;
 }
 
 .nameDescriptionContainer {
@@ -21,7 +32,7 @@
     flex-direction: column;
 }
 
-.textContainer {
+.textShowContainer {
     display: grid;
     grid-template-columns: 2fr 1fr;
     border-bottom: 2px black solid;
@@ -30,6 +41,7 @@
 .priceReviewContainer {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 10px;
 }
 
 .reserveButton {
@@ -41,28 +53,46 @@
     padding-bottom: 8px;
 }
 
-.imgContainer {
-    height: 500px;
-    display: flex;
-    grid-template-rows: auto;
+.bigImgContainer {
+    height: 400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 10px;
 
 }
 
 .imgtrue {
-   height: 100%;
+    margin-top: 2px;
+  width: 512px;
+  height: 404px;
+  border: 2px solid white;
+   
 }
 
 .postReviewModal {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .postReviewModalSubmit {
-
+background-color:#FF5A5F;
+border: black 2px solid;
+box-shadow: 2px 2px black;
+margin-top: 15px;
+padding-left: 110px;
+padding-right: 120px;
+padding-top: 10px;
+padding-bottom: 10px;
+color: white;
 }
 
 .postReviewModalTextbox {
     margin-bottom: 15px;
+    padding-bottom: 100px;
+    padding-right: 200px;
 }
 
 .full {
@@ -79,4 +109,5 @@ color: antiquewhite;
 
 .rating {
     display: flex;
+    padding-left: 110px;
 }

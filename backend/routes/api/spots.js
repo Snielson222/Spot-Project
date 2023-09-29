@@ -261,7 +261,7 @@ router.get("/", validateQuery, async (req, res, next) => {
     spot.Reviews.forEach((review) => {
       sum += review.stars;
       let avg = sum / spot.Reviews.length;
-      spot.avgRating = avg;
+      spot.avgRating = avg.toString().slice(0,3);
     });
     delete spot.Reviews;
   });
