@@ -22,6 +22,7 @@ body {
     padding: 10px;
     border-radius: 10px;
     margin-top: 10px;
+    margin-left: 15px;
 }
 
 .nameDescriptionContainer {
@@ -40,6 +41,7 @@ body {
 .priceReviewContainer {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 10px;
 }
 
 .reserveButton {
