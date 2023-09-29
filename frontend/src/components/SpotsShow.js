@@ -103,8 +103,9 @@ const SpotsShow = () => {
         {data?.numReviews === 1 ? "review" : ""}{" "}
         {data?.numReviews > 1 ? "reviews" : ""}
       </div>
-     <button hidden={data.ownerId === session.id}>
+     <button className="modalButtonGrey" hidden={data.ownerId === session.id}>
      <OpenModalButton
+     className="noBorder"
         hidden={data.ownerId === session.id}
         buttonText="Post Your Review"
         modalComponent={
@@ -121,17 +122,18 @@ const SpotsShow = () => {
             <br></br>
             <div>{review?.review}</div>
             <br></br>
-            <button hidden={review?.userId !== session.id}>
+            <button className="modalButtonGrey" hidden={review?.userId !== session.id}>
               <OpenModalButton
                 hidden={review?.userId !== session.id}
                 buttonText="Delete Review"
+                className="noBorder"
                 modalComponent={
                   <div className="modalComponent">
                     <h1>Confirm Delete</h1>
                     <h3>Are you sure you want to delete this review?</h3>
                     <button
                       className="deleteInModal"
-                      onClick={() => dispatch(thunkDeleteReview(review.id))}
+                      onClick={() => dispatch(thunkDeleteReview(review.id)).then(closeModal())}
                     >
                       Yes (Delete Review)
                     </button>

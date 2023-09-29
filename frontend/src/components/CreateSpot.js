@@ -165,6 +165,7 @@ return (<div className='formContainer'>
         Mention the best features of your space, any special amenities like
 fast wif or parking, and what you love about the neighborhood.
 </label>
+<br></br>
             <textarea
             
             value={description}
@@ -180,6 +181,7 @@ fast wif or parking, and what you love about the neighborhood.
         <label>
             Catch guests' attention with a spot title that highlights what makes your place special
             </label>
+            <br></br>
             <input
             type='text'
             value={name}
@@ -191,6 +193,7 @@ fast wif or parking, and what you love about the neighborhood.
         <div className='priceContainer'>
             <h2>Set a base price for your spot</h2>
             <div>Competitive pricing can help your listing stand out and rank higher in search results.</div>
+        <br></br>
         <label>
             $
             <input
@@ -208,6 +211,7 @@ fast wif or parking, and what you love about the neighborhood.
         <label>
             Submit a link to at least one photo to publish your spot.
             </label>
+            <br></br>
             <input
             type='url'
             value={previewImg}
@@ -244,7 +248,10 @@ fast wif or parking, and what you love about the neighborhood.
             </input>
             <p>{errors.img3}</p>
         </div>
+        <div className='createButtonContainer'>
+
             <button className='submitButton' type='submit' onClick={() => setSubmitted(true)}>Create Spot</button>
+        </div>
     </form>
 </div>)
 }

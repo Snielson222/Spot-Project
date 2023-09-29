@@ -180,7 +180,10 @@ fast wif or parking, and what you love about the neighborhood.
             </label>
     <p>{errors.price}</p>
     </div>
+    <div className='createButtonContainer'>
+
         <button className='submitButton' type='submit' onClick={() => setSubmitted(true)}>Create Spot</button>
+    </div>
 </form>
 </div>)
 }

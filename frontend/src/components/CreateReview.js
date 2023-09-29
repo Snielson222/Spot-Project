@@ -36,6 +36,7 @@ export const CreateReview = ({spotId}) => {
     // reviewForm
     // );
     dispatch(thunkCreateReview(reviewForm, spotId))
+    .then(closeModal())
     .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
@@ -65,13 +66,13 @@ return (<div className="postReviewModal">
 <p>{Object.values(errors)}</p>
 <form onSubmit={onSubmit}>
   <label>
-    <input
+    <textarea
       className="postReviewModalTextbox"
       type="text"
       value={reviewText}
       placeholder="Just a quick review."
       onChange={(e) => setReviewText(e.target.value)}
-    ></input>
+    ></textarea>
   </label>
   <div className="rating">
     <div
