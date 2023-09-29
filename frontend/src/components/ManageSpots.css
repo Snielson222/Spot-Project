@@ -61,8 +61,8 @@ li {
 
 .createSpotButton {
  text-decoration: none;
- color: black;
- background-color: #dbdbdb;
+ color: white;
+ background-color: #999999;
  border: 2px black solid;
  box-shadow: 2px 2px black;
  
@@ -72,6 +72,11 @@ li {
     border: 2px black solid;
     background-color: #999999;
     box-shadow: 2px 2px black;
+}
+
+.createSpotBut {
+    color: white;
+    background-color: #999999;
 }
 
 .deleteInModal {

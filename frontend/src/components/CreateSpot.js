@@ -144,7 +144,7 @@ return (<div className='formContainer'>
             </input>
         <p>{errors.city}</p>
         </div>
-        <div>,</div>
+       
         <div className='stateContainer'>
         <label>
             State

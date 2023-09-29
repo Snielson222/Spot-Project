@@ -27,8 +27,11 @@ useEffect(() => {
 
 return (
     <section>
+      <div className='manageSpotsHeader'>
         <h1>Manage Spots</h1>
-        <Link className='createSpotButton' exact to="/spots/new"><button>Create a New Spot</button></Link>
+        
+      <Link className='createSpotButton' exact to="/spots/new"><button className='createSpotBut' >Create a New Spot</button></Link>
+      </div>
       <ul className='ulSpotsContainer'>
         {spots.map((spot) => (
           <div

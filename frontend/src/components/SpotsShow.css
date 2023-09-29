@@ -10,8 +10,8 @@ body {
 }
 
 .imgfalse {
-    width: 256px;
-    height: 200px;
+    width: 250px;
+    height: 197px;
     border:2px solid white;
     
 }
@@ -65,7 +65,7 @@ body {
 
 .imgtrue {
     margin-top: 2px;
-  width: 512px;
+  width: 500px;
   height: 404px;
   border: 2px solid white;
    

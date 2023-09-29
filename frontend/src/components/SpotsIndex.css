@@ -29,12 +29,3 @@
     font-weight: bold;
 }
 
-.toolTipText {
-    visibility: hidden;
-    color: black;
-}
-
-.toolTipText:hover {
-    visibility: visible;
-    opacity: 1;
-}

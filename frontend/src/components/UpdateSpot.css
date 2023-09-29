@@ -127,3 +127,19 @@ input {
 .reserveButton:hover {
     cursor: pointer;
 }
+
+.updateLink {
+    background-color: #999999;
+    color: white;
+}
+
+.manageSpotsHeader {
+    margin-left: 55px;
+}
+
+.textContainerUpdate {
+    display: flex;
+    flex-direction: column;
+    width: 833px;
+}
+
