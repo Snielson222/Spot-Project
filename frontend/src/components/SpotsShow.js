@@ -96,7 +96,8 @@ const SpotsShow = () => {
         </div>
       </span>
       <div>
-        ★{data?.numReviews <= 0 ? "New" : data?.avgStarRating}{" "}
+        ★{data?.numReviews <= 0 ? "New" : data?.avgStarRating}
+        {data?.avgStarRating?.length === 1 ? ".0" : ""}{" "}
         {data?.numReviews <= 0 ? "" : "·"}{" "}
         {data?.numReviews <= 0 ? "" : data?.numReviews}
         {data?.numReviews === 0 ? "" : ""}{" "}
