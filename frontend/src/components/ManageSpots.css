@@ -118,3 +118,8 @@ margin: 15px;
     background-color: #999999;
     
 }
+
+.manageLinks {
+    text-decoration: none;
+    color: black;
+}

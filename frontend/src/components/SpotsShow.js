@@ -45,8 +45,10 @@ const SpotsShow = () => {
 
 const isOwnedByUser = data?.ownerId === session?.id
 
+const notLoggedIn = !session?.id
+
 function hideReviewButton() {
-  return isOwnedByUser || isReviewedByUser;
+  return isOwnedByUser || isReviewedByUser || notLoggedIn;
   // if (data?.ownerId === session?.id || reviewArray?.filter((review) => review.userId === session?.id)) return true
 
   // return false
@@ -130,7 +132,7 @@ function hideReviewButton() {
         }
       />
     </button>
-    <h4>{data?.numReviews <= 0 ? "Be the first to post a review!" : ""}</h4>
+    <h4>{data?.numReviews <= 0 && data.ownerId !== session?.id? "Be the first to post a review!" : ""}</h4>
       <div className="reviewContainer">
         {reviewArray.map((review) => (
           <div key={review.id}>
