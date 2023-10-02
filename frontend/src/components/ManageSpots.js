@@ -27,8 +27,11 @@ useEffect(() => {
 
 return (
     <section>
+      <div className='manageSpotsHeader'>
         <h1>Manage Spots</h1>
-        <Link className='createSpotButton' exact to="/spots/new"><button>Create a New Spot</button></Link>
+        
+      <Link className='createSpotButton' exact to="/spots/new"><button className='createSpotBut' >Create a New Spot</button></Link>
+      </div>
       <ul className='ulSpotsContainer'>
         {spots.map((spot) => (
           <div
@@ -36,17 +39,17 @@ return (
             key={spot.id}
             className='spotsContainer'
           >
-            <Link exact to={`/spots/${spot.id}`}>
+            <Link className="manageLinks" exact to={`/spots/${spot.id}`}>
 
             <img className="spotImg" alt="SpotImage" src={spot.previewImage}></img>
-            </Link>
             <div className='spotDataContainer'>
                 <div className='cityStateRatingContainer'>
-            <div>{spot.city}, {spot.state}</div>
+            <div className='manageLinks'>{spot.city}, {spot.state}</div>
             <div>★{spot.avgRating === 0 ? "New" : spot.avgRating}</div>
                 </div>
             <div>${spot.price} night</div>
             </div>
+            </Link>
             <div className='updateDeleteLinks'>
             <Link exact to={`/spots/${spot.id}/edit`}><button className='updateLink'>Update</button></Link>
             <div className="modalDelete" >

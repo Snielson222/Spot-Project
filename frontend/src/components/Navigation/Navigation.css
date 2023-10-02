@@ -26,20 +26,40 @@
     height: 60px;
 }
 
-.profileButton {
-    height: 60px;
+.profileButtonButton {
+    height: 40px;
+  position: absolute;
+  top: 30px;
+  right: 10px;
+}
+
+.profile-dropdown {
+    position: relative;
+    top: 85px;
+    border: 2px black solid;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    padding-right: 40px;
+    padding-bottom: 10px;
 }
 
 .menuOpen {
     display: flex;
-    border: 1px black solid;
+    
     flex-direction: column;
     height: 50px;
     padding-right: 20px;
     list-style-type: none;
+    position: relative;
+    
+    background-color: white;
 }
 
-
+.menuOpen:hover {
+    cursor: pointer;
+}
 
 p {
     color: red;
@@ -52,15 +72,19 @@ p {
 }
 
 .create {
-    padding-right: 25px;
+    padding-right: 40px;
     text-decoration: none;
     color: black;
 }
 
-.profile-dropdownhidden {
+.hidden {
     display: none;
 }
 
 .profileButtonButton:hover {
 cursor: pointer;
+}
+
+.manageSpotsButton:hover {
+    cursor: pointer;
 }

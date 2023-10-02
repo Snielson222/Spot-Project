@@ -1,6 +1,7 @@
 body {
     max-width: 1024px;
     margin: 0 auto;
+   
 }
 
 .imgContainer2 {
@@ -9,8 +10,8 @@ body {
 }
 
 .imgfalse {
-    width: 256px;
-    height: 200px;
+    width: 250px;
+    height: 197px;
     border:2px solid white;
     
 }
@@ -64,7 +65,7 @@ body {
 
 .imgtrue {
     margin-top: 2px;
-  width: 512px;
+  width: 500px;
   height: 404px;
   border: 2px solid white;
    
@@ -105,9 +106,14 @@ color: antiquewhite;
 
 .spotsShowContainer {
     max-width: 1024px;
+    margin-bottom: 10px;
 }
 
 .rating {
     display: flex;
     padding-left: 110px;
+}
+
+.manageLinks {
+    text-decoration: none;
 }

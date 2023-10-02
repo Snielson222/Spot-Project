@@ -2,12 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+   
 }
 
 .textContainer {
     display: flex;
     flex-direction: column;
-    width: 835px;
+    width: 860px;
 }
 
 .countryContainer {
@@ -76,6 +77,7 @@
 }
 
 .imageContainer {
+    margin-top: 10px;
     border-top: 2px black solid;
     display: flex;
     flex-direction: column;
@@ -83,4 +85,84 @@
 
 .priceInput {
     padding-right: 700px;
+}
+
+.createButtonContainer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.submitButton {
+    border: 2px solid black;
+    box-shadow: 3px 3px black;
+    background-color: #FF5A5F;
+    color: white;
+    padding:5px;
+    padding-left: 10px;
+    padding-right: 10px
+}
+
+input {
+    border: 2px black solid;
+}
+
+.modalButtonGrey {
+    border: 2px black solid;
+    box-shadow: 3px  3px black;
+    background-color: #999999;
+    padding: 3px;
+}
+
+.noBorder {
+    border:none;
+    background-color:#999999 ;
+    color: white;
+}
+
+.noBorder:hover {
+    cursor: pointer;
+}
+
+.reserveButton:hover {
+    cursor: pointer;
+}
+
+.updateLink {
+    background-color: #999999;
+    color: white;
+}
+
+.manageSpotsHeader {
+    margin-left: 55px;
+}
+
+.textContainerUpdate {
+    display: flex;
+    flex-direction: column;
+    width: 833px;
+}
+
+.postReviewModalSubmit:hover {
+    cursor: pointer;
+}
+
+.deleteInModal:hover {
+    cursor: pointer;
+}
+
+.closeInModal:hover {
+    cursor: pointer;
+}
+
+.createSpotBut:hover {
+cursor: pointer;
+}
+
+.updateLink:hover {
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    cursor: pointer;
 }

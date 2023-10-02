@@ -2,7 +2,7 @@ import "./SpotsShow.css";
 import { useParams } from "react-router-dom";
 import { thunkDisplaySpotDetails } from "../store/Spots";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect} from "react";
+import { useEffect, useMemo} from "react";
 import {
   thunkLoadReviews,
   thunkDeleteReview,
@@ -29,13 +29,30 @@ const SpotsShow = () => {
 //   console.log("🚀 ~ file: SpotsShow.js:18 ~ SpotsShow ~ data:", data)
 
   const review1 = useSelector((state) => state.reviews);
-  const reviewArray = Object.values(review1);
+  // sort by created at
+  const reviewArray = useMemo(() => Object.values(review1).sort((a, b) => {
+    return new Date(b.createdAt) - new Date(a.createdAt)
+  }), [review1]);
   // console.log("🚀 ~ file: SpotsShow.js:32 ~ SpotsShow ~ reviewArray:", reviewArray)
 
   const session = useSelector((state) => state.session.user);
   // console.log("🚀 ~ file: SpotsShow.js:39 ~ SpotsShow ~ session:", session)
 
- 
+  const isReviewedByUser = reviewArray.filter(review => {
+    console.log({review})
+    return review.userId === session?.id
+  }).length > 0
+
+const isOwnedByUser = data?.ownerId === session?.id
+
+const notLoggedIn = !session?.id
+
+function hideReviewButton() {
+  return isOwnedByUser || isReviewedByUser || notLoggedIn;
+  // if (data?.ownerId === session?.id || reviewArray?.filter((review) => review.userId === session?.id)) return true
+
+  // return false
+}
 
   return (
     <div className="spotsShowContainer">
@@ -46,7 +63,7 @@ const SpotsShow = () => {
       <div className="bigImgContainer">
       <div className="imgContainer">
         {data.SpotImages?.filter((img) => img.preview === true).map((img) => (
-          <span key={img.id} className={`img${img.preview}`}>
+          <span key={img?.id} className={`img${img.preview}`}>
             <img
               alt="spotImg"
               className={`img${img.preview}`}
@@ -57,7 +74,7 @@ const SpotsShow = () => {
       </div>
       <div className="imgContainer2">
         {data.SpotImages?.filter((img) => img.preview === false).map((img) => (
-          <span key={img.id} className={`img${img.preview}`}>
+          <span key={img?.id} className={`img${img.preview}`}>
             <img
               alt="spotImg"
               className={`img${img.preview}`}
@@ -79,7 +96,8 @@ const SpotsShow = () => {
           <div className="priceReviewContainer">
             <div>${data?.price} night</div>
             <div>
-              ★{data?.numReviews <= 0 ? "New" : data?.avgStarRating}{" "}
+              ★{data?.numReviews <= 0 ? "New" : data?.avgStarRating}
+              {data?.avgStarRating?.length === 1 ? ".0" : ""}{" "}{" "}
               {data?.numReviews <= 0 ? "" : "·"}{" "}
               {data?.numReviews <= 0 ? "" : data?.numReviews}
               {data?.numReviews === 0 ? "" : ""}{" "}
@@ -96,23 +114,25 @@ const SpotsShow = () => {
         </div>
       </span>
       <div>
-        ★{data?.numReviews <= 0 ? "New" : data?.avgStarRating}{" "}
+        ★{data?.numReviews <= 0 ? "New" : data?.avgStarRating}
+        {data?.avgStarRating?.length === 1 ? ".0" : ""}{" "}
         {data?.numReviews <= 0 ? "" : "·"}{" "}
         {data?.numReviews <= 0 ? "" : data?.numReviews}
         {data?.numReviews === 0 ? "" : ""}{" "}
         {data?.numReviews === 1 ? "review" : ""}{" "}
         {data?.numReviews > 1 ? "reviews" : ""}
       </div>
-     <button hidden={data.ownerId === session.id}>
+     <button className="modalButtonGrey" hidden={hideReviewButton()}>
      <OpenModalButton
-        hidden={data.ownerId === session.id}
+     className="noBorder"
+        hidden={data.ownerId === session?.id}
         buttonText="Post Your Review"
         modalComponent={
           <CreateReview spotId={spotId}/>
         }
       />
     </button>
-    <h4>{data?.numReviews <= 0 ? "Be the first to post a review!" : ""}</h4>
+    <h4>{data?.numReviews <= 0 && data.ownerId !== session?.id? "Be the first to post a review!" : ""}</h4>
       <div className="reviewContainer">
         {reviewArray.map((review) => (
           <div key={review.id}>
@@ -121,17 +141,18 @@ const SpotsShow = () => {
             <br></br>
             <div>{review?.review}</div>
             <br></br>
-            <button hidden={review?.userId !== session.id}>
+            <button className="modalButtonGrey" hidden={review?.userId !== session?.id}>
               <OpenModalButton
-                hidden={review?.userId !== session.id}
+                hidden={review?.userId !== session?.id}
                 buttonText="Delete Review"
+                className="noBorder"
                 modalComponent={
                   <div className="modalComponent">
                     <h1>Confirm Delete</h1>
                     <h3>Are you sure you want to delete this review?</h3>
                     <button
                       className="deleteInModal"
-                      onClick={() => dispatch(thunkDeleteReview(review.id))}
+                      onClick={async () => dispatch(thunkDeleteReview(review?.id)).then(() => dispatch(thunkDisplaySpotDetails(spotId))).then(closeModal())}
                     >
                       Yes (Delete Review)
                     </button>

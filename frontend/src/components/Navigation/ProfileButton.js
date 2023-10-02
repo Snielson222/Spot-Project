@@ -42,12 +42,13 @@ function ProfileButton({ user }) {
     history.push("/");
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : "hidden");
+  const ulClassName = "profile-dropdown " + (showMenu ? "" : "hidden");
   
 
   return (
     <>
       <button className="profileButtonButton" onClick={openMenu}>
+      <i class="fa fa-bars" aria-hidden="true"></i>
       <i className="fas fa-user-circle" />
       </button>
       <ul className={ulClassName} 
@@ -55,12 +56,13 @@ function ProfileButton({ user }) {
         {user ? (
           
           <>
+            <li>Hello, {user.firstName}</li>
             <li>{user.username}</li>
             <li>{user.firstName} {user.lastName}</li>
             <li>{user.email}</li>
             
               <li className="manageSpots"><Link className='manageLink' exact to='/spots/current'>Manage Spots</Link></li>
-              <button onClick={logout}>Log Out</button>
+              <button className="manageSpotsButton" onClick={logout}>Log Out</button>
             
           </>
           
@@ -71,6 +73,7 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
+            <br></br>
             <OpenModalMenuItem
               itemText="Sign Up"
               onItemClick={closeMenu}

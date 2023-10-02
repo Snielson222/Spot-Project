@@ -59,8 +59,9 @@ function LoginFormModal() {
             placeholder="Password"
           />
         </label>
-        <button onClick={demoUser}>Demo User</button>
         <button disabled={disableCheck()} className="logInButton" type="submit">Log In</button>
+        <br></br>
+        <button onClick={demoUser}>Demo User</button>
       </form>
     </div>
   );

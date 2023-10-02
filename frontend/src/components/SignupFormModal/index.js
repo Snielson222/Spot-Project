@@ -50,7 +50,7 @@ function SignupFormModal() {
   return (
     <>
       <h1>Sign Up</h1>
-      <p>{Object.values(errors)}</p>
+      {/* <p>{Object.values(errors)}</p> */}
       <form className="signupFormContainer" onSubmit={handleSubmit}>
         <label className="email">
           <input

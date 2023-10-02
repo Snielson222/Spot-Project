@@ -40,3 +40,7 @@ border-radius: 15px;
     width: 40%;
     height: 40%;
 }
+
+.logInButton:hover {
+    cursor: pointer;
+}
