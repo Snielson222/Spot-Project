@@ -22,40 +22,58 @@ export const CreateSpot = () => {
     const [errors, setErrors] = useState({})
     const [submitted, setSubmitted] = useState(false)
 
-    useEffect(() => {
-        const errorsObj = {}
+    // useEffect(() => {
+    //     const errorsObj = {}
        
 
-        if (submitted) {
+    //     if (submitted) {
         
-            if (!state.length) errorsObj.state = "State is required"
-            if (!country.length) errorsObj.country = "Country is required"
-            if (!address.length) errorsObj.address = "Address is required"
-            if (!city.length) errorsObj.city = "City is required"
-            if (description.length < 30) errorsObj.description = "Description needs a minimum of 30 characters"
-            if (!name.length) errorsObj.name = "name is required"
-            if (!price) errorsObj.price = "Price is required"
-            if (!previewImg.includes(".png")) errorsObj.setPreviewImg = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!previewImg.includes(".jpg")) errorsObj.setPreviewImg = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!previewImg.includes(".jpeg")) errorsObj.setPreviewImg = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!img.includes(".png")) errorsObj.img = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!img.includes(".jpg")) errorsObj.img = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!img.includes(".jpeg")) errorsObj.img = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!img1.includes(".png")) errorsObj.img1 = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!img1.includes(".jpg")) errorsObj.img1 = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!img1.includes(".jpeg")) errorsObj.img1 = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!img2.includes(".png")) errorsObj.img2 = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!img2.includes(".jpg")) errorsObj.img2 = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!img2.includes(".jpeg")) errorsObj.img2 = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!img3.includes(".png")) errorsObj.img3 = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!img3.includes(".jpg")) errorsObj.img3 = "Image URL must end in .png, .jpg, or .jpeg"
-            if (!img3.includes(".jpeg")) errorsObj.img3 = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!state.length) errorsObj.state = "State is required"
+    //         if (!country.length) errorsObj.country = "Country is required"
+    //         if (!address.length) errorsObj.address = "Address is required"
+    //         if (!city.length) errorsObj.city = "City is required"
+    //         if (description.length < 30) errorsObj.description = "Description needs a minimum of 30 characters"
+    //         if (!name.length) errorsObj.name = "name is required"
+    //         if (!price) errorsObj.price = "Price is required"
+    //         if (!previewImg.includes(".png")) errorsObj.setPreviewImg = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!previewImg.includes(".jpg")) errorsObj.setPreviewImg = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!previewImg.includes(".jpeg")) errorsObj.setPreviewImg = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!img.includes(".png")) errorsObj.img = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!img.includes(".jpg")) errorsObj.img = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!img.includes(".jpeg")) errorsObj.img = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!img1.includes(".png")) errorsObj.img1 = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!img1.includes(".jpg")) errorsObj.img1 = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!img1.includes(".jpeg")) errorsObj.img1 = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!img2.includes(".png")) errorsObj.img2 = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!img2.includes(".jpg")) errorsObj.img2 = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!img2.includes(".jpeg")) errorsObj.img2 = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!img3.includes(".png")) errorsObj.img3 = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!img3.includes(".jpg")) errorsObj.img3 = "Image URL must end in .png, .jpg, or .jpeg"
+    //         if (!img3.includes(".jpeg")) errorsObj.img3 = "Image URL must end in .png, .jpg, or .jpeg"
         
-        }
-        setErrors(errorsObj)
+    //     }
+    //     setErrors(errorsObj)
         
-    }, [state, country, address, city, description, name, price, previewImg, img, img1, img2, img3, submitted])
+    // }, [state, country, address, city, description, name, price, previewImg, img, img1, img2, img3, submitted])
     
+    function setFormErrors(errorsObj = {}) {
+        if (!state.length) errorsObj.state = "State is required"
+        if (!country.length) errorsObj.country = "Country is required"
+        if (!address.length) errorsObj.address = "Address is required"
+        if (!city.length) errorsObj.city = "City is required"
+        if (description.length < 30) errorsObj.description = "Description needs a minimum of 30 characters"
+        if (!name.length) errorsObj.name = "name is required"
+        if (!price) errorsObj.price = "Price is required"
+        if (!previewImg.includes(".png") && !previewImg.includes(".jpg") && !previewImg.includes(".jpeg") && !previewImg.length) errorsObj.setPreviewImg = "Image URL must end in .png, .jpg, or .jpeg"
+        // if (!img.includes(".png") || !img.includes(".jpg") || !img.includes(".jpeg")) errorsObj.img = "Image URL must end in .png, .jpg, or .jpeg"
+        // if (!img1.includes(".png") || !img1.includes(".jpg") || !img1.includes(".jpeg")) errorsObj.img1 = "Image URL must end in .png, .jpg, or .jpeg"
+        // if (!img2.includes(".png") || !img2.includes(".jpg") || !img2.includes(".jpeg")) errorsObj.img2 = "Image URL must end in .png, .jpg, or .jpeg"
+        // if (!img3.includes(".png") || !img3.includes(".jpg") || !img3.includes(".jpeg")) errorsObj.img3 = "Image URL must end in .png, .jpg, or .jpeg"
+    
+    
+    setErrors(errorsObj)
+    }
+
     const onSubmit = async (e) => {
         e.preventDefault()
         const lat = 1;
@@ -72,34 +90,41 @@ export const CreateSpot = () => {
             lng
         }
         
+        console.log("🚀 ~ file: CreateSpot.js:130 ~ onSubmit ~ errors:", errors)
         
         
-        const res = await dispatch(thunkCreateSpot(spot))
-        if (previewImg.length) {
-            const imgRes = await dispatch(thunkCreateSpotImage({url: previewImg, preview: true}, res.id))
-        }
-        if (img.length) {
-            const imgRes = await dispatch(thunkCreateSpotImage({url: img, preview: false}, res.id))
-        } 
-        if (img1.length) {
-            const imgRes = await dispatch(thunkCreateSpotImage({url: img1, preview: false}, res.id))
-        } 
-        if (img2.length) {
-            const imgRes = await dispatch(thunkCreateSpotImage({url: img2, preview: false}, res.id))
-        } 
-        if (img3.length) {
-            const imgRes = await dispatch(thunkCreateSpotImage({url: img3, preview: false}, res.id))
-        } 
-        console.log("🚀 ~ file: CreateSpot.js:85 ~ onSubmit ~ res :", res )
-        if (!res.errors) {
-            history.push(`/spots/${res.id}`)
-        } else {
-            setErrors(res.errors)
-        }
+        if (Object.values(errors).length === 0) { 
 
+            const res = await dispatch(thunkCreateSpot(spot))
+            console.log("🚀 ~ file: CreateSpot.js:85 ~ onSubmit ~ res :", res )
+            
+            if (previewImg.length) {
+                const imgRes = await dispatch(thunkCreateSpotImage({url: previewImg, preview: true}, res.id))
+            }
+            if (img.length) {
+                const imgRes = await dispatch(thunkCreateSpotImage({url: img, preview: false}, res.id))
+            } 
+            if (img1.length) {
+                const imgRes = await dispatch(thunkCreateSpotImage({url: img1, preview: false}, res.id))
+            } 
+            if (img2.length) {
+                const imgRes = await dispatch(thunkCreateSpotImage({url: img2, preview: false}, res.id))
+            } 
+            if (img3.length) {
+                const imgRes = await dispatch(thunkCreateSpotImage({url: img3, preview: false}, res.id))
+            } 
+            if (!res.errors) {
+                history.push(`/spots/${res.id}`)
+            } 
+            else {
+                setErrors(res.errors)
+            }
+            
+        }
     }
 
 return (<div className='formContainer'>
+    {/* <p>{Object.values(errors)}</p> */}
     <div className='textContainer'>
         <h2>Create a new Spot</h2>
         <h3>Where's your place located?</h3>
@@ -252,8 +277,8 @@ fast wif or parking, and what you love about the neighborhood.
 
             <button className='submitButton' 
             type='submit' 
-            disabled={!state.length || !country.length || !address.length}
-            onClick={() => setSubmitted(true)}>Create Spot</button>
+            // disabled={!state.length || !country.length || !address.length}
+            onClick={() => setFormErrors()}>Create Spot</button>
         </div>
     </form>
 </div>)
