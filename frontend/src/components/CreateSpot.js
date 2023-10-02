@@ -250,7 +250,10 @@ fast wif or parking, and what you love about the neighborhood.
         </div>
         <div className='createButtonContainer'>
 
-            <button className='submitButton' type='submit' onClick={() => setSubmitted(true)}>Create Spot</button>
+            <button className='submitButton' 
+            type='submit' 
+            disabled={!state.length || !country.length || !address.length}
+            onClick={() => setSubmitted(true)}>Create Spot</button>
         </div>
     </form>
 </div>)

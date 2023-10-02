@@ -73,7 +73,7 @@ return (<div className="postReviewModal">
       className="postReviewModalTextbox"
       type="text"
       value={reviewText}
-      placeholder="Just a quick review."
+      placeholder="Leave your review here..."
       onChange={(e) => setReviewText(e.target.value)}
     ></textarea>
   </label>

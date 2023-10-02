@@ -364,7 +364,7 @@ router.get("/:spotId(\\d+)/reviews", async (req, res, next) => {
   let reviews = await Spot.findByPk(req.params.spotId, {
     include: [
       {
-        model: Review,
+        model: Review, 
         include: [
           { model: User, attributes: ["id", "firstName", "lastName"] },
           { model: ReviewImage, attributes: ["id", "url"] },
@@ -414,14 +414,20 @@ router.post(
         message: "Spot couldn't be found",
       });
     }
+
+    const isReviewUnique = true;
     checkSpot.Reviews.forEach((review) => {
       if (req.user.dataValues.id === review.userId) {
-        res.status(500);
-        return res.json({
-          message: "User already has a review for this spot",
-        });
+        isReviewUnique = false
       }
     });
+
+    if (!isReviewUnique) {
+      res.status(500);
+      return res.json({
+        message: "User already has a review for this spot",
+      });
+    }
 
     const newReview = await Review.build({
       userId: req.user.dataValues.id,
