@@ -300,7 +300,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
     let sum = 0;
     spot.Reviews.forEach((review) => {
       sum += review.stars;
-      console.log("🚀 ~ file: spots.js:303 ~ spot.Reviews.forEach ~ review:", review)
+      
      
       
       let avg = sum / spot.Reviews.length;
@@ -313,7 +313,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
     }
     delete spot.Reviews;
   });
-  console.log("🚀 ~ file: spots.js:316 ~ spotsList.forEach ~ spotsList:", spotsList)
+  
 
   spotsList.forEach((spot) => {
     spot.SpotImages.forEach((image) => {
@@ -462,8 +462,7 @@ router.get("/:spotId(\\d+)/bookings", requireAuth, async (req, res, next) => {
   jsonBooking = bookings.toJSON();
 
 
-console.log(bookings.ownerId, "ownerId")
-console.log(req.user.dataValues.id, "USER")
+
 if (req.user.dataValues.id == bookings.ownerId) {
   jsonBooking.Bookings.forEach((booking) => {
     const start = new Date(booking.startDate)

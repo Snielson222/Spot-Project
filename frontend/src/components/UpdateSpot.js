@@ -75,7 +75,6 @@ export const UpdateSpot = () => {
             history.push(`/spots/${spotId}`)
         } else {
             setErrors(res.errors)
-            console.log("🚀 ~ file: UpdateSpot.js:79 ~ onSubmit ~ res.errors:", res.errors)
         }
 
     }

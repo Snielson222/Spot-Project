@@ -90,13 +90,12 @@ export const CreateSpot = () => {
             lng
         }
         
-        console.log("🚀 ~ file: CreateSpot.js:130 ~ onSubmit ~ errors:", errors)
-        
+         
         
         if (Object.values(errors).length === 0) { 
 
             const res = await dispatch(thunkCreateSpot(spot))
-            console.log("🚀 ~ file: CreateSpot.js:85 ~ onSubmit ~ res :", res )
+            
             
             if (previewImg.length) {
                 const imgRes = await dispatch(thunkCreateSpotImage({url: previewImg, preview: true}, res.id))
