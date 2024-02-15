@@ -25,7 +25,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
       { model: ReviewImage },
     ],
   });
-  console.log(reviews)
+ 
 
   if (!reviews) {
     res.status(404);
@@ -79,7 +79,7 @@ router.post("/:reviewId/images", requireAuth, async (req, res, next) => {
     res.status(401);
     return res.json({ message: "Review must belong to the current user" });
   }
-  console.log(testReview);
+  
   const newImage = await ReviewImage.build({
     reviewId: req.params.reviewId,
     url,

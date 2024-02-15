@@ -26,17 +26,17 @@ const SpotsShow = () => {
 
   const spot = useSelector((state) => state.spots[spotId]);
   const data = { ...spot };
-//   console.log("🚀 ~ file: SpotsShow.js:18 ~ SpotsShow ~ data:", data)
+
 
   const review1 = useSelector((state) => state.reviews);
   // sort by created at
   const reviewArray = useMemo(() => Object.values(review1).sort((a, b) => {
     return new Date(b.createdAt) - new Date(a.createdAt)
   }), [review1]);
-  // console.log("🚀 ~ file: SpotsShow.js:32 ~ SpotsShow ~ reviewArray:", reviewArray)
+
 
   const session = useSelector((state) => state.session.user);
-  // console.log("🚀 ~ file: SpotsShow.js:39 ~ SpotsShow ~ session:", session)
+
 
   const isReviewedByUser = reviewArray.filter(review => {
     console.log({review})

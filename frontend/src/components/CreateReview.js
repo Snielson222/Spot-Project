@@ -6,22 +6,16 @@ import { useDispatch } from 'react-redux';
 import { useModal } from '../context/Modal';
 
 export const CreateReview = ({spotId}) => {
-    // console.log("🚀 ~ file: CreateReview.js:8 ~ CreateReview ~ spotId:", spotId)
+    
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
     const [rating, setRating] = useState(0);
-  // console.log("🚀 ~ file: SpotsShow.js:16 ~ SpotsShow ~ rating:", rating);
+
   const [reviewText, setReviewText] = useState("");
-  // console.log(
-  // "🚀 ~ file: SpotsShow.js:17 ~ SpotsShow ~ reviewText:",
-  // reviewText
-  // );
+  
   const [hoverRating, setHoverRating] = useState(0);
-  // console.log(
-  // "🚀 ~ file: SpotsShow.js:18 ~ SpotsShow ~ hoverRating:",
-  // hoverRating
-  // );
+  
 
   const [errors, setErrors] = useState({});
 
@@ -32,31 +26,17 @@ export const CreateReview = ({spotId}) => {
       review: reviewText,
       stars: rating,
     };
-    // console.log(
-    // "🚀 ~ file: SpotsShow.js:38 ~ onSubmit ~ reviewForm :",
-    // reviewForm
-    // );
+    
     dispatch(thunkCreateReview(reviewForm, spotId))
     .then(() => dispatch(thunkDisplaySpotDetails(spotId)))
     .then(closeModal())
     .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
-          console.log("🚀 ~ file: CreateReview.js:42 ~ onSubmit ~ data:", data)
           setErrors(data.message);
         }
       });
 
-    //   console.log("🚀 ~ file: CreateReview.js:39 ~ onSubmit ~ res:", res)
-    // if (!res.ok) {
-    //   closeModal();
-    // } else {
-    //   setErrors(res.message);
-    //   console.log(
-    //   "🚀 ~ file: SpotsShow.js:56 ~ onSubmit ~ res.errors:",
-    //   res.errors
-    //   );
-    // }
   }
 
   function disableFunc() {
