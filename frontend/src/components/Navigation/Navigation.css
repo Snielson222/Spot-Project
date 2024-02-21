@@ -1,6 +1,27 @@
 .navContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 2px solid lightgray;
     
+}
+
+.searchNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
+}
+
+.searchLabel {
+    border-radius: 40px;
+    border: 1px black solid;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.searchInput {
+   border: none;
 }
 
 .navBar {
@@ -11,7 +32,7 @@
     display: flex;
     justify-content: space-between;
     list-style-type: none;
-    border-bottom: 2px solid lightgray;
+    
     align-items: center;
     height: 80px;
     margin-top: 5%;

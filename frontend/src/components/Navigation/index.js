@@ -27,6 +27,11 @@ function Navigation({ isLoaded }){
       )}
       </div>
     </div>
+    <div className='searchNav'>
+      <label className='searchLabel'>
+      <input className='searchInput'></input>
+      </label>
+    </div>
     </div>
   );
 }
