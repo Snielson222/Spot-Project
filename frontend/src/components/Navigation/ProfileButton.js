@@ -49,8 +49,8 @@ function ProfileButton({ user }) {
     <>
     <div className="profileBox">
       <button className="profileButtonButton" onClick={openMenu}>
-      <i class="fa fa-bars" aria-hidden="true"></i>
-      <i className="fas fa-user-circle" />
+      <i class="fa fa-bars fa-2x" id="userlines" aria-hidden="true"></i>
+      <i className="fas fa-user-circle fa-2x" id="usercircle"/>
       </button>
     </div>
       <ul className={ulClassName} 
