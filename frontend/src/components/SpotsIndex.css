@@ -10,7 +10,7 @@
 @media (min-width: 500px) {
     .ulSpotsContainer {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
 }
 
