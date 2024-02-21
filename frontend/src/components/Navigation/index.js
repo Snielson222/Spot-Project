@@ -10,24 +10,24 @@ function Navigation({ isLoaded }){
 
   return (
     
-    <ul className='navContainer'>
+    <div className='navContainer'>
       <div className='navBar'>
-      <li>
+      <div>
         <NavLink className="home" exact to="/"><img className="logo" alt="logo" src={imgSrc}></img></NavLink>
-      </li>
-      <ul className='createAndProfileContainer'>
+      </div>
+      <div className='createAndProfileContainer'>
 
-      <li>
+      <div>
         <NavLink className="create" exact to='/spots/new'>{sessionUser ? "Create a New Spot" : ""}</NavLink>
-      </li>
+      </div>
       {isLoaded && (
         <li>
           <ProfileButton user={sessionUser} />
         </li>
       )}
-      </ul>
+      </div>
     </div>
-    </ul>
+    </div>
   );
 }
 

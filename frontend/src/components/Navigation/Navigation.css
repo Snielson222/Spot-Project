@@ -10,7 +10,7 @@
 
 .navBar {
     margin-left: 20%;
-    margin-right: 20%
+    margin-right: 20%;
 }
 
 .home {
@@ -28,13 +28,11 @@
 
 .logo {
     height: 60px;
+    width: 60px;
 }
 
 .profileButtonButton {
     height: 40px;
-  position: absolute;
-  top: 30px;
-  right: 10px;
 }
 
 .profile-dropdown {
@@ -70,9 +68,7 @@ p {
 }
 
 .createAndProfileContainer {
-    display: flex;
-    align-items: center;
-    list-style-type: none;
+    
 }
 
 .create {
