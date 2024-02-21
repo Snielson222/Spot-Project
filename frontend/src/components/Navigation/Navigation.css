@@ -1,17 +1,44 @@
 .navContainer {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 2px solid lightgray;
+    
+}
+
+.searchNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.searchLabel {
+    border-radius: 40px;
+    border: 1px black solid;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.searchInput {
+   border: none;
+}
+
+.navBar {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
     justify-content: space-between;
     list-style-type: none;
-    border-bottom: 2px solid lightgray;
+    
     align-items: center;
-    height: 70px;
-    padding-left: 20px;
-    padding-right: 20px;
+    height: 80px;
+    margin-top: 5%;
+    
 }
 
-.home {
-
-}
 
 .modalContainer {
     list-style-type: none;
@@ -23,14 +50,25 @@
 }
 
 .logo {
+    width: 100px;
     height: 60px;
 }
 
 .profileButtonButton {
-    height: 40px;
-  position: absolute;
-  top: 30px;
-  right: 10px;
+    height: 50px;
+    border-radius: 25px;
+    border: 1px solid lightgray;
+    background-color: white;
+    color: gray;
+}
+
+#usercircle {
+    padding-left: 15px;
+    padding-right: 5px;
+}
+
+#userlines {
+    padding-left: 5px;
 }
 
 .profile-dropdown {
@@ -41,8 +79,6 @@
     display: flex;
     flex-direction: column;
     align-items:flex-start;
-    padding-right: 40px;
-    padding-bottom: 10px;
 }
 
 .menuOpen {
@@ -50,7 +86,7 @@
     
     flex-direction: column;
     height: 50px;
-    padding-right: 20px;
+
     list-style-type: none;
     position: relative;
     
@@ -66,13 +102,11 @@ p {
 }
 
 .createAndProfileContainer {
-    display: flex;
-    align-items: center;
-    list-style-type: none;
+    
 }
 
 .create {
-    padding-right: 40px;
+    
     text-decoration: none;
     color: black;
 }

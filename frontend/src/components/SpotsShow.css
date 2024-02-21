@@ -1,5 +1,4 @@
 body {
-    max-width: 1024px;
     margin: 0 auto;
    
 }
@@ -13,6 +12,7 @@ body {
     width: 250px;
     height: 197px;
     border:2px solid white;
+    border-radius: 15px;
     
 }
 
@@ -68,6 +68,7 @@ body {
   width: 500px;
   height: 404px;
   border: 2px solid white;
+  border-radius: 15px;
    
 }
 
@@ -107,6 +108,8 @@ color: antiquewhite;
 .spotsShowContainer {
     max-width: 1024px;
     margin-bottom: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .rating {

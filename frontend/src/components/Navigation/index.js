@@ -9,22 +9,30 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <ul className='navContainer'>
-      <li>
+    
+    <div className='navContainer'>
+      <div className='navBar'>
+      <div>
         <NavLink className="home" exact to="/"><img className="logo" alt="logo" src={imgSrc}></img></NavLink>
-      </li>
-      <ul className='createAndProfileContainer'>
+      </div>
+      <div className='createAndProfileContainer'>
 
-      <li>
+      <div>
         <NavLink className="create" exact to='/spots/new'>{sessionUser ? "Create a New Spot" : ""}</NavLink>
-      </li>
+      </div>
       {isLoaded && (
         <li>
           <ProfileButton user={sessionUser} />
         </li>
       )}
-      </ul>
-    </ul>
+      </div>
+    </div>
+    <div className='searchNav'>
+      <label className='searchLabel'>
+      <input className='searchInput'></input>
+      </label>
+    </div>
+    </div>
   );
 }
 

@@ -7,13 +7,6 @@
    height: 150px;
 }
 
-@media (min-width: 500px) {
-    .ulSpotsContainer {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-}
-
 .cityStateRatingContainer {
     display: flex;
     justify-content: space-between;

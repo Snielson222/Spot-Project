@@ -24,7 +24,7 @@ const SpotsIndex = () => {
  
   return (
     <section>
-      <ul className='ulSpotsContainer'>
+      <div className='ulSpotsContainer'>
         {spots.map((spot) => (
           <div
             spot={spot}
@@ -44,7 +44,7 @@ const SpotsIndex = () => {
             </Link>
           </div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 };
