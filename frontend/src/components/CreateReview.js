@@ -1,9 +1,10 @@
-import './CreateReview.css'
+
 import { useState } from 'react';
 import { thunkCreateReview} from '../store/Reviews';
 import { thunkDisplaySpotDetails} from '../store/Spots';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../context/Modal';
+import './CreateReview.css'
 
 export const CreateReview = ({spotId}) => {
     
