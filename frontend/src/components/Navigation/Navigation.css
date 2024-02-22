@@ -72,25 +72,35 @@
 }
 
 .profile-dropdown {
-    position: relative;
-    top: 85px;
-    border: 2px black solid;
+    position: absolute;
+    top: 0;
+    border: 1px lightgray solid;
     background-color: white;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    align-items:flex-start;
+
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 5px;
+    z-index: 1;
+    
 }
 
+.bottomborder {
+    border-bottom: 1px lightgrey solid;
+}
 .menuOpen {
     display: flex;
     
     flex-direction: column;
-    height: 50px;
+
 
     list-style-type: none;
     position: relative;
-    
+    color: grey;
     background-color: white;
+    z-index: 1000;
 }
 
 .menuOpen:hover {

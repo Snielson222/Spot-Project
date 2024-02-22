@@ -13,7 +13,6 @@ function ProfileButton({ user }) {
   const ulRef = useRef();
 
   const openMenu = (e) => {
-   
     if (showMenu) return;
     setShowMenu(true);
   };
@@ -70,18 +69,54 @@ function ProfileButton({ user }) {
           
         ) : (
           <div className="menuOpen">
-            <OpenModalMenuItem
-              itemText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
-            <br></br>
+            
             <OpenModalMenuItem
               itemText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
-          </div>
+            <br></br>
+            <OpenModalMenuItem
+              itemText="Log In"
+              onItemClick={closeMenu}
+              modalComponent={<LoginFormModal />}
+            />
+            
+            <span>________________</span>
+            <label>
+            Gift Cards
+            <button
+            style={{ display: "none" }}
+            className="menulinks"
+            onClick={() => alert("Feature Coming Soon...")}
+            >
+            
+          </button>
+            </label>
+            <br></br>
+            <label>
+            Airbnb Your Home
+          <button
+          style={{ display: "none" }}
+            className="menulinks"
+            onClick={() => alert("Feature Coming Soon...")}
+            >
+            
+          </button>
+            </label>
+            <br></br>
+            <label>
+            Help Center
+          <button
+          style={{ display: "none" }}
+            className="menulinks"
+            onClick={() => alert("Feature Coming Soon...")}
+            >
+           
+          </button>
+            </label>
+            </div>
+          
         )}
       </ul>
     </>
