@@ -4,10 +4,14 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import imgSrc from "../../images/FullLogo_Transparent.png";
+import { useParams } from "react-router-dom";
 
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+  const param = useParams()
+  console.log("🚀 ~ Navigation ~ param:", param)
+  
 
   return (
     <div className="navContainer">
