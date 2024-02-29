@@ -10,18 +10,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     
 }
 
 .searchLabel {
-    border-radius: 40px;
-    border: 1px black solid;
+    border-radius: 50px;
+    border: 1px lightgrey solid;
     padding: 20px;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#searchButton {
+    background-color: #FF5A5F;
+    border-radius: 15px;
+    padding: 10px;
+    color: white;
 }
 
 .searchInput {
    border: none;
+   padding-top: 5px;
+   padding-bottom: 5px;
 }
 
 .navBar {
