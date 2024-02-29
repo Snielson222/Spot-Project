@@ -5,12 +5,9 @@ import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import imgSrc from "../../images/FullLogo_Transparent.png";
 
+
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
-
-  function submitForm() {
-
-  }
 
   return (
     <div className="navContainer">
@@ -39,14 +36,6 @@ function Navigation({ isLoaded }) {
             </li>
           )}
         </div>
-      </div>
-      <div className="searchNav">
-        <label className="searchLabel">Where
-        <form>
-          <input placeholder='Search destinations' className="searchInput"></input>
-          <button id="searchButton" type="submit" onClick={submitForm}><i class="fa fa-search" aria-hidden="true"></i> Search</button>
-        </form>
-        </label>
       </div>
     </div>
   );

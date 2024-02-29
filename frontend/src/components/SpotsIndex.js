@@ -3,6 +3,7 @@ import { useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
 import { thunkGetAllSpots } from '../store/Spots.js';
 import Icons from './Navigation/icons.js';
+import SearchNav from './Navigation/search.js';
 import "./SpotsIndex.css"
 
 const SpotsIndex = () => {
@@ -25,6 +26,7 @@ const SpotsIndex = () => {
  
   return (
     <section>
+      <SearchNav />
       <Icons />
       <div className='ulSpotsContainer'>
         {spots.map((spot) => (
