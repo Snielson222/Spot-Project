@@ -16,16 +16,16 @@
 
 .searchLabel {
     border-radius: 50px;
-    border: 1px lightgrey solid;
+    border: 2px lightgrey solid;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #searchButton {
@@ -56,8 +56,8 @@
 .navBar {
     padding-left: 10px;
     padding-right: 10px;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
     display: flex;
     justify-content: space-between;
     list-style-type: none;
