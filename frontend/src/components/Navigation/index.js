@@ -20,6 +20,13 @@ function Navigation({ isLoaded }) {
             <img className="logo" alt="logo" src={imgSrc}></img>
           </NavLink>
         </div>
+        <div className="middleNav">
+          <a href="https://snielson222.github.io/">Portfolio</a>
+          <br></br>
+          <a href="https://github.com/Snielson222">Github</a>
+          <br></br>
+          <a href="https://www.linkedin.com/in/steven-nielson-5b7a3729a/">Linkedin</a>
+        </div>
         <div className="createAndProfileContainer">
           <div>
             <NavLink className="create" exact to="/spots/new">
