@@ -88,7 +88,7 @@ function ProfileButton({ user }) {
             <button
             style={{ display: "none" }}
             className="menulinks"
-            onClick={() => alert("Feature Coming Soon...")}
+            onClick={() => alert("Gift Cards Feature in Development...")}
             >
             
           </button>
