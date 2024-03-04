@@ -99,7 +99,7 @@ function ProfileButton({ user }) {
           <button
           style={{ display: "none" }}
             className="menulinks"
-            onClick={() => alert("Feature Coming Soon...")}
+            onClick={() => alert("Airbnb Your Home Feature in Development...")}
             >
             
           </button>
@@ -110,7 +110,7 @@ function ProfileButton({ user }) {
           <button
           style={{ display: "none" }}
             className="menulinks"
-            onClick={() => alert("Feature Coming Soon...")}
+            onClick={() => alert("Help Center Feature In Development...")}
             >
            
           </button>
