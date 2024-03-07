@@ -11,8 +11,8 @@ body {
 
 .imgfalse {
     width: 250px;
-    height: 198px;
-    border:2px solid white;
+    height: 200px;
+   
     border-radius: 15px;
     
 }
@@ -68,7 +68,7 @@ body {
     margin-top: 2px;
   width: 500px;
   height: 404px;
-  border: 2px solid white;
+  
   border-radius: 15px;
    
 }
