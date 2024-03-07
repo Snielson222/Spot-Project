@@ -55,8 +55,8 @@ function hideReviewButton() {
 }
 
   return (
-    <div className="spotsShowContainer">
-      <h1>{data.name}</h1>
+    <div id="topBorder" className="spotsShowContainer">
+      <h1 >{data.name}</h1>
       <h3>
         {data.city}, {data.state}, {data.country}
       </h3>

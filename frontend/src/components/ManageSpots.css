@@ -18,6 +18,10 @@
     }
 }
 
+#topBorder {
+    border-top: 1px grey solid;
+}
+
 .cityStateRatingContainer {
     display: flex;
     justify-content: space-between;
