@@ -1,5 +1,5 @@
 import "./SpotsShow.css";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink, useHistory} from "react-router-dom";
 import { thunkDisplaySpotDetails } from "../store/Spots";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useMemo} from "react";
@@ -15,6 +15,7 @@ const SpotsShow = () => {
   const { spotId } = useParams();
   const dispatch = useDispatch();
   const { closeModal } = useModal();
+  const {push} = useHistory()
   
 
 
@@ -107,7 +108,8 @@ function hideReviewButton() {
           </div>
           <button
             className="reserveButton"
-            onClick={() => alert("Feature Coming Soon...")}
+            // onClick={() => alert("Feature Coming Soon...")}
+            onClick={() => push('/booking')}
           >
             Reserve
           </button>
