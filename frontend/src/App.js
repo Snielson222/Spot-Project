@@ -8,6 +8,7 @@ import SpotsShow from './components/SpotsShow'
 import CreateSpot from "./components/CreateSpot";
 import ManageSpots from "./components/ManageSpots";
 import UpdateSpot from "./components/UpdateSpot";
+import { Booking } from "./components/Booking";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route exact path='/spots/:spotId'>
           <SpotsShow />
+        </Route>
+        <Route exact path='/booking'>
+          <Booking />
         </Route>
         <Route>404 Page Not Found</Route>
         </Switch>}
