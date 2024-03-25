@@ -22,7 +22,7 @@ export const deleteBooking = (booking) => ({
 })
 
 export const thunkLoadBookings = (spotId) => async (dispatch) => {
-    const res = await fetch(`/api/spots/${spotId}/bookings`)
+    const res = await fetch(`/api/bookings/current`)
     const data = await res.json()
     dispatch(loadBookings(data))
     return data
