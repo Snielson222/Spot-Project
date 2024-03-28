@@ -7,7 +7,7 @@ export const Booking = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(thunkLoadBookings())
+        dispatch(thunkLoadBookings(1))
     }, [dispatch])
 
     return (<div>
