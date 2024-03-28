@@ -84,6 +84,7 @@ export const thunkCreateBooking = (booking, spotId) => async (dispatch) => {
   }
 
   const bookingsReducer = (state = {}, action) => {
+    let newState
     switch (action.type) {
       case LOAD_BOOKINGS:
         const bookingState = {};
@@ -92,11 +93,13 @@ export const thunkCreateBooking = (booking, spotId) => async (dispatch) => {
         });
         return bookingState;
         case DELETE_BOOKING:
-          const newState = { ...state };
+          newState = { ...state };
           delete newState[action.booking];
           return newState;
         case EDIT_BOOKING:
-          return { ...state, [action.booking]: action.booking };
+            newState = {...state}
+            newState[action.booking.id] = action.booking
+            return newState
         default:
         return state;
     }
