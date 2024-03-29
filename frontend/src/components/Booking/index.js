@@ -6,12 +6,15 @@ export const Booking = () => {
 
     const dispatch = useDispatch()
 
+    const bookings = useSelector((state) => state.bookings)
+    console.log("🚀 ~ Booking ~ bookings:", bookings)
+
     useEffect(() => {
         dispatch(thunkLoadBookings(1))
     }, [dispatch])
 
     return (<div>
-        BOOKING!!!!
+        {bookings[0]}
     </div>)
 
 }
