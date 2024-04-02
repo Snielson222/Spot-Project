@@ -8,6 +8,7 @@ export const Booking = () => {
 
     const bookings = useSelector((state) => state.bookings)
     console.log("🚀 ~ Booking ~ bookings:", bookings)
+    //ARRAY OF OBJECTS!!!
 
     useEffect(() => {
         dispatch(thunkLoadBookings(1))
