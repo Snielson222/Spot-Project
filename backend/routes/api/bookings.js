@@ -48,6 +48,29 @@ router.get("/current", requireAuth, async (req, res, next) => {
     return res.json({"Bookings" : bookingArray})
 });
 
+router.get("/:id", requireAuth, async (req, res, next) => {
+    const booking = await Booking.findByPk(req.params.id, {
+        include: {model: Spot,
+        include: {model: SpotImage}}
+    })
+
+    if (!booking) {
+        res.status(404)
+        return res.json({
+            "message": "Booking couldn't be found"
+          })
+    }
+
+    booking.startDate = new Date(booking.startDate).toISOString().split('T')[0];
+    booking.endDate = new Date(booking.endDate).toISOString().split('T')[0];
+    delete booking.Spot.description
+    delete booking.Spot.createdAt
+    delete booking.Spot.updatedAt
+    booking.Spot.previewImage = booking.Spot.SpotImages[0].url
+    delete booking.Spot.SpotImages
+
+    return res.json(booking.toJSON())
+});
 //DELETE A BOOKING !!!WORKING!!!
 router.delete('/:id', requireAuth, async (req, res, next) => {
 const booking = await Booking.findByPk(req.params.id)

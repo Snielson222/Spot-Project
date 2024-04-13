@@ -8,6 +8,8 @@ export const DELETE_BOOKING = "bookings/DELETE_BOOKING";
 
 export const EDIT_BOOKING = "bookings/EDIT_BOOKING";
 
+export const LOAD_ONE_BOOKING = "bookings/LOAD_ONE_BOOKING";
+
 export const loadBookings = (booking) => ({
   type: LOAD_BOOKINGS,
   booking,
@@ -25,6 +27,11 @@ export const deleteBooking = (booking) => ({
 
 export const editBooking = (booking) => ({
   type: EDIT_BOOKING,
+  booking,
+});
+
+export const loadOneBooking = (booking) => ({
+  type: LOAD_ONE_BOOKING,
   booking,
 });
 
@@ -83,6 +90,13 @@ export const thunkEditBooking = (booking) => async (dispatch) => {
   }
 };
 
+export const thunkLoadOneBooking = (bookingId) => async (dispatch) => {
+  const res = await fetch(`/api/bookings/${bookingId}`);
+  const data = await res.json();
+  dispatch(loadOneBooking(data));
+  return data;
+};
+
 const bookingsReducer = (state = {}, action) => {
   let newState;
   switch (action.type) {
@@ -97,6 +111,10 @@ const bookingsReducer = (state = {}, action) => {
       delete newState[action.booking.id]; // Access booking ID to delete
       return newState;
     case EDIT_BOOKING:
+      newState = { ...state };
+      newState[action.booking.id] = action.booking;
+      return newState;
+      case LOAD_ONE_BOOKING:
       newState = { ...state };
       newState[action.booking.id] = action.booking;
       return newState;
