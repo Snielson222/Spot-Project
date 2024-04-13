@@ -45,7 +45,7 @@ export const thunkDeleteBooking = (bookingId) => async (dispatch) => {
     return error;
   } else {
     const data = await res.json();
-    dispatch(deleteBooking(bookingId));
+    dispatch(deleteBooking(data)); // Pass the entire booking object
     return data;
   }
 };
@@ -89,13 +89,12 @@ const bookingsReducer = (state = {}, action) => {
     case LOAD_BOOKINGS:
       const bookingState = {};
       action.booking.Bookings.forEach((booking) => {
-        console.log("🚀 ~ action.booking.forEach ~ action.booking:", action.booking)
         bookingState[booking.id] = booking;
       });
       return bookingState;
     case DELETE_BOOKING:
       newState = { ...state };
-      delete newState[action.booking];
+      delete newState[action.booking.id]; // Access booking ID to delete
       return newState;
     case EDIT_BOOKING:
       newState = { ...state };
