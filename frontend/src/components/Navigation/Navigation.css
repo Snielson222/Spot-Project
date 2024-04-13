@@ -162,3 +162,42 @@ cursor: pointer;
 .manageSpotsButton:hover {
     cursor: pointer;
 }
+
+
+
+#bookingImg {
+    width: 100px;
+    height: 100px;
+}
+
+.booking-card {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  .booking-card img {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+  
+  .booking-card div {
+    flex: 1;
+  }
+  
+  .booking-card h3 {
+    margin-top: 0;
+  }
+  
+  .booking-card p {
+    margin: 5px 0;
+  }
+  
+  /* Optional: Add hover effect */
+  .booking-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }

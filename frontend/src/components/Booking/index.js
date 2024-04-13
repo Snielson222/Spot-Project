@@ -9,6 +9,7 @@ export const Booking = () => {
     console.log("🚀 ~ Booking ~ bookings:", bookings);
 
     const { spotId } = useParams();
+    console.log("🚀 ~ Booking ~ spotId:", spotId)
 
     useEffect(() => {
         dispatch(thunkLoadBookings(spotId));
@@ -18,12 +19,13 @@ export const Booking = () => {
         <div>
             {bookings.map((booking) => (
                 <div key={booking.id} className="booking-card">
-                    <img src={booking.Spot.previewImage} alt={booking.Spot.name} />
+                    <img id="bookingImg" src={booking.Spot.previewImage} alt={booking.Spot.name} />
                     <div>
                         <h3>{booking.Spot.name}</h3>
                         <p>{booking.Spot.address}, {booking.Spot.city}, {booking.Spot.state}, {booking.Spot.country}</p>
                         <p>Price: ${booking.Spot.price}</p>
                         <p>Booking Dates: {booking.startDate} to {booking.endDate}</p>
+                        <p>Customer ID: {booking.userId}</p>
                     </div>
                 </div>
             ))}
