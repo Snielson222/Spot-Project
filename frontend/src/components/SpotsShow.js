@@ -108,8 +108,8 @@ function hideReviewButton() {
           </div>
           <button
             className="reserveButton"
-            // onClick={() => alert("Feature Coming Soon...")}
-            onClick={() => push('/booking')}
+            onClick={() => alert("Feature Coming Soon...")}
+            
           >
             Reserve
           </button>

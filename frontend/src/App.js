@@ -36,7 +36,7 @@ function App() {
         <Route exact path='/spots/:spotId'>
           <SpotsShow />
         </Route>
-        <Route exact path='/booking'>
+        <Route exact path='/booking/:spotId'>
           <Booking />
         </Route>
         <Route>404 Page Not Found</Route>

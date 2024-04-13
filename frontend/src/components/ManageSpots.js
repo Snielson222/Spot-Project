@@ -52,6 +52,7 @@ return (
             </Link>
             <div className='updateDeleteLinks'>
             <Link exact to={`/spots/${spot.id}/edit`}><button className='updateLink'>Update</button></Link>
+            <Link exact to={`/booking/${spot.id}`}><button className='updateLink'>Bookings</button></Link>
             <div className="modalDelete" >
              <OpenModalButton
              

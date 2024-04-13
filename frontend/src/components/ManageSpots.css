@@ -118,10 +118,11 @@ margin: 15px;
 .updateDeleteLinks {
     margin-top: 5px;
     display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .modalDelete {
-    margin-left: 15px;
     border: 2px black solid;
     background-color: #999999;
     
