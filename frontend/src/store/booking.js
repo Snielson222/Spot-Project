@@ -90,11 +90,17 @@ export const thunkEditBooking = (booking) => async (dispatch) => {
   }
 };
 
+//add error handling to the code below
 export const thunkLoadOneBooking = (bookingId) => async (dispatch) => {
   const res = await fetch(`/api/bookings/${bookingId}`);
-  const data = await res.json();
-  dispatch(loadOneBooking(data));
-  return data;
+  if (!res.ok) {
+    const error = await res.json();
+    return error;
+  } else {
+    const data = await res.json();
+    dispatch(loadOneBooking(data));
+    return data;
+  }
 };
 
 const bookingsReducer = (state = {}, action) => {

@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 export const Booking = () => {
     const dispatch = useDispatch();
     const bookings = useSelector((state) => Object.values(state.bookings)); // Convert object to array
+    console.log("🚀 ~ Booking ~ bookings:", bookings)
     const { spotId } = useParams();
 
     useEffect(() => {
