@@ -10,6 +10,7 @@ import {
 import OpenModalButton from "./OpenModalButton";
 import { useModal } from "../context/Modal";
 import CreateReview from "./CreateReview";
+import BookingForm from "./Booking/BookingForm";
 
 const SpotsShow = () => {
   const { spotId } = useParams();
@@ -106,13 +107,21 @@ function hideReviewButton() {
               {data?.numReviews > 1 ? "reviews" : ""}
             </div>
           </div>
-          <button
+          {/* <button
             className="reserveButton"
             onClick={() => alert("Feature Coming Soon...")}
             
           >
             Reserve
-          </button>
+          </button> */}
+          <OpenModalButton
+     className="reserveButton"
+        hidden={data.ownerId === session?.id}
+        buttonText="Reserve"
+        modalComponent={
+          <BookingForm spotId={spotId}/>
+        }
+      />
         </div>
       </span>
       <div>

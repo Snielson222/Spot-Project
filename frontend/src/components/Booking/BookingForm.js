@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { thunkCreateBooking } from './redux/bookings'; // Adjust the path as necessary
-
+import { thunkCreateBooking } from '../../store/booking';
 const BookingForm = ({ spotId }) => {
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState('');
