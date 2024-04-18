@@ -10,21 +10,38 @@ const BookingForm = ({ spotId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
+  
     if (!startDate || !endDate) {
       setError('Please select both start and end dates.');
       return;
     }
 
+    if (new Date(startDate) >= new Date(endDate)) {
+      setError('End date must be after the start date.');
+      return;
+    }
+  
     const bookingData = {
       startDate,
       endDate,
     };
-
+  
     const response = await dispatch(thunkCreateBooking(bookingData, spotId));
-
-    if (response && response.error) {
-      setError(response.error.message || 'Something went wrong.');
+    console.log("🚀 ~ handleSubmit ~ response:", response)
+  
+    if (response && response.errors) {
+      const { errors } = response;
+      if (errors && errors.startDate) {
+        setError(errors.startDate);
+      } else if (errors && errors.endDate) {
+        setError(errors.endDate);
+      } else if (errors && typeof errors === 'string') {
+        setError(errors);
+      } else {
+        setError('An error occurred while creating the booking.');
+      }
+    } else if (response && response.message) {
+      setError(response.message);
     } else {
       // Booking created successfully, you can perform any additional actions here
       console.log('Booking created successfully:', response);
@@ -32,6 +49,7 @@ const BookingForm = ({ spotId }) => {
       setEndDate('');
     }
   };
+  
 
   return (
     <div>
