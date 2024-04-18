@@ -15,7 +15,7 @@ const BookingForm = ({ spotId }) => {
       setError('Please select both start and end dates.');
       return;
     }
-
+  
     if (new Date(startDate) >= new Date(endDate)) {
       setError('End date must be after the start date.');
       return;
@@ -26,29 +26,37 @@ const BookingForm = ({ spotId }) => {
       endDate,
     };
   
-    const response = await dispatch(thunkCreateBooking(bookingData, spotId));
-    console.log("🚀 ~ handleSubmit ~ response:", response)
+    try {
+      const response = await dispatch(thunkCreateBooking(bookingData, spotId));
   
-    if (response && response.errors) {
-      const { errors } = response;
-      if (errors && errors.startDate) {
-        setError(errors.startDate);
-      } else if (errors && errors.endDate) {
-        setError(errors.endDate);
-      } else if (errors && typeof errors === 'string') {
-        setError(errors);
+      if (response && response.errors) {
+        const { errors } = response;
+        if (errors && errors.startDate) {
+          setError(errors.startDate);
+        } else if (errors && errors.endDate) {
+          setError(errors.endDate);
+        } else if (errors && typeof errors === 'string') {
+          setError(errors);
+        } else {
+          setError('An error occurred while creating the booking.');
+        }
+      } else if (response && response.message) {
+        setError(response.message);
+      } else {
+        // Booking created successfully, you can perform any additional actions here
+        console.log('Booking created successfully:', response);
+        setStartDate('');
+        setEndDate('');
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        setError('End date cannot be before the start date.');
       } else {
         setError('An error occurred while creating the booking.');
       }
-    } else if (response && response.message) {
-      setError(response.message);
-    } else {
-      // Booking created successfully, you can perform any additional actions here
-      console.log('Booking created successfully:', response);
-      setStartDate('');
-      setEndDate('');
     }
   };
+  
   
 
   return (
