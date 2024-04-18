@@ -135,7 +135,7 @@ function hideReviewButton() {
       </div>
      <button className="modalButtonGrey" hidden={hideReviewButton()}>
      <OpenModalButton
-     className="noBorder"
+     
         hidden={data.ownerId === session?.id}
         buttonText="Post Your Review"
         modalComponent={
@@ -156,7 +156,6 @@ function hideReviewButton() {
               <OpenModalButton
                 hidden={review?.userId !== session?.id}
                 buttonText="Delete Review"
-                className="noBorder"
                 modalComponent={
                   <div className="modalComponent">
                     <h1>Confirm Delete</h1>
