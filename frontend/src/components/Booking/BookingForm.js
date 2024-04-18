@@ -32,12 +32,15 @@ const BookingForm = ({ spotId }) => {
   
       if (response && response.errors) {
         const { errors } = response;
+        console.log("🚀 ~ handleSubmit ~ errors:", errors)
         if (errors && errors.startDate) {
           setError(errors.startDate);
         } else if (errors && errors.endDate) {
           setError(errors.endDate);
         } else if (errors && typeof errors === 'string') {
           setError(errors);
+        }  else if (errors === "message") {
+            setError(errors);
         } else {
           setError('An error occurred while creating the booking.');
         }
