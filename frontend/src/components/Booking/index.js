@@ -28,8 +28,8 @@ export const Booking = () => {
                 <div key={booking.id} className="booking-card">
                     <div>
                         <h3>{booking.Spot?.name}</h3>
-                        <p>{booking.Spot?.address}, {booking.Spot?.city}, {booking.Spot?.state}, {booking.Spot?.country}</p>
-                        <p>Price: ${booking.Spot?.price}</p>
+                        <p>Address: {booking.Spot?.address}, {booking.Spot?.city}, {booking.Spot?.state}, {booking.Spot?.country}</p>
+                        <p>Price Per Night: ${booking.Spot?.price}</p>
                         <p>Booking Dates: {formatDate(booking.startDate)} to {formatDate(booking.endDate)}</p>
                         <p>Customer ID: {booking.userId}</p>
                     </div>
