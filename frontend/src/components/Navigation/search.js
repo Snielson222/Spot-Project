@@ -35,15 +35,15 @@ export default function SearchNav() {
           </button>
         </form>
       </label>
-      {/* Conditionally render the filtered results section */}
+      
       {searchQuery && (
-        <div className="filteredResults">
+        <div style={{ textDecoration: 'none' }} className="filteredResults">
           {filteredSpots.map((spot) => (
             <div key={spot.id}>
-              {/* Use Link component to make the div clickable */}
-              <Link to={`/spots/${spot.id}`}>
-                <p>{spot.name}</p>
-                {/* Add more details as needed */}
+              
+              <Link style={{ textDecoration: 'none' }} to={`/spots/${spot.id}`}>
+                <h5>{spot.name}</h5>
+               
               </Link>
             </div>
           ))}
