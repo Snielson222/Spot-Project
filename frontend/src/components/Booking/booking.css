@@ -52,4 +52,6 @@
     cursor: pointer;
   }
 
-  
+#endDate {
+    padding-right: 15px;
+}
