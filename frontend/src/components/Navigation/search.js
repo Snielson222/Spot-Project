@@ -1,19 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom"; // Import Link from React Router
 
 export default function SearchNav() {
+  const [searchQuery, setSearchQuery] = useState("");
 
-    function submitForm() {
+  const spots = useSelector((state) => state.spots);
 
-    }
+  const filteredSpots = Object.values(spots).filter((spot) =>
+    spot.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-    return (
-        <div className="searchNav">
-        <label className="searchLabel">Where
-        <form>
-          <input placeholder='Search destinations' className="searchInput"></input>
-          <button id="searchButton" type="submit" onClick={submitForm}><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Optional: Perform any action with the searchQuery, such as fetching data from the backend
+    console.log("Search query:", searchQuery);
+    // Reset the searchQuery state after submission (optional)
+    setSearchQuery("");
+  };
+
+  return (
+    <div className="searchNav">
+      <label className="searchLabel">
+        Where
+        <form onSubmit={handleSubmit}>
+          <input
+            placeholder="Search destinations"
+            className="searchInput"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button id="searchButton" type="submit">
+            <i className="fa fa-search" aria-hidden="true"></i> Search
+          </button>
         </form>
-        </label>
-      </div>
-    )
+      </label>
+      {/* Conditionally render the filtered results section */}
+      {searchQuery && (
+        <div className="filteredResults">
+          {filteredSpots.map((spot) => (
+            <div key={spot.id}>
+              {/* Use Link component to make the div clickable */}
+              <Link to={`/spots/${spot.id}`}>
+                <p>{spot.name}</p>
+                {/* Add more details as needed */}
+              </Link>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
