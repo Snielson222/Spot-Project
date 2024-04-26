@@ -8,7 +8,8 @@ export default function SearchNav() {
   const spots = useSelector((state) => state.spots);
 
   const filteredSpots = Object.values(spots).filter((spot) =>
-    spot.name.toLowerCase().includes(searchQuery.toLowerCase())
+    spot.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    spot.country.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleSubmit = (e) => {
@@ -41,9 +42,10 @@ export default function SearchNav() {
           {filteredSpots.map((spot) => (
             <div key={spot.id}>
               
-              <Link style={{ textDecoration: 'none' }} to={`/spots/${spot.id}`}>
-                <h5>{spot.name}</h5>
-               
+              <Link className='linky' style={{ textDecoration: 'none' }} to={`/spots/${spot.id}`}>
+
+                <img style={{ width: "20px", height: "20px" }} src={spot.previewImage}></img>
+                <h5> {spot.city}, {spot.country}</h5> {/* Display city and country */}
               </Link>
             </div>
           ))}
