@@ -1,6 +1,5 @@
-import React, { useState, useEffect} from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { thunkCreateBooking, thunkLoadOneBooking } from '../../store/booking';
 import './booking.css';
 
@@ -11,9 +10,9 @@ const BookingForm = ({ spotId }) => {
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
+  // Fetch spot details from Redux store
   const spot = useSelector((state) => state.spots[spotId]);
-  console.log("🚀 ~ BookingForm ~ spot:", spot)
-  const price = spot?.price;
+  const pricePerNight = spot?.price;
 
   useEffect(() => {
     dispatch(thunkLoadOneBooking(spotId));
@@ -58,7 +57,9 @@ const BookingForm = ({ spotId }) => {
         }
       } else {
         // Booking created successfully
-        setSuccessMessage(`Booking created successfully for ${startDate} to ${endDate}`);
+        const nightsBooked = Math.ceil((new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)); // Calculate number of nights booked
+        const totalPrice = pricePerNight * nightsBooked; // Calculate total price
+        setSuccessMessage(`Booking created successfully for ${startDate} to ${endDate}. Total price: $${totalPrice}`);
         setStartDate('');
         setEndDate('');
       }
@@ -69,11 +70,15 @@ const BookingForm = ({ spotId }) => {
         setError('An error occurred while creating the booking.');
       }
     }
-  };
+};
+
 
   return (
     <div className="booking-form-container">
       <h2>Create Booking</h2>
+      <div>
+        {pricePerNight && <p>Price per night: ${pricePerNight}</p>}
+      </div>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="startDate">Start Date:</label>
