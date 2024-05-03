@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-import { thunkCreateBooking } from '../../store/booking';
+import { useSelector } from 'react-redux';
+import { thunkCreateBooking, thunkLoadOneBooking } from '../../store/booking';
 import './booking.css';
 
 const BookingForm = ({ spotId }) => {
@@ -9,6 +10,14 @@ const BookingForm = ({ spotId }) => {
   const [endDate, setEndDate] = useState('');
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+
+  const spot = useSelector((state) => state.spots[spotId]);
+  console.log("🚀 ~ BookingForm ~ spot:", spot)
+  const price = spot?.price;
+
+  useEffect(() => {
+    dispatch(thunkLoadOneBooking(spotId));
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +41,7 @@ const BookingForm = ({ spotId }) => {
 
     try {
       const response = await dispatch(thunkCreateBooking(bookingData, spotId));
+      const thisSpot = await dispatch(thunkLoadOneBooking(spotId));
 
       if (response && response.errors) {
         const { errors } = response;
