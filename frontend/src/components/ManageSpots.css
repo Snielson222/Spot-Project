@@ -138,32 +138,47 @@ link {
 }
 
 .searchNav {
-    position: relative;
-    font-family: Arial, sans-serif;
-  }
-  
-  .searchLabel {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .searchInput {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  #searchButton {
-    padding: 10px 15px;
-    background-color: #ff5a5f;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-  }
-  
+  position: relative;
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 400px; /* Adjust width as needed */
+  height: 40px;
+  padding: 10px;
+  border-radius: 20px; /* Creates the oval shape */
+  border: 1px solid #ccc; /* Add border for clarity */
+}
+
+.searchButton {
+  background-color: #ff5a5f; /* Airbnb's brand color */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px; /* Match the input's border radius */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.searchButton:hover {
+  background-color: #e54858; /* Darker shade on hover */
+}
+
+.filteredResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+  z-index: 1;
+}
   .filteredResults {
     position: absolute;
     top: calc(100% + 10px); /* Adjust as needed */
