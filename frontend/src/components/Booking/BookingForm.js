@@ -2,53 +2,53 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { thunkCreateBooking } from '../../store/booking';
 import './booking.css';
+
 const BookingForm = ({ spotId }) => {
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-  
+    setSuccessMessage('');
+
     if (!startDate || !endDate) {
       setError('Please select both start and end dates.');
       return;
     }
-  
+
     if (new Date(startDate) >= new Date(endDate)) {
       setError('End date must be after the start date.');
       return;
     }
-  
+
     const bookingData = {
       startDate,
       endDate,
     };
-  
+
     try {
       const response = await dispatch(thunkCreateBooking(bookingData, spotId));
-  
+
       if (response && response.errors) {
         const { errors } = response;
-        console.log("🚀 ~ handleSubmit ~ errors:", errors)
         if (errors && errors.startDate) {
           setError(errors.startDate);
         } else if (errors && errors.endDate) {
           setError(errors.endDate);
         } else if (errors && typeof errors === 'string') {
           setError(errors);
-        }  else if (errors === "message") {
-            setError(errors);
+        } else if (errors === "message") {
+          setError(errors);
         } else {
           setError('An error occurred while creating the booking.');
         }
-      } else if (response && response.message) {
-        setError(response.message);
       } else {
-        // Booking created successfully, you can perform any additional actions here
-        console.log('Booking created successfully:', response);
+        // Booking created successfully
+        setSuccessMessage(`Booking created successfully for ${startDate} to ${endDate}`);
         setStartDate('');
         setEndDate('');
       }
@@ -60,36 +60,34 @@ const BookingForm = ({ spotId }) => {
       }
     }
   };
-  
-  
 
   return (
     <div className="booking-form-container">
-  <h2>Create Booking</h2>
-  <form onSubmit={handleSubmit}>
-    <div>
-      <label htmlFor="startDate">Start Date:</label>
-      <input
-        type="date"
-        id="startDate"
-        value={startDate}
-        onChange={(e) => setStartDate(e.target.value)}
-      />
+      <h2>Create Booking</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="startDate">Start Date:</label>
+          <input
+            type="date"
+            id="startDate"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="endDate">End Date:</label>
+          <input
+            type="date"
+            id="endDate"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+          />
+        </div>
+        {error && <div className="error-message">{error}</div>}
+        {successMessage && <div className="success-message">{successMessage}</div>}
+        <button type="submit">Submit</button>
+      </form>
     </div>
-    <div>
-      <label htmlFor="endDate">End Date:</label>
-      <input
-        type="date"
-        id="endDate"
-        value={endDate}
-        onChange={(e) => setEndDate(e.target.value)}
-      />
-    </div>
-    {error && <div className="error-message">{error}</div>}
-    <button type="submit">Submit</button>
-  </form>
-</div>
-
   );
 };
 
