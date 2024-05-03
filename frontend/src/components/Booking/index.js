@@ -5,8 +5,7 @@ import { useParams } from "react-router-dom";
 
 export const Booking = () => {
     const dispatch = useDispatch();
-    const bookings = useSelector((state) => Object.values(state.bookings)); // Convert object to array
-    console.log("🚀 ~ Booking ~ bookings:", bookings)
+    const bookings = useSelector((state) => Object.values(state.bookings));
     const { spotId } = useParams();
 
     useEffect(() => {
@@ -22,9 +21,21 @@ export const Booking = () => {
         );
     }
 
+    // Filter bookings for the specific spot
+    const spotBookings = bookings.filter((booking) => booking.Spot.id === parseInt(spotId));
+
+    if (spotBookings.length === 0) {
+        return (
+            <div className="error-message">
+                <h2>No bookings available for this spot.</h2>
+                <p>Check back later or explore other spots.</p>
+            </div>
+        );
+    }
+
     return (
         <div>
-            {bookings.map((booking) => (
+            {spotBookings.map((booking) => (
                 <div key={booking.id} className="booking-card">
                     <div>
                         <h3>{booking.Spot?.name}</h3>
@@ -45,3 +56,4 @@ function formatDate(dateString) {
 }
 
 export default Booking;
+
