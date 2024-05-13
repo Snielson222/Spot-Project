@@ -77,7 +77,7 @@ const BookingForm = ({ spotId }) => {
     <div className="booking-form-container">
       <h2>Create Booking</h2>
       <div>
-        {pricePerNight && <p>Price per night: ${pricePerNight}</p>}
+        {pricePerNight && <h3>Price per night: ${pricePerNight}</h3>}
       </div>
       <form onSubmit={handleSubmit}>
         <div>
