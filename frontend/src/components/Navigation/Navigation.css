@@ -230,3 +230,88 @@ cursor: pointer;
     margin-bottom: 10px;
   }
   
+
+  .icon-bar {
+    margin-top: 20px; /* Add some top margin */
+  }
+  
+  .search-bar {
+    margin-bottom: 20px; /* Add some bottom margin */
+  }
+
+  
+  .icon-bar .icon {
+    font-size: 18px; /* Adjust the font size to make icons slightly bigger */
+  }
+  
+
+  .icon-bar .icons {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent icons from wrapping to the next line */
+  }
+  
+  .icon-bar .icon {
+    flex: 0 0 auto; /* Prevent icons from shrinking or growing */
+    margin-right: 10px; /* Add some space between icons */
+  }
+  
+
+  .navContainer {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 10px;
+  }
+  
+  .home {
+    padding: 10px;
+  }
+  
+  .middleNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .middleNav a {
+    text-decoration: none;
+    color: #484848;
+    padding: 10px;
+    margin: 0 10px;
+  }
+  
+  .middleNav a:hover {
+    color: #ff5a5f;
+  }
+  
+  .createAndProfileContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .create {
+    text-decoration: none;
+    color: #484848;
+    padding: 10px;
+    margin-right: 10px;
+  }
+  
+  .create:hover {
+    color: #ff5a5f;
+  }
+  
+  .logo {
+    width: 100px;
+    height: auto;
+  }
+  
