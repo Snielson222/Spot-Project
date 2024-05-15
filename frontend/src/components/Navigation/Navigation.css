@@ -201,3 +201,32 @@ cursor: pointer;
   .booking-card:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+
+  .icon-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .icons {
+    display: flex;
+    overflow-x: auto;
+  }
+  
+  .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+  }
+  
+  .icon > span {
+    margin-top: 5px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
