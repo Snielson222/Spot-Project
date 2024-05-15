@@ -23,7 +23,6 @@ export default function SearchNav() {
   return (
     <div className="searchNav">
       <label className="searchLabel">
-        Where
         <form onSubmit={handleSubmit}>
           <input
             placeholder="Search destinations"

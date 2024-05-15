@@ -314,4 +314,50 @@ cursor: pointer;
     width: 100px;
     height: auto;
   }
+
+  .searchNav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Add margin to separate from the navigation */
+  }
+  
+  .searchLabel {
+    margin-bottom: 10px;
+  }
+  
+  .searchInput {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #d6d6d6;
+    border-radius: 30px;
+  }
+  
+  #searchButton {
+    background-color: #ff5a5f;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .filteredResults {
+    margin-top: 10px;
+  }
+  
+  .linky {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 10px;
+  }
+  
+  .linky img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
   
