@@ -361,3 +361,15 @@ cursor: pointer;
     margin-right: 10px;
   }
   
+  .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+    cursor: pointer; /* Add this line to change cursor to pointer on hover */
+  }
+  
+  .icon:hover {
+    /* Add additional styles for hover effect if needed */
+  }
+  
