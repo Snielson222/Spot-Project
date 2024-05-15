@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const iconData = [
   { icon: <i className="fas fa-bed"></i>, label: 'Bed', tag: 'sleep' },
@@ -14,26 +14,23 @@ const iconData = [
   // Add more icons and tags as needed
 ];
 
-export default function Icons() {
-  const [selectedTag, setSelectedTag] = useState('');
-
+const Icons = ({ filterSpotsByDescription }) => {
   const handleIconClick = (tag) => {
-    setSelectedTag(tag === selectedTag ? '' : tag);
+    filterSpotsByDescription(tag);
   };
-
-  const filteredIcons = selectedTag ? iconData.filter(item => item.tag === selectedTag) : iconData;
 
   return (
     <div className="icon-bar">
       <div className="icons">
         {iconData.map((item, index) => (
-          <div className={`icon ${selectedTag === item.tag ? 'selected' : ''}`} key={index} onClick={() => handleIconClick(item.tag)}>
+          <div className="icon" key={index} onClick={() => handleIconClick(item.tag)}>
             {item.icon}
             <span>{item.label}</span>
           </div>
         ))}
       </div>
-      <div className="selected-tag">{selectedTag && `Selected Tag: ${selectedTag}`}</div>
     </div>
   );
-}
+};
+
+export default Icons;
