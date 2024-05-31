@@ -147,25 +147,24 @@ link {
 }
 
 .searchInput {
-  width: 400px; /* Adjust width as needed */
+  width: 400px; 
   height: 40px;
   padding: 10px;
-  border-radius: 20px; /* Creates the oval shape */
-  border: 1px solid #ccc; /* Add border for clarity */
+  border-radius: 20px; 
+  border: 1px solid #ccc;
 }
 
 .searchButton {
-  background-color: #ff5a5f; /* Airbnb's brand color */
-  color: #fff;
+  background-color: #ff5a5f; 
   border: none;
   padding: 10px 20px;
-  border-radius: 20px; /* Match the input's border radius */
+  border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .searchButton:hover {
-  background-color: #e54858; /* Darker shade on hover */
+  background-color: #e54858; 
 }
 
 .filteredResults {
@@ -176,12 +175,12 @@ link {
   background-color: #fff;
   border: 1px solid #ccc;
   border-top: none;
-  border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+  border-radius: 0 0 10px 10px; 
   z-index: 1;
 }
   .filteredResults {
     position: absolute;
-    top: calc(100% + 10px); /* Adjust as needed */
+    top: calc(100% + 10px); 
     left: 0;
     width: 100%;
     background-color: #fff;
@@ -189,8 +188,8 @@ link {
     border-top: none;
     border-radius: 0 0 5px 5px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 10px; /* Add padding */
-    z-index: 999; /* Ensure the filteredResults appear above other elements */
+    padding: 10px; 
+    z-index: 999; 
   }
   
   .filteredResults h5 {
