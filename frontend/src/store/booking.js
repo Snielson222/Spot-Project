@@ -90,7 +90,6 @@ export const thunkEditBooking = (booking) => async (dispatch) => {
   }
 };
 
-//add error handling to the code below
 export const thunkLoadOneBooking = (bookingId) => async (dispatch) => {
   const res = await fetch(`/api/bookings/${bookingId}`);
   if (!res.ok) {
@@ -114,7 +113,7 @@ const bookingsReducer = (state = {}, action) => {
       return bookingState;
     case DELETE_BOOKING:
       newState = { ...state };
-      delete newState[action.booking.id]; // Access booking ID to delete
+      delete newState[action.booking.id];
       return newState;
     case EDIT_BOOKING:
       newState = { ...state };
