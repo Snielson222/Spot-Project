@@ -52,7 +52,7 @@ export const thunkDeleteBooking = (bookingId) => async (dispatch) => {
     return error;
   } else {
     const data = await res.json();
-    dispatch(deleteBooking(data)); // Pass the entire booking object
+    dispatch(deleteBooking(data)); 
     return data;
   }
 };
