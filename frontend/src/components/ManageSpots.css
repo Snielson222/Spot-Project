@@ -150,7 +150,7 @@ link {
   width: 400px; /* Adjust width as needed */
   height: 40px;
   padding: 10px;
-  border-radius: 21px; /* Creates the oval shape */
+  border-radius: 20px; /* Creates the oval shape */
   border: 1px solid #ccc; /* Add border for clarity */
 }
 
