@@ -16,6 +16,7 @@
 
 .notLink {
     text-decoration: none;
+    border: none;
     color: black;
     
 }
