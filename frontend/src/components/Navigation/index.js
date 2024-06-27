@@ -18,9 +18,9 @@ function Navigation({ isLoaded }) {
           <img className="logo" alt="logo" src={imgSrc}></img>
         </NavLink>
         <div className="middleNav">
-          <NavLink to="https://snielson222.github.io/">Portfolio</NavLink>
-          <NavLink to="https://github.com/Snielson222">Github</NavLink>
-          <NavLink to="https://www.linkedin.com/in/steven-nielson-5b7a3729a/">Linkedin</NavLink>
+          <a href="https://snielson222.github.io/">Portfolio</a>
+          <a href="https://github.com/Snielson222">Github</a>
+          <a href="https://www.linkedin.com/in/steven-nielson-5b7a3729a/">Linkedin</a>
         </div>
         <div className="createAndProfileContainer">
           {sessionUser && (
