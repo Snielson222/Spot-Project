@@ -359,7 +359,6 @@ cursor: pointer;
     width: 20px;
     height: 20px;
     margin-right: 10px;
-    border: none;
   }
   
   .icon {
@@ -367,10 +366,5 @@ cursor: pointer;
     flex-direction: column;
     align-items: center;
     margin: 0 10px;
-    cursor: pointer; /* Add this line to change cursor to pointer on hover */
+    cursor: pointer; 
   }
-  
-  .icon:hover {
-    /* Add additional styles for hover effect if needed */
-  }
-  
