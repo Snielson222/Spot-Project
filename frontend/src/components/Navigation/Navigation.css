@@ -232,28 +232,28 @@ cursor: pointer;
   
 
   .icon-bar {
-    margin-top: 20px; /* Add some top margin */
+    margin-top: 20px; 
   }
   
   .search-bar {
-    margin-bottom: 20px; /* Add some bottom margin */
+    margin-bottom: 20px; 
   }
 
   
   .icon-bar .icon {
-    font-size: 18px; /* Adjust the font size to make icons slightly bigger */
+    font-size: 18px; 
   }
   
 
   .icon-bar .icons {
     display: flex;
-    overflow-x: auto; /* Enable horizontal scrolling */
-    white-space: nowrap; /* Prevent icons from wrapping to the next line */
+    overflow-x: auto; 
+    white-space: nowrap;
   }
   
   .icon-bar .icon {
-    flex: 0 0 auto; /* Prevent icons from shrinking or growing */
-    margin-right: 10px; /* Add some space between icons */
+    flex: 0 0 auto; 
+    margin-right: 10px; 
   }
   
 
@@ -319,7 +319,7 @@ cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; /* Add margin to separate from the navigation */
+    margin-top: 20px;
   }
   
   .searchLabel {
