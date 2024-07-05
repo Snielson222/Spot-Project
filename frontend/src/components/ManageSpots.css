@@ -151,7 +151,7 @@ link {
   height: 40px;
   padding: 10px;
   border-radius: 20px; 
-  border: 1px solid #ccc;
+  border: none;
 }
 
 .searchButton {
