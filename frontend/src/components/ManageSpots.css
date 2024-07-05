@@ -18,6 +18,12 @@
     }
 }
 
+@media (max-width: 500px) {
+  body {
+    width: 1080px;
+  }
+}
+
 #topBorder {
     border-top: 1px grey solid;
 }
